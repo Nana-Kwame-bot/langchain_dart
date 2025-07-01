@@ -45,10 +45,9 @@ mixin _$CreateCompletionRequest {
   @JsonKey(includeIfNull: false)
   bool? get echo => throw _privateConstructorUsedError;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the
-  /// text so far, decreasing the model's likelihood to repeat the same line verbatim.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// their existing frequency in the text so far, decreasing the model's
+  /// likelihood to repeat the same line verbatim.
   @JsonKey(name: 'frequency_penalty', includeIfNull: false)
   double? get frequencyPenalty => throw _privateConstructorUsedError;
 
@@ -78,9 +77,9 @@ mixin _$CreateCompletionRequest {
   @JsonKey(includeIfNull: false)
   int? get n => throw _privateConstructorUsedError;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// whether they appear in the text so far, increasing the model's likelihood
+  /// to talk about new topics.
   @JsonKey(name: 'presence_penalty', includeIfNull: false)
   double? get presencePenalty => throw _privateConstructorUsedError;
 
@@ -116,7 +115,10 @@ mixin _$CreateCompletionRequest {
   @JsonKey(includeIfNull: false)
   double? get temperature => throw _privateConstructorUsedError;
 
-  /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+  /// An alternative to sampling with temperature, called nucleus sampling,
+  /// where the model considers the results of the tokens with top_p probability
+  /// mass. So 0.1 means only the tokens comprising the top 10% probability mass
+  /// are considered.
   ///
   /// We generally recommend altering this or `temperature` but not both.
   @JsonKey(name: 'top_p', includeIfNull: false)
@@ -504,21 +506,21 @@ class _$CreateCompletionRequestImpl extends _CreateCompletionRequest {
       @JsonKey(name: 'best_of', includeIfNull: false) this.bestOf,
       @JsonKey(includeIfNull: false) this.echo = false,
       @JsonKey(name: 'frequency_penalty', includeIfNull: false)
-      this.frequencyPenalty = 0.0,
+      this.frequencyPenalty,
       @JsonKey(name: 'logit_bias', includeIfNull: false)
       final Map<String, int>? logitBias,
       @JsonKey(includeIfNull: false) this.logprobs,
       @JsonKey(name: 'max_tokens', includeIfNull: false) this.maxTokens = 16,
-      @JsonKey(includeIfNull: false) this.n = 1,
+      @JsonKey(includeIfNull: false) this.n,
       @JsonKey(name: 'presence_penalty', includeIfNull: false)
-      this.presencePenalty = 0.0,
+      this.presencePenalty,
       @JsonKey(includeIfNull: false) this.seed,
       @_CompletionStopConverter() @JsonKey(includeIfNull: false) this.stop,
       @JsonKey(includeIfNull: false) this.stream = false,
       @JsonKey(name: 'stream_options', includeIfNull: false) this.streamOptions,
       @JsonKey(includeIfNull: false) this.suffix,
-      @JsonKey(includeIfNull: false) this.temperature = 1.0,
-      @JsonKey(name: 'top_p', includeIfNull: false) this.topP = 1.0,
+      @JsonKey(includeIfNull: false) this.temperature,
+      @JsonKey(name: 'top_p', includeIfNull: false) this.topP,
       @JsonKey(includeIfNull: false) this.user})
       : _logitBias = logitBias,
         super._();
@@ -554,10 +556,9 @@ class _$CreateCompletionRequestImpl extends _CreateCompletionRequest {
   @JsonKey(includeIfNull: false)
   final bool? echo;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the
-  /// text so far, decreasing the model's likelihood to repeat the same line verbatim.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// their existing frequency in the text so far, decreasing the model's
+  /// likelihood to repeat the same line verbatim.
   @override
   @JsonKey(name: 'frequency_penalty', includeIfNull: false)
   final double? frequencyPenalty;
@@ -605,9 +606,9 @@ class _$CreateCompletionRequestImpl extends _CreateCompletionRequest {
   @JsonKey(includeIfNull: false)
   final int? n;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// whether they appear in the text so far, increasing the model's likelihood
+  /// to talk about new topics.
   @override
   @JsonKey(name: 'presence_penalty', includeIfNull: false)
   final double? presencePenalty;
@@ -649,7 +650,10 @@ class _$CreateCompletionRequestImpl extends _CreateCompletionRequest {
   @JsonKey(includeIfNull: false)
   final double? temperature;
 
-  /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+  /// An alternative to sampling with temperature, called nucleus sampling,
+  /// where the model considers the results of the tokens with top_p probability
+  /// mass. So 0.1 means only the tokens comprising the top 10% probability mass
+  /// are considered.
   ///
   /// We generally recommend altering this or `temperature` but not both.
   @override
@@ -798,10 +802,9 @@ abstract class _CreateCompletionRequest extends CreateCompletionRequest {
   @JsonKey(includeIfNull: false)
   bool? get echo;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the
-  /// text so far, decreasing the model's likelihood to repeat the same line verbatim.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// their existing frequency in the text so far, decreasing the model's
+  /// likelihood to repeat the same line verbatim.
   @override
   @JsonKey(name: 'frequency_penalty', includeIfNull: false)
   double? get frequencyPenalty;
@@ -836,9 +839,9 @@ abstract class _CreateCompletionRequest extends CreateCompletionRequest {
   @JsonKey(includeIfNull: false)
   int? get n;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// whether they appear in the text so far, increasing the model's likelihood
+  /// to talk about new topics.
   @override
   @JsonKey(name: 'presence_penalty', includeIfNull: false)
   double? get presencePenalty;
@@ -880,7 +883,10 @@ abstract class _CreateCompletionRequest extends CreateCompletionRequest {
   @JsonKey(includeIfNull: false)
   double? get temperature;
 
-  /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+  /// An alternative to sampling with temperature, called nucleus sampling,
+  /// where the model considers the results of the tokens with top_p probability
+  /// mass. So 0.1 means only the tokens comprising the top 10% probability mass
+  /// are considered.
   ///
   /// We generally recommend altering this or `temperature` but not both.
   @override
@@ -3552,50 +3558,63 @@ mixin _$CreateChatCompletionRequest {
   List<ChatCompletionMessage> get messages =>
       throw _privateConstructorUsedError;
 
-  /// Whether or not to store the output of this chat completion request for use in our
-  /// [model distillation](https://platform.openai.com/docs/guides/distillation)
-  /// or [evals](https://platform.openai.com/docs/guides/evals) products.
+  /// Whether or not to store the output of this chat completion request for
+  /// use in our [model distillation](https://platform.openai.com/docs/guides/distillation) or
+  /// [evals](https://platform.openai.com/docs/guides/evals) products.
   @JsonKey(includeIfNull: false)
   bool? get store => throw _privateConstructorUsedError;
+
+  /// **o1 models only**
+  ///
+  /// Constrains effort on reasoning for
+  /// [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+  /// Currently supported values are `low`, `medium`, and `high`. Reducing
+  /// reasoning effort can result in faster responses and fewer tokens used
+  /// on reasoning in a response.
+  @JsonKey(
+      name: 'reasoning_effort',
+      includeIfNull: false,
+      unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ReasoningEffort? get reasoningEffort => throw _privateConstructorUsedError;
 
   /// Developer-defined tags and values used for filtering completions
   /// in the [dashboard](https://platform.openai.com/chat-completions).
   @JsonKey(includeIfNull: false)
   Map<String, String>? get metadata => throw _privateConstructorUsedError;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the
-  /// text so far, decreasing the model's likelihood to repeat the same line verbatim.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// their existing frequency in the text so far, decreasing the model's
+  /// likelihood to repeat the same line verbatim.
   @JsonKey(name: 'frequency_penalty', includeIfNull: false)
   double? get frequencyPenalty => throw _privateConstructorUsedError;
 
-  /// Modify the likelihood of specified tokens appearing in the completion.
-  ///
-  /// Accepts a JSON object that maps tokens (specified by their token ID in the tokenizer) to an associated bias
-  /// value from -100 to 100. Mathematically, the bias is added to the logits generated by the model prior to
-  /// sampling. The exact effect will vary per model, but values between -1 and 1 should decrease or increase
-  /// likelihood of selection; values like -100 or 100 should result in a ban or exclusive selection of the
-  /// relevant token.
+  /// Accepts a JSON object that maps tokens (specified by their token ID in the
+  /// tokenizer) to an associated bias value from -100 to 100. Mathematically,
+  /// the bias is added to the logits generated by the model prior to sampling.
+  /// The exact effect will vary per model, but values between -1 and 1 should
+  /// decrease or increase likelihood of selection; values like -100 or 100
+  /// should result in a ban or exclusive selection of the relevant token.
   @JsonKey(name: 'logit_bias', includeIfNull: false)
   Map<String, int>? get logitBias => throw _privateConstructorUsedError;
 
-  /// Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of
-  /// each output token returned in the `content` of `message`.
+  /// Whether to return log probabilities of the output tokens or not. If true,
+  /// returns the log probabilities of each output token returned in the
+  /// `content` of `message`.
   @JsonKey(includeIfNull: false)
   bool? get logprobs => throw _privateConstructorUsedError;
 
-  /// An integer between 0 and 20 specifying the number of most likely tokens to return at each token position,
-  /// each with an associated log probability. `logprobs` must be set to `true` if this parameter is used.
+  /// An integer between 0 and 20 specifying the number of most likely tokens to
+  /// return at each token position, each with an associated log probability.
+  /// `logprobs` must be set to `true` if this parameter is used.
   @JsonKey(name: 'top_logprobs', includeIfNull: false)
   int? get topLogprobs => throw _privateConstructorUsedError;
 
-  /// The maximum number of [tokens](https://platform.openai.com/tokenizer) that can be generated in the chat
-  /// completion. This value can be used to control [costs](https://openai.com/api/pricing/) for text generated
-  /// via API.
+  /// The maximum number of [tokens](https://platform.openai.com/tokenizer) that can be generated in the
+  /// chat completion. This value can be used to control
+  /// [costs](https://openai.com/api/pricing/) for text generated via API.
   ///
-  /// This value is now deprecated in favor of `max_completion_tokens`, and is not compatible with
-  /// [o1 series models](https://platform.openai.com/docs/guides/reasoning).
+  /// This value is now deprecated in favor of `max_completion_tokens`, and is
+  /// not compatible with [o1 series models](https://platform.openai.com/docs/guides/reasoning).
   @JsonKey(name: 'max_tokens', includeIfNull: false)
   int? get maxTokens => throw _privateConstructorUsedError;
 
@@ -3626,29 +3645,31 @@ mixin _$CreateChatCompletionRequest {
   @JsonKey(includeIfNull: false)
   ChatCompletionAudioOptions? get audio => throw _privateConstructorUsedError;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// whether they appear in the text so far, increasing the model's likelihood
+  /// to talk about new topics.
   @JsonKey(name: 'presence_penalty', includeIfNull: false)
   double? get presencePenalty => throw _privateConstructorUsedError;
 
-  /// An object specifying the format that the model must output. Compatible with
-  /// [GPT-4o](https://platform.openai.com/docs/models#gpt-4o),
-  /// [GPT-4o mini](https://platform.openai.com/docs/models#gpt-4o-mini),
-  /// [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-and-gpt-4-turbo) and all GPT-3.5 Turbo models newer
-  /// than `gpt-3.5-turbo-1106`.
+  /// This tool searches the web for relevant results to use in a response.
+  @JsonKey(name: 'web_search_options', includeIfNull: false)
+  WebSearchOptions? get webSearchOptions => throw _privateConstructorUsedError;
+
+  /// An object specifying the format that the model must output.
   ///
-  /// Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model
-  /// will match your supplied JSON schema.
-  /// Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+  /// Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+  /// Structured Outputs which ensures the model will match your supplied JSON
+  /// schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
   ///
-  /// Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is
-  /// valid JSON.
+  /// Setting to `{ "type": "json_object" }` enables JSON mode, which ensures
+  /// the message the model generates is valid JSON.
   ///
-  /// **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system
-  /// or user message. Without this, the model may generate an unending stream of whitespace until the generation
-  /// reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message
-  /// content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded
+  /// **Important:** when using JSON mode, you **must** also instruct the model
+  /// to produce JSON yourself via a system or user message. Without this, the
+  /// model may generate an unending stream of whitespace until the generation
+  /// reaches the token limit, resulting in a long-running and seemingly "stuck"
+  /// request. Also note that the message content may be partially cut off if
+  /// `finish_reason="length"`, which indicates the generation exceeded
   /// `max_tokens` or the conversation exceeded the max context length.
   /// Any of: [ResponseFormatText], [ResponseFormatJsonObject], [ResponseFormatJsonSchema]
   @JsonKey(name: 'response_format', includeIfNull: false)
@@ -3663,10 +3684,10 @@ mixin _$CreateChatCompletionRequest {
   int? get seed => throw _privateConstructorUsedError;
 
   /// Specifies the latency tier to use for processing the request. This parameter is relevant for customers
-  /// subscribed to the scale tier service:
-  ///   - If set to 'auto', and the Project is Scale tier enabled, the system will utilize scale tier credits
+  /// subscribed to the Flex Processing service:
+  ///   - If set to 'auto', and the Project is Flex Processing enabled, the system will utilize flex credits
   ///     until they are exhausted.
-  ///   - If set to 'auto', and the Project is not Scale tier enabled, the request will be processed using the
+  ///   - If set to 'auto', and the Project is not Flex Processing enabled, the request will be processed using the
   ///     default service tier with a lower uptime SLA and no latency guarantee.
   ///   - If set to 'default', the request will be processed using the default service tier with a lower uptime
   ///     SLA and no latency guarantee.
@@ -3700,7 +3721,10 @@ mixin _$CreateChatCompletionRequest {
   @JsonKey(includeIfNull: false)
   double? get temperature => throw _privateConstructorUsedError;
 
-  /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+  /// An alternative to sampling with temperature, called nucleus sampling,
+  /// where the model considers the results of the tokens with top_p probability
+  /// mass. So 0.1 means only the tokens comprising the top 10% probability mass
+  /// are considered.
   ///
   /// We generally recommend altering this or `temperature` but not both.
   @JsonKey(name: 'top_p', includeIfNull: false)
@@ -3737,12 +3761,18 @@ mixin _$CreateChatCompletionRequest {
   /// Deprecated in favor of `tool_choice`.
   ///
   /// Controls which (if any) function is called by the model.
-  /// `none` means the model will not call a function and instead generates a message.
-  /// `auto` means the model can pick between generating a message or calling a function.
-  /// Specifying a particular function via [ChatCompletionFunctionCallOption] forces the model to call that
+  ///
+  /// `none` means the model will not call a function and instead generates a
+  /// message.
+  ///
+  /// `auto` means the model can pick between generating a message or calling a
   /// function.
   ///
-  /// `none` is the default when no functions are present. `auto` is the default if functions are present.
+  /// Specifying a particular function via `{"name": "my_function"}` forces the
+  /// model to call that function.
+  ///
+  /// `none` is the default when no functions are present. `auto` is the default
+  /// if functions are present.
   @_ChatCompletionFunctionCallConverter()
   @JsonKey(name: 'function_call', includeIfNull: false)
   ChatCompletionFunctionCall? get functionCall =>
@@ -3776,6 +3806,11 @@ abstract class $CreateChatCompletionRequestCopyWith<$Res> {
       {@_ChatCompletionModelConverter() ChatCompletionModel model,
       List<ChatCompletionMessage> messages,
       @JsonKey(includeIfNull: false) bool? store,
+      @JsonKey(
+          name: 'reasoning_effort',
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ReasoningEffort? reasoningEffort,
       @JsonKey(includeIfNull: false) Map<String, String>? metadata,
       @JsonKey(name: 'frequency_penalty', includeIfNull: false)
       double? frequencyPenalty,
@@ -3792,6 +3827,8 @@ abstract class $CreateChatCompletionRequestCopyWith<$Res> {
       @JsonKey(includeIfNull: false) ChatCompletionAudioOptions? audio,
       @JsonKey(name: 'presence_penalty', includeIfNull: false)
       double? presencePenalty,
+      @JsonKey(name: 'web_search_options', includeIfNull: false)
+      WebSearchOptions? webSearchOptions,
       @JsonKey(name: 'response_format', includeIfNull: false)
       ResponseFormat? responseFormat,
       @JsonKey(includeIfNull: false) int? seed,
@@ -3823,6 +3860,7 @@ abstract class $CreateChatCompletionRequestCopyWith<$Res> {
   $ChatCompletionModelCopyWith<$Res> get model;
   $PredictionContentCopyWith<$Res>? get prediction;
   $ChatCompletionAudioOptionsCopyWith<$Res>? get audio;
+  $WebSearchOptionsCopyWith<$Res>? get webSearchOptions;
   $ResponseFormatCopyWith<$Res>? get responseFormat;
   $ChatCompletionStopCopyWith<$Res>? get stop;
   $ChatCompletionStreamOptionsCopyWith<$Res>? get streamOptions;
@@ -3849,6 +3887,7 @@ class _$CreateChatCompletionRequestCopyWithImpl<$Res,
     Object? model = null,
     Object? messages = null,
     Object? store = freezed,
+    Object? reasoningEffort = freezed,
     Object? metadata = freezed,
     Object? frequencyPenalty = freezed,
     Object? logitBias = freezed,
@@ -3861,6 +3900,7 @@ class _$CreateChatCompletionRequestCopyWithImpl<$Res,
     Object? prediction = freezed,
     Object? audio = freezed,
     Object? presencePenalty = freezed,
+    Object? webSearchOptions = freezed,
     Object? responseFormat = freezed,
     Object? seed = freezed,
     Object? serviceTier = freezed,
@@ -3889,6 +3929,10 @@ class _$CreateChatCompletionRequestCopyWithImpl<$Res,
           ? _value.store
           : store // ignore: cast_nullable_to_non_nullable
               as bool?,
+      reasoningEffort: freezed == reasoningEffort
+          ? _value.reasoningEffort
+          : reasoningEffort // ignore: cast_nullable_to_non_nullable
+              as ReasoningEffort?,
       metadata: freezed == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
@@ -3937,6 +3981,10 @@ class _$CreateChatCompletionRequestCopyWithImpl<$Res,
           ? _value.presencePenalty
           : presencePenalty // ignore: cast_nullable_to_non_nullable
               as double?,
+      webSearchOptions: freezed == webSearchOptions
+          ? _value.webSearchOptions
+          : webSearchOptions // ignore: cast_nullable_to_non_nullable
+              as WebSearchOptions?,
       responseFormat: freezed == responseFormat
           ? _value.responseFormat
           : responseFormat // ignore: cast_nullable_to_non_nullable
@@ -4038,6 +4086,20 @@ class _$CreateChatCompletionRequestCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $WebSearchOptionsCopyWith<$Res>? get webSearchOptions {
+    if (_value.webSearchOptions == null) {
+      return null;
+    }
+
+    return $WebSearchOptionsCopyWith<$Res>(_value.webSearchOptions!, (value) {
+      return _then(_value.copyWith(webSearchOptions: value) as $Val);
+    });
+  }
+
+  /// Create a copy of CreateChatCompletionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $ResponseFormatCopyWith<$Res>? get responseFormat {
     if (_value.responseFormat == null) {
       return null;
@@ -4121,6 +4183,11 @@ abstract class _$$CreateChatCompletionRequestImplCopyWith<$Res>
       {@_ChatCompletionModelConverter() ChatCompletionModel model,
       List<ChatCompletionMessage> messages,
       @JsonKey(includeIfNull: false) bool? store,
+      @JsonKey(
+          name: 'reasoning_effort',
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ReasoningEffort? reasoningEffort,
       @JsonKey(includeIfNull: false) Map<String, String>? metadata,
       @JsonKey(name: 'frequency_penalty', includeIfNull: false)
       double? frequencyPenalty,
@@ -4137,6 +4204,8 @@ abstract class _$$CreateChatCompletionRequestImplCopyWith<$Res>
       @JsonKey(includeIfNull: false) ChatCompletionAudioOptions? audio,
       @JsonKey(name: 'presence_penalty', includeIfNull: false)
       double? presencePenalty,
+      @JsonKey(name: 'web_search_options', includeIfNull: false)
+      WebSearchOptions? webSearchOptions,
       @JsonKey(name: 'response_format', includeIfNull: false)
       ResponseFormat? responseFormat,
       @JsonKey(includeIfNull: false) int? seed,
@@ -4172,6 +4241,8 @@ abstract class _$$CreateChatCompletionRequestImplCopyWith<$Res>
   @override
   $ChatCompletionAudioOptionsCopyWith<$Res>? get audio;
   @override
+  $WebSearchOptionsCopyWith<$Res>? get webSearchOptions;
+  @override
   $ResponseFormatCopyWith<$Res>? get responseFormat;
   @override
   $ChatCompletionStopCopyWith<$Res>? get stop;
@@ -4201,6 +4272,7 @@ class __$$CreateChatCompletionRequestImplCopyWithImpl<$Res>
     Object? model = null,
     Object? messages = null,
     Object? store = freezed,
+    Object? reasoningEffort = freezed,
     Object? metadata = freezed,
     Object? frequencyPenalty = freezed,
     Object? logitBias = freezed,
@@ -4213,6 +4285,7 @@ class __$$CreateChatCompletionRequestImplCopyWithImpl<$Res>
     Object? prediction = freezed,
     Object? audio = freezed,
     Object? presencePenalty = freezed,
+    Object? webSearchOptions = freezed,
     Object? responseFormat = freezed,
     Object? seed = freezed,
     Object? serviceTier = freezed,
@@ -4241,6 +4314,10 @@ class __$$CreateChatCompletionRequestImplCopyWithImpl<$Res>
           ? _value.store
           : store // ignore: cast_nullable_to_non_nullable
               as bool?,
+      reasoningEffort: freezed == reasoningEffort
+          ? _value.reasoningEffort
+          : reasoningEffort // ignore: cast_nullable_to_non_nullable
+              as ReasoningEffort?,
       metadata: freezed == metadata
           ? _value._metadata
           : metadata // ignore: cast_nullable_to_non_nullable
@@ -4289,6 +4366,10 @@ class __$$CreateChatCompletionRequestImplCopyWithImpl<$Res>
           ? _value.presencePenalty
           : presencePenalty // ignore: cast_nullable_to_non_nullable
               as double?,
+      webSearchOptions: freezed == webSearchOptions
+          ? _value.webSearchOptions
+          : webSearchOptions // ignore: cast_nullable_to_non_nullable
+              as WebSearchOptions?,
       responseFormat: freezed == responseFormat
           ? _value.responseFormat
           : responseFormat // ignore: cast_nullable_to_non_nullable
@@ -4356,9 +4437,14 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
       {@_ChatCompletionModelConverter() required this.model,
       required final List<ChatCompletionMessage> messages,
       @JsonKey(includeIfNull: false) this.store,
+      @JsonKey(
+          name: 'reasoning_effort',
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      this.reasoningEffort,
       @JsonKey(includeIfNull: false) final Map<String, String>? metadata,
       @JsonKey(name: 'frequency_penalty', includeIfNull: false)
-      this.frequencyPenalty = 0.0,
+      this.frequencyPenalty,
       @JsonKey(name: 'logit_bias', includeIfNull: false)
       final Map<String, int>? logitBias,
       @JsonKey(includeIfNull: false) this.logprobs,
@@ -4366,13 +4452,15 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
       @JsonKey(name: 'max_tokens', includeIfNull: false) this.maxTokens,
       @JsonKey(name: 'max_completion_tokens', includeIfNull: false)
       this.maxCompletionTokens,
-      @JsonKey(includeIfNull: false) this.n = 1,
+      @JsonKey(includeIfNull: false) this.n,
       @JsonKey(includeIfNull: false)
       final List<ChatCompletionModality>? modalities,
       @JsonKey(includeIfNull: false) this.prediction,
       @JsonKey(includeIfNull: false) this.audio,
       @JsonKey(name: 'presence_penalty', includeIfNull: false)
-      this.presencePenalty = 0.0,
+      this.presencePenalty,
+      @JsonKey(name: 'web_search_options', includeIfNull: false)
+      this.webSearchOptions,
       @JsonKey(name: 'response_format', includeIfNull: false)
       this.responseFormat,
       @JsonKey(includeIfNull: false) this.seed,
@@ -4384,8 +4472,8 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
       @_ChatCompletionStopConverter() @JsonKey(includeIfNull: false) this.stop,
       @JsonKey(includeIfNull: false) this.stream = false,
       @JsonKey(name: 'stream_options', includeIfNull: false) this.streamOptions,
-      @JsonKey(includeIfNull: false) this.temperature = 1.0,
-      @JsonKey(name: 'top_p', includeIfNull: false) this.topP = 1.0,
+      @JsonKey(includeIfNull: false) this.temperature,
+      @JsonKey(name: 'top_p', includeIfNull: false) this.topP,
       @JsonKey(includeIfNull: false) final List<ChatCompletionTool>? tools,
       @_ChatCompletionToolChoiceOptionConverter()
       @JsonKey(name: 'tool_choice', includeIfNull: false)
@@ -4434,12 +4522,26 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
     return EqualUnmodifiableListView(_messages);
   }
 
-  /// Whether or not to store the output of this chat completion request for use in our
-  /// [model distillation](https://platform.openai.com/docs/guides/distillation)
-  /// or [evals](https://platform.openai.com/docs/guides/evals) products.
+  /// Whether or not to store the output of this chat completion request for
+  /// use in our [model distillation](https://platform.openai.com/docs/guides/distillation) or
+  /// [evals](https://platform.openai.com/docs/guides/evals) products.
   @override
   @JsonKey(includeIfNull: false)
   final bool? store;
+
+  /// **o1 models only**
+  ///
+  /// Constrains effort on reasoning for
+  /// [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+  /// Currently supported values are `low`, `medium`, and `high`. Reducing
+  /// reasoning effort can result in faster responses and fewer tokens used
+  /// on reasoning in a response.
+  @override
+  @JsonKey(
+      name: 'reasoning_effort',
+      includeIfNull: false,
+      unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  final ReasoningEffort? reasoningEffort;
 
   /// Developer-defined tags and values used for filtering completions
   /// in the [dashboard](https://platform.openai.com/chat-completions).
@@ -4457,30 +4559,27 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
     return EqualUnmodifiableMapView(value);
   }
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the
-  /// text so far, decreasing the model's likelihood to repeat the same line verbatim.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// their existing frequency in the text so far, decreasing the model's
+  /// likelihood to repeat the same line verbatim.
   @override
   @JsonKey(name: 'frequency_penalty', includeIfNull: false)
   final double? frequencyPenalty;
 
-  /// Modify the likelihood of specified tokens appearing in the completion.
-  ///
-  /// Accepts a JSON object that maps tokens (specified by their token ID in the tokenizer) to an associated bias
-  /// value from -100 to 100. Mathematically, the bias is added to the logits generated by the model prior to
-  /// sampling. The exact effect will vary per model, but values between -1 and 1 should decrease or increase
-  /// likelihood of selection; values like -100 or 100 should result in a ban or exclusive selection of the
-  /// relevant token.
+  /// Accepts a JSON object that maps tokens (specified by their token ID in the
+  /// tokenizer) to an associated bias value from -100 to 100. Mathematically,
+  /// the bias is added to the logits generated by the model prior to sampling.
+  /// The exact effect will vary per model, but values between -1 and 1 should
+  /// decrease or increase likelihood of selection; values like -100 or 100
+  /// should result in a ban or exclusive selection of the relevant token.
   final Map<String, int>? _logitBias;
 
-  /// Modify the likelihood of specified tokens appearing in the completion.
-  ///
-  /// Accepts a JSON object that maps tokens (specified by their token ID in the tokenizer) to an associated bias
-  /// value from -100 to 100. Mathematically, the bias is added to the logits generated by the model prior to
-  /// sampling. The exact effect will vary per model, but values between -1 and 1 should decrease or increase
-  /// likelihood of selection; values like -100 or 100 should result in a ban or exclusive selection of the
-  /// relevant token.
+  /// Accepts a JSON object that maps tokens (specified by their token ID in the
+  /// tokenizer) to an associated bias value from -100 to 100. Mathematically,
+  /// the bias is added to the logits generated by the model prior to sampling.
+  /// The exact effect will vary per model, but values between -1 and 1 should
+  /// decrease or increase likelihood of selection; values like -100 or 100
+  /// should result in a ban or exclusive selection of the relevant token.
   @override
   @JsonKey(name: 'logit_bias', includeIfNull: false)
   Map<String, int>? get logitBias {
@@ -4491,24 +4590,26 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
     return EqualUnmodifiableMapView(value);
   }
 
-  /// Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of
-  /// each output token returned in the `content` of `message`.
+  /// Whether to return log probabilities of the output tokens or not. If true,
+  /// returns the log probabilities of each output token returned in the
+  /// `content` of `message`.
   @override
   @JsonKey(includeIfNull: false)
   final bool? logprobs;
 
-  /// An integer between 0 and 20 specifying the number of most likely tokens to return at each token position,
-  /// each with an associated log probability. `logprobs` must be set to `true` if this parameter is used.
+  /// An integer between 0 and 20 specifying the number of most likely tokens to
+  /// return at each token position, each with an associated log probability.
+  /// `logprobs` must be set to `true` if this parameter is used.
   @override
   @JsonKey(name: 'top_logprobs', includeIfNull: false)
   final int? topLogprobs;
 
-  /// The maximum number of [tokens](https://platform.openai.com/tokenizer) that can be generated in the chat
-  /// completion. This value can be used to control [costs](https://openai.com/api/pricing/) for text generated
-  /// via API.
+  /// The maximum number of [tokens](https://platform.openai.com/tokenizer) that can be generated in the
+  /// chat completion. This value can be used to control
+  /// [costs](https://openai.com/api/pricing/) for text generated via API.
   ///
-  /// This value is now deprecated in favor of `max_completion_tokens`, and is not compatible with
-  /// [o1 series models](https://platform.openai.com/docs/guides/reasoning).
+  /// This value is now deprecated in favor of `max_completion_tokens`, and is
+  /// not compatible with [o1 series models](https://platform.openai.com/docs/guides/reasoning).
   @override
   @JsonKey(name: 'max_tokens', includeIfNull: false)
   final int? maxTokens;
@@ -4553,30 +4654,33 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
   @JsonKey(includeIfNull: false)
   final ChatCompletionAudioOptions? audio;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// whether they appear in the text so far, increasing the model's likelihood
+  /// to talk about new topics.
   @override
   @JsonKey(name: 'presence_penalty', includeIfNull: false)
   final double? presencePenalty;
 
-  /// An object specifying the format that the model must output. Compatible with
-  /// [GPT-4o](https://platform.openai.com/docs/models#gpt-4o),
-  /// [GPT-4o mini](https://platform.openai.com/docs/models#gpt-4o-mini),
-  /// [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-and-gpt-4-turbo) and all GPT-3.5 Turbo models newer
-  /// than `gpt-3.5-turbo-1106`.
+  /// This tool searches the web for relevant results to use in a response.
+  @override
+  @JsonKey(name: 'web_search_options', includeIfNull: false)
+  final WebSearchOptions? webSearchOptions;
+
+  /// An object specifying the format that the model must output.
   ///
-  /// Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model
-  /// will match your supplied JSON schema.
-  /// Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+  /// Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+  /// Structured Outputs which ensures the model will match your supplied JSON
+  /// schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
   ///
-  /// Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is
-  /// valid JSON.
+  /// Setting to `{ "type": "json_object" }` enables JSON mode, which ensures
+  /// the message the model generates is valid JSON.
   ///
-  /// **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system
-  /// or user message. Without this, the model may generate an unending stream of whitespace until the generation
-  /// reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message
-  /// content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded
+  /// **Important:** when using JSON mode, you **must** also instruct the model
+  /// to produce JSON yourself via a system or user message. Without this, the
+  /// model may generate an unending stream of whitespace until the generation
+  /// reaches the token limit, resulting in a long-running and seemingly "stuck"
+  /// request. Also note that the message content may be partially cut off if
+  /// `finish_reason="length"`, which indicates the generation exceeded
   /// `max_tokens` or the conversation exceeded the max context length.
   /// Any of: [ResponseFormatText], [ResponseFormatJsonObject], [ResponseFormatJsonSchema]
   @override
@@ -4593,10 +4697,10 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
   final int? seed;
 
   /// Specifies the latency tier to use for processing the request. This parameter is relevant for customers
-  /// subscribed to the scale tier service:
-  ///   - If set to 'auto', and the Project is Scale tier enabled, the system will utilize scale tier credits
+  /// subscribed to the Flex Processing service:
+  ///   - If set to 'auto', and the Project is Flex Processing enabled, the system will utilize flex credits
   ///     until they are exhausted.
-  ///   - If set to 'auto', and the Project is not Scale tier enabled, the request will be processed using the
+  ///   - If set to 'auto', and the Project is not Flex Processing enabled, the request will be processed using the
   ///     default service tier with a lower uptime SLA and no latency guarantee.
   ///   - If set to 'default', the request will be processed using the default service tier with a lower uptime
   ///     SLA and no latency guarantee.
@@ -4633,7 +4737,10 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
   @JsonKey(includeIfNull: false)
   final double? temperature;
 
-  /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+  /// An alternative to sampling with temperature, called nucleus sampling,
+  /// where the model considers the results of the tokens with top_p probability
+  /// mass. So 0.1 means only the tokens comprising the top 10% probability mass
+  /// are considered.
   ///
   /// We generally recommend altering this or `temperature` but not both.
   @override
@@ -4685,12 +4792,18 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
   /// Deprecated in favor of `tool_choice`.
   ///
   /// Controls which (if any) function is called by the model.
-  /// `none` means the model will not call a function and instead generates a message.
-  /// `auto` means the model can pick between generating a message or calling a function.
-  /// Specifying a particular function via [ChatCompletionFunctionCallOption] forces the model to call that
+  ///
+  /// `none` means the model will not call a function and instead generates a
+  /// message.
+  ///
+  /// `auto` means the model can pick between generating a message or calling a
   /// function.
   ///
-  /// `none` is the default when no functions are present. `auto` is the default if functions are present.
+  /// Specifying a particular function via `{"name": "my_function"}` forces the
+  /// model to call that function.
+  ///
+  /// `none` is the default when no functions are present. `auto` is the default
+  /// if functions are present.
   @override
   @_ChatCompletionFunctionCallConverter()
   @JsonKey(name: 'function_call', includeIfNull: false)
@@ -4716,7 +4829,7 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
 
   @override
   String toString() {
-    return 'CreateChatCompletionRequest(model: $model, messages: $messages, store: $store, metadata: $metadata, frequencyPenalty: $frequencyPenalty, logitBias: $logitBias, logprobs: $logprobs, topLogprobs: $topLogprobs, maxTokens: $maxTokens, maxCompletionTokens: $maxCompletionTokens, n: $n, modalities: $modalities, prediction: $prediction, audio: $audio, presencePenalty: $presencePenalty, responseFormat: $responseFormat, seed: $seed, serviceTier: $serviceTier, stop: $stop, stream: $stream, streamOptions: $streamOptions, temperature: $temperature, topP: $topP, tools: $tools, toolChoice: $toolChoice, parallelToolCalls: $parallelToolCalls, user: $user, functionCall: $functionCall, functions: $functions)';
+    return 'CreateChatCompletionRequest(model: $model, messages: $messages, store: $store, reasoningEffort: $reasoningEffort, metadata: $metadata, frequencyPenalty: $frequencyPenalty, logitBias: $logitBias, logprobs: $logprobs, topLogprobs: $topLogprobs, maxTokens: $maxTokens, maxCompletionTokens: $maxCompletionTokens, n: $n, modalities: $modalities, prediction: $prediction, audio: $audio, presencePenalty: $presencePenalty, webSearchOptions: $webSearchOptions, responseFormat: $responseFormat, seed: $seed, serviceTier: $serviceTier, stop: $stop, stream: $stream, streamOptions: $streamOptions, temperature: $temperature, topP: $topP, tools: $tools, toolChoice: $toolChoice, parallelToolCalls: $parallelToolCalls, user: $user, functionCall: $functionCall, functions: $functions)';
   }
 
   @override
@@ -4727,6 +4840,8 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
             (identical(other.model, model) || other.model == model) &&
             const DeepCollectionEquality().equals(other._messages, _messages) &&
             (identical(other.store, store) || other.store == store) &&
+            (identical(other.reasoningEffort, reasoningEffort) ||
+                other.reasoningEffort == reasoningEffort) &&
             const DeepCollectionEquality().equals(other._metadata, _metadata) &&
             (identical(other.frequencyPenalty, frequencyPenalty) ||
                 other.frequencyPenalty == frequencyPenalty) &&
@@ -4748,6 +4863,8 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
             (identical(other.audio, audio) || other.audio == audio) &&
             (identical(other.presencePenalty, presencePenalty) ||
                 other.presencePenalty == presencePenalty) &&
+            (identical(other.webSearchOptions, webSearchOptions) ||
+                other.webSearchOptions == webSearchOptions) &&
             (identical(other.responseFormat, responseFormat) ||
                 other.responseFormat == responseFormat) &&
             (identical(other.seed, seed) || other.seed == seed) &&
@@ -4779,6 +4896,7 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
         model,
         const DeepCollectionEquality().hash(_messages),
         store,
+        reasoningEffort,
         const DeepCollectionEquality().hash(_metadata),
         frequencyPenalty,
         const DeepCollectionEquality().hash(_logitBias),
@@ -4791,6 +4909,7 @@ class _$CreateChatCompletionRequestImpl extends _CreateChatCompletionRequest {
         prediction,
         audio,
         presencePenalty,
+        webSearchOptions,
         responseFormat,
         seed,
         serviceTier,
@@ -4831,6 +4950,11 @@ abstract class _CreateChatCompletionRequest
       required final ChatCompletionModel model,
       required final List<ChatCompletionMessage> messages,
       @JsonKey(includeIfNull: false) final bool? store,
+      @JsonKey(
+          name: 'reasoning_effort',
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      final ReasoningEffort? reasoningEffort,
       @JsonKey(includeIfNull: false) final Map<String, String>? metadata,
       @JsonKey(name: 'frequency_penalty', includeIfNull: false)
       final double? frequencyPenalty,
@@ -4849,6 +4973,8 @@ abstract class _CreateChatCompletionRequest
       @JsonKey(includeIfNull: false) final ChatCompletionAudioOptions? audio,
       @JsonKey(name: 'presence_penalty', includeIfNull: false)
       final double? presencePenalty,
+      @JsonKey(name: 'web_search_options', includeIfNull: false)
+      final WebSearchOptions? webSearchOptions,
       @JsonKey(name: 'response_format', includeIfNull: false)
       final ResponseFormat? responseFormat,
       @JsonKey(includeIfNull: false) final int? seed,
@@ -4897,12 +5023,26 @@ abstract class _CreateChatCompletionRequest
   @override
   List<ChatCompletionMessage> get messages;
 
-  /// Whether or not to store the output of this chat completion request for use in our
-  /// [model distillation](https://platform.openai.com/docs/guides/distillation)
-  /// or [evals](https://platform.openai.com/docs/guides/evals) products.
+  /// Whether or not to store the output of this chat completion request for
+  /// use in our [model distillation](https://platform.openai.com/docs/guides/distillation) or
+  /// [evals](https://platform.openai.com/docs/guides/evals) products.
   @override
   @JsonKey(includeIfNull: false)
   bool? get store;
+
+  /// **o1 models only**
+  ///
+  /// Constrains effort on reasoning for
+  /// [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+  /// Currently supported values are `low`, `medium`, and `high`. Reducing
+  /// reasoning effort can result in faster responses and fewer tokens used
+  /// on reasoning in a response.
+  @override
+  @JsonKey(
+      name: 'reasoning_effort',
+      includeIfNull: false,
+      unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ReasoningEffort? get reasoningEffort;
 
   /// Developer-defined tags and values used for filtering completions
   /// in the [dashboard](https://platform.openai.com/chat-completions).
@@ -4910,43 +5050,43 @@ abstract class _CreateChatCompletionRequest
   @JsonKey(includeIfNull: false)
   Map<String, String>? get metadata;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the
-  /// text so far, decreasing the model's likelihood to repeat the same line verbatim.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// their existing frequency in the text so far, decreasing the model's
+  /// likelihood to repeat the same line verbatim.
   @override
   @JsonKey(name: 'frequency_penalty', includeIfNull: false)
   double? get frequencyPenalty;
 
-  /// Modify the likelihood of specified tokens appearing in the completion.
-  ///
-  /// Accepts a JSON object that maps tokens (specified by their token ID in the tokenizer) to an associated bias
-  /// value from -100 to 100. Mathematically, the bias is added to the logits generated by the model prior to
-  /// sampling. The exact effect will vary per model, but values between -1 and 1 should decrease or increase
-  /// likelihood of selection; values like -100 or 100 should result in a ban or exclusive selection of the
-  /// relevant token.
+  /// Accepts a JSON object that maps tokens (specified by their token ID in the
+  /// tokenizer) to an associated bias value from -100 to 100. Mathematically,
+  /// the bias is added to the logits generated by the model prior to sampling.
+  /// The exact effect will vary per model, but values between -1 and 1 should
+  /// decrease or increase likelihood of selection; values like -100 or 100
+  /// should result in a ban or exclusive selection of the relevant token.
   @override
   @JsonKey(name: 'logit_bias', includeIfNull: false)
   Map<String, int>? get logitBias;
 
-  /// Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of
-  /// each output token returned in the `content` of `message`.
+  /// Whether to return log probabilities of the output tokens or not. If true,
+  /// returns the log probabilities of each output token returned in the
+  /// `content` of `message`.
   @override
   @JsonKey(includeIfNull: false)
   bool? get logprobs;
 
-  /// An integer between 0 and 20 specifying the number of most likely tokens to return at each token position,
-  /// each with an associated log probability. `logprobs` must be set to `true` if this parameter is used.
+  /// An integer between 0 and 20 specifying the number of most likely tokens to
+  /// return at each token position, each with an associated log probability.
+  /// `logprobs` must be set to `true` if this parameter is used.
   @override
   @JsonKey(name: 'top_logprobs', includeIfNull: false)
   int? get topLogprobs;
 
-  /// The maximum number of [tokens](https://platform.openai.com/tokenizer) that can be generated in the chat
-  /// completion. This value can be used to control [costs](https://openai.com/api/pricing/) for text generated
-  /// via API.
+  /// The maximum number of [tokens](https://platform.openai.com/tokenizer) that can be generated in the
+  /// chat completion. This value can be used to control
+  /// [costs](https://openai.com/api/pricing/) for text generated via API.
   ///
-  /// This value is now deprecated in favor of `max_completion_tokens`, and is not compatible with
-  /// [o1 series models](https://platform.openai.com/docs/guides/reasoning).
+  /// This value is now deprecated in favor of `max_completion_tokens`, and is
+  /// not compatible with [o1 series models](https://platform.openai.com/docs/guides/reasoning).
   @override
   @JsonKey(name: 'max_tokens', includeIfNull: false)
   int? get maxTokens;
@@ -4982,30 +5122,33 @@ abstract class _CreateChatCompletionRequest
   @JsonKey(includeIfNull: false)
   ChatCompletionAudioOptions? get audio;
 
-  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
-  ///
-  /// [See more information about frequency and presence penalties.](https://platform.openai.com/docs/guides/text-generation)
+  /// Number between -2.0 and 2.0. Positive values penalize new tokens based on
+  /// whether they appear in the text so far, increasing the model's likelihood
+  /// to talk about new topics.
   @override
   @JsonKey(name: 'presence_penalty', includeIfNull: false)
   double? get presencePenalty;
 
-  /// An object specifying the format that the model must output. Compatible with
-  /// [GPT-4o](https://platform.openai.com/docs/models#gpt-4o),
-  /// [GPT-4o mini](https://platform.openai.com/docs/models#gpt-4o-mini),
-  /// [GPT-4 Turbo](https://platform.openai.com/docs/models#gpt-4-and-gpt-4-turbo) and all GPT-3.5 Turbo models newer
-  /// than `gpt-3.5-turbo-1106`.
+  /// This tool searches the web for relevant results to use in a response.
+  @override
+  @JsonKey(name: 'web_search_options', includeIfNull: false)
+  WebSearchOptions? get webSearchOptions;
+
+  /// An object specifying the format that the model must output.
   ///
-  /// Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model
-  /// will match your supplied JSON schema.
-  /// Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
+  /// Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+  /// Structured Outputs which ensures the model will match your supplied JSON
+  /// schema. Learn more in the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
   ///
-  /// Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is
-  /// valid JSON.
+  /// Setting to `{ "type": "json_object" }` enables JSON mode, which ensures
+  /// the message the model generates is valid JSON.
   ///
-  /// **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system
-  /// or user message. Without this, the model may generate an unending stream of whitespace until the generation
-  /// reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message
-  /// content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded
+  /// **Important:** when using JSON mode, you **must** also instruct the model
+  /// to produce JSON yourself via a system or user message. Without this, the
+  /// model may generate an unending stream of whitespace until the generation
+  /// reaches the token limit, resulting in a long-running and seemingly "stuck"
+  /// request. Also note that the message content may be partially cut off if
+  /// `finish_reason="length"`, which indicates the generation exceeded
   /// `max_tokens` or the conversation exceeded the max context length.
   /// Any of: [ResponseFormatText], [ResponseFormatJsonObject], [ResponseFormatJsonSchema]
   @override
@@ -5022,10 +5165,10 @@ abstract class _CreateChatCompletionRequest
   int? get seed;
 
   /// Specifies the latency tier to use for processing the request. This parameter is relevant for customers
-  /// subscribed to the scale tier service:
-  ///   - If set to 'auto', and the Project is Scale tier enabled, the system will utilize scale tier credits
+  /// subscribed to the Flex Processing service:
+  ///   - If set to 'auto', and the Project is Flex Processing enabled, the system will utilize flex credits
   ///     until they are exhausted.
-  ///   - If set to 'auto', and the Project is not Scale tier enabled, the request will be processed using the
+  ///   - If set to 'auto', and the Project is not Flex Processing enabled, the request will be processed using the
   ///     default service tier with a lower uptime SLA and no latency guarantee.
   ///   - If set to 'default', the request will be processed using the default service tier with a lower uptime
   ///     SLA and no latency guarantee.
@@ -5062,7 +5205,10 @@ abstract class _CreateChatCompletionRequest
   @JsonKey(includeIfNull: false)
   double? get temperature;
 
-  /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+  /// An alternative to sampling with temperature, called nucleus sampling,
+  /// where the model considers the results of the tokens with top_p probability
+  /// mass. So 0.1 means only the tokens comprising the top 10% probability mass
+  /// are considered.
   ///
   /// We generally recommend altering this or `temperature` but not both.
   @override
@@ -5103,12 +5249,18 @@ abstract class _CreateChatCompletionRequest
   /// Deprecated in favor of `tool_choice`.
   ///
   /// Controls which (if any) function is called by the model.
-  /// `none` means the model will not call a function and instead generates a message.
-  /// `auto` means the model can pick between generating a message or calling a function.
-  /// Specifying a particular function via [ChatCompletionFunctionCallOption] forces the model to call that
+  ///
+  /// `none` means the model will not call a function and instead generates a
+  /// message.
+  ///
+  /// `auto` means the model can pick between generating a message or calling a
   /// function.
   ///
-  /// `none` is the default when no functions are present. `auto` is the default if functions are present.
+  /// Specifying a particular function via `{"name": "my_function"}` forces the
+  /// model to call that function.
+  ///
+  /// `none` is the default when no functions are present. `auto` is the default
+  /// if functions are present.
   @override
   @_ChatCompletionFunctionCallConverter()
   @JsonKey(name: 'function_call', includeIfNull: false)
@@ -8502,6 +8654,467 @@ abstract class _ChatCompletionMessageToolCall
       get copyWith => throw _privateConstructorUsedError;
 }
 
+Annotation _$AnnotationFromJson(Map<String, dynamic> json) {
+  return _Annotation.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Annotation {
+  /// The type of the URL citation. Always `url_citation`.
+  AnnotationType get type => throw _privateConstructorUsedError;
+
+  /// A URL citation when using web search.
+  @JsonKey(name: 'url_citation')
+  AnnotationUrlCitation get urlCitation => throw _privateConstructorUsedError;
+
+  /// Serializes this Annotation to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Annotation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AnnotationCopyWith<Annotation> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AnnotationCopyWith<$Res> {
+  factory $AnnotationCopyWith(
+          Annotation value, $Res Function(Annotation) then) =
+      _$AnnotationCopyWithImpl<$Res, Annotation>;
+  @useResult
+  $Res call(
+      {AnnotationType type,
+      @JsonKey(name: 'url_citation') AnnotationUrlCitation urlCitation});
+
+  $AnnotationUrlCitationCopyWith<$Res> get urlCitation;
+}
+
+/// @nodoc
+class _$AnnotationCopyWithImpl<$Res, $Val extends Annotation>
+    implements $AnnotationCopyWith<$Res> {
+  _$AnnotationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Annotation
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? urlCitation = null,
+  }) {
+    return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as AnnotationType,
+      urlCitation: null == urlCitation
+          ? _value.urlCitation
+          : urlCitation // ignore: cast_nullable_to_non_nullable
+              as AnnotationUrlCitation,
+    ) as $Val);
+  }
+
+  /// Create a copy of Annotation
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AnnotationUrlCitationCopyWith<$Res> get urlCitation {
+    return $AnnotationUrlCitationCopyWith<$Res>(_value.urlCitation, (value) {
+      return _then(_value.copyWith(urlCitation: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$AnnotationImplCopyWith<$Res>
+    implements $AnnotationCopyWith<$Res> {
+  factory _$$AnnotationImplCopyWith(
+          _$AnnotationImpl value, $Res Function(_$AnnotationImpl) then) =
+      __$$AnnotationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {AnnotationType type,
+      @JsonKey(name: 'url_citation') AnnotationUrlCitation urlCitation});
+
+  @override
+  $AnnotationUrlCitationCopyWith<$Res> get urlCitation;
+}
+
+/// @nodoc
+class __$$AnnotationImplCopyWithImpl<$Res>
+    extends _$AnnotationCopyWithImpl<$Res, _$AnnotationImpl>
+    implements _$$AnnotationImplCopyWith<$Res> {
+  __$$AnnotationImplCopyWithImpl(
+      _$AnnotationImpl _value, $Res Function(_$AnnotationImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Annotation
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? urlCitation = null,
+  }) {
+    return _then(_$AnnotationImpl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as AnnotationType,
+      urlCitation: null == urlCitation
+          ? _value.urlCitation
+          : urlCitation // ignore: cast_nullable_to_non_nullable
+              as AnnotationUrlCitation,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AnnotationImpl extends _Annotation {
+  const _$AnnotationImpl(
+      {required this.type,
+      @JsonKey(name: 'url_citation') required this.urlCitation})
+      : super._();
+
+  factory _$AnnotationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AnnotationImplFromJson(json);
+
+  /// The type of the URL citation. Always `url_citation`.
+  @override
+  final AnnotationType type;
+
+  /// A URL citation when using web search.
+  @override
+  @JsonKey(name: 'url_citation')
+  final AnnotationUrlCitation urlCitation;
+
+  @override
+  String toString() {
+    return 'Annotation(type: $type, urlCitation: $urlCitation)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AnnotationImpl &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.urlCitation, urlCitation) ||
+                other.urlCitation == urlCitation));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, type, urlCitation);
+
+  /// Create a copy of Annotation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AnnotationImplCopyWith<_$AnnotationImpl> get copyWith =>
+      __$$AnnotationImplCopyWithImpl<_$AnnotationImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AnnotationImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Annotation extends Annotation {
+  const factory _Annotation(
+      {required final AnnotationType type,
+      @JsonKey(name: 'url_citation')
+      required final AnnotationUrlCitation urlCitation}) = _$AnnotationImpl;
+  const _Annotation._() : super._();
+
+  factory _Annotation.fromJson(Map<String, dynamic> json) =
+      _$AnnotationImpl.fromJson;
+
+  /// The type of the URL citation. Always `url_citation`.
+  @override
+  AnnotationType get type;
+
+  /// A URL citation when using web search.
+  @override
+  @JsonKey(name: 'url_citation')
+  AnnotationUrlCitation get urlCitation;
+
+  /// Create a copy of Annotation
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AnnotationImplCopyWith<_$AnnotationImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AnnotationUrlCitation _$AnnotationUrlCitationFromJson(
+    Map<String, dynamic> json) {
+  return _AnnotationUrlCitation.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AnnotationUrlCitation {
+  /// The index of the last character of the URL citation in the message.
+  @JsonKey(name: 'end_index', includeIfNull: false)
+  int? get endIndex => throw _privateConstructorUsedError;
+
+  /// The index of the first character of the URL citation in the message.
+  @JsonKey(name: 'start_index', includeIfNull: false)
+  int? get startIndex => throw _privateConstructorUsedError;
+
+  /// The URL of the web resource.
+  @JsonKey(includeIfNull: false)
+  String? get url => throw _privateConstructorUsedError;
+
+  /// The title of the web resource.
+  @JsonKey(includeIfNull: false)
+  String? get title => throw _privateConstructorUsedError;
+
+  /// Serializes this AnnotationUrlCitation to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of AnnotationUrlCitation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AnnotationUrlCitationCopyWith<AnnotationUrlCitation> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AnnotationUrlCitationCopyWith<$Res> {
+  factory $AnnotationUrlCitationCopyWith(AnnotationUrlCitation value,
+          $Res Function(AnnotationUrlCitation) then) =
+      _$AnnotationUrlCitationCopyWithImpl<$Res, AnnotationUrlCitation>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'end_index', includeIfNull: false) int? endIndex,
+      @JsonKey(name: 'start_index', includeIfNull: false) int? startIndex,
+      @JsonKey(includeIfNull: false) String? url,
+      @JsonKey(includeIfNull: false) String? title});
+}
+
+/// @nodoc
+class _$AnnotationUrlCitationCopyWithImpl<$Res,
+        $Val extends AnnotationUrlCitation>
+    implements $AnnotationUrlCitationCopyWith<$Res> {
+  _$AnnotationUrlCitationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of AnnotationUrlCitation
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? endIndex = freezed,
+    Object? startIndex = freezed,
+    Object? url = freezed,
+    Object? title = freezed,
+  }) {
+    return _then(_value.copyWith(
+      endIndex: freezed == endIndex
+          ? _value.endIndex
+          : endIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
+      startIndex: freezed == startIndex
+          ? _value.startIndex
+          : startIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AnnotationUrlCitationImplCopyWith<$Res>
+    implements $AnnotationUrlCitationCopyWith<$Res> {
+  factory _$$AnnotationUrlCitationImplCopyWith(
+          _$AnnotationUrlCitationImpl value,
+          $Res Function(_$AnnotationUrlCitationImpl) then) =
+      __$$AnnotationUrlCitationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'end_index', includeIfNull: false) int? endIndex,
+      @JsonKey(name: 'start_index', includeIfNull: false) int? startIndex,
+      @JsonKey(includeIfNull: false) String? url,
+      @JsonKey(includeIfNull: false) String? title});
+}
+
+/// @nodoc
+class __$$AnnotationUrlCitationImplCopyWithImpl<$Res>
+    extends _$AnnotationUrlCitationCopyWithImpl<$Res,
+        _$AnnotationUrlCitationImpl>
+    implements _$$AnnotationUrlCitationImplCopyWith<$Res> {
+  __$$AnnotationUrlCitationImplCopyWithImpl(_$AnnotationUrlCitationImpl _value,
+      $Res Function(_$AnnotationUrlCitationImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AnnotationUrlCitation
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? endIndex = freezed,
+    Object? startIndex = freezed,
+    Object? url = freezed,
+    Object? title = freezed,
+  }) {
+    return _then(_$AnnotationUrlCitationImpl(
+      endIndex: freezed == endIndex
+          ? _value.endIndex
+          : endIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
+      startIndex: freezed == startIndex
+          ? _value.startIndex
+          : startIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AnnotationUrlCitationImpl extends _AnnotationUrlCitation {
+  const _$AnnotationUrlCitationImpl(
+      {@JsonKey(name: 'end_index', includeIfNull: false) this.endIndex,
+      @JsonKey(name: 'start_index', includeIfNull: false) this.startIndex,
+      @JsonKey(includeIfNull: false) this.url,
+      @JsonKey(includeIfNull: false) this.title})
+      : super._();
+
+  factory _$AnnotationUrlCitationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AnnotationUrlCitationImplFromJson(json);
+
+  /// The index of the last character of the URL citation in the message.
+  @override
+  @JsonKey(name: 'end_index', includeIfNull: false)
+  final int? endIndex;
+
+  /// The index of the first character of the URL citation in the message.
+  @override
+  @JsonKey(name: 'start_index', includeIfNull: false)
+  final int? startIndex;
+
+  /// The URL of the web resource.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? url;
+
+  /// The title of the web resource.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? title;
+
+  @override
+  String toString() {
+    return 'AnnotationUrlCitation(endIndex: $endIndex, startIndex: $startIndex, url: $url, title: $title)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AnnotationUrlCitationImpl &&
+            (identical(other.endIndex, endIndex) ||
+                other.endIndex == endIndex) &&
+            (identical(other.startIndex, startIndex) ||
+                other.startIndex == startIndex) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.title, title) || other.title == title));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, endIndex, startIndex, url, title);
+
+  /// Create a copy of AnnotationUrlCitation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AnnotationUrlCitationImplCopyWith<_$AnnotationUrlCitationImpl>
+      get copyWith => __$$AnnotationUrlCitationImplCopyWithImpl<
+          _$AnnotationUrlCitationImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AnnotationUrlCitationImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AnnotationUrlCitation extends AnnotationUrlCitation {
+  const factory _AnnotationUrlCitation(
+      {@JsonKey(name: 'end_index', includeIfNull: false) final int? endIndex,
+      @JsonKey(name: 'start_index', includeIfNull: false) final int? startIndex,
+      @JsonKey(includeIfNull: false) final String? url,
+      @JsonKey(includeIfNull: false)
+      final String? title}) = _$AnnotationUrlCitationImpl;
+  const _AnnotationUrlCitation._() : super._();
+
+  factory _AnnotationUrlCitation.fromJson(Map<String, dynamic> json) =
+      _$AnnotationUrlCitationImpl.fromJson;
+
+  /// The index of the last character of the URL citation in the message.
+  @override
+  @JsonKey(name: 'end_index', includeIfNull: false)
+  int? get endIndex;
+
+  /// The index of the first character of the URL citation in the message.
+  @override
+  @JsonKey(name: 'start_index', includeIfNull: false)
+  int? get startIndex;
+
+  /// The URL of the web resource.
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get url;
+
+  /// The title of the web resource.
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get title;
+
+  /// Create a copy of AnnotationUrlCitation
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AnnotationUrlCitationImplCopyWith<_$AnnotationUrlCitationImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 PredictionContent _$PredictionContentFromJson(Map<String, dynamic> json) {
   return _PredictionContent.fromJson(json);
 }
@@ -11522,7 +12135,8 @@ ChatCompletionStreamResponseChoice _$ChatCompletionStreamResponseChoiceFromJson(
 /// @nodoc
 mixin _$ChatCompletionStreamResponseChoice {
   /// A chat completion delta generated by streamed model responses.
-  ChatCompletionStreamResponseDelta get delta =>
+  @JsonKey(includeIfNull: false)
+  ChatCompletionStreamResponseDelta? get delta =>
       throw _privateConstructorUsedError;
 
   /// Log probability information for the choice.
@@ -11536,6 +12150,7 @@ mixin _$ChatCompletionStreamResponseChoice {
   /// `tool_calls` if the model called a tool, or `function_call` (deprecated) if the model called a function.
   @JsonKey(
       name: 'finish_reason',
+      includeIfNull: false,
       unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ChatCompletionFinishReason? get finishReason =>
       throw _privateConstructorUsedError;
@@ -11564,16 +12179,17 @@ abstract class $ChatCompletionStreamResponseChoiceCopyWith<$Res> {
           ChatCompletionStreamResponseChoice>;
   @useResult
   $Res call(
-      {ChatCompletionStreamResponseDelta delta,
+      {@JsonKey(includeIfNull: false) ChatCompletionStreamResponseDelta? delta,
       @JsonKey(includeIfNull: false)
       ChatCompletionStreamResponseChoiceLogprobs? logprobs,
       @JsonKey(
           name: 'finish_reason',
+          includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       ChatCompletionFinishReason? finishReason,
       @JsonKey(includeIfNull: false) int? index});
 
-  $ChatCompletionStreamResponseDeltaCopyWith<$Res> get delta;
+  $ChatCompletionStreamResponseDeltaCopyWith<$Res>? get delta;
   $ChatCompletionStreamResponseChoiceLogprobsCopyWith<$Res>? get logprobs;
 }
 
@@ -11593,16 +12209,16 @@ class _$ChatCompletionStreamResponseChoiceCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? delta = null,
+    Object? delta = freezed,
     Object? logprobs = freezed,
     Object? finishReason = freezed,
     Object? index = freezed,
   }) {
     return _then(_value.copyWith(
-      delta: null == delta
+      delta: freezed == delta
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
-              as ChatCompletionStreamResponseDelta,
+              as ChatCompletionStreamResponseDelta?,
       logprobs: freezed == logprobs
           ? _value.logprobs
           : logprobs // ignore: cast_nullable_to_non_nullable
@@ -11622,8 +12238,12 @@ class _$ChatCompletionStreamResponseChoiceCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ChatCompletionStreamResponseDeltaCopyWith<$Res> get delta {
-    return $ChatCompletionStreamResponseDeltaCopyWith<$Res>(_value.delta,
+  $ChatCompletionStreamResponseDeltaCopyWith<$Res>? get delta {
+    if (_value.delta == null) {
+      return null;
+    }
+
+    return $ChatCompletionStreamResponseDeltaCopyWith<$Res>(_value.delta!,
         (value) {
       return _then(_value.copyWith(delta: value) as $Val);
     });
@@ -11655,17 +12275,18 @@ abstract class _$$ChatCompletionStreamResponseChoiceImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ChatCompletionStreamResponseDelta delta,
+      {@JsonKey(includeIfNull: false) ChatCompletionStreamResponseDelta? delta,
       @JsonKey(includeIfNull: false)
       ChatCompletionStreamResponseChoiceLogprobs? logprobs,
       @JsonKey(
           name: 'finish_reason',
+          includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       ChatCompletionFinishReason? finishReason,
       @JsonKey(includeIfNull: false) int? index});
 
   @override
-  $ChatCompletionStreamResponseDeltaCopyWith<$Res> get delta;
+  $ChatCompletionStreamResponseDeltaCopyWith<$Res>? get delta;
   @override
   $ChatCompletionStreamResponseChoiceLogprobsCopyWith<$Res>? get logprobs;
 }
@@ -11685,16 +12306,16 @@ class __$$ChatCompletionStreamResponseChoiceImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? delta = null,
+    Object? delta = freezed,
     Object? logprobs = freezed,
     Object? finishReason = freezed,
     Object? index = freezed,
   }) {
     return _then(_$ChatCompletionStreamResponseChoiceImpl(
-      delta: null == delta
+      delta: freezed == delta
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
-              as ChatCompletionStreamResponseDelta,
+              as ChatCompletionStreamResponseDelta?,
       logprobs: freezed == logprobs
           ? _value.logprobs
           : logprobs // ignore: cast_nullable_to_non_nullable
@@ -11716,12 +12337,13 @@ class __$$ChatCompletionStreamResponseChoiceImplCopyWithImpl<$Res>
 class _$ChatCompletionStreamResponseChoiceImpl
     extends _ChatCompletionStreamResponseChoice {
   const _$ChatCompletionStreamResponseChoiceImpl(
-      {required this.delta,
+      {@JsonKey(includeIfNull: false) this.delta,
       @JsonKey(includeIfNull: false) this.logprobs,
       @JsonKey(
           name: 'finish_reason',
+          includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-      required this.finishReason,
+      this.finishReason,
       @JsonKey(includeIfNull: false) this.index})
       : super._();
 
@@ -11731,7 +12353,8 @@ class _$ChatCompletionStreamResponseChoiceImpl
 
   /// A chat completion delta generated by streamed model responses.
   @override
-  final ChatCompletionStreamResponseDelta delta;
+  @JsonKey(includeIfNull: false)
+  final ChatCompletionStreamResponseDelta? delta;
 
   /// Log probability information for the choice.
   @override
@@ -11745,6 +12368,7 @@ class _$ChatCompletionStreamResponseChoiceImpl
   @override
   @JsonKey(
       name: 'finish_reason',
+      includeIfNull: false,
       unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   final ChatCompletionFinishReason? finishReason;
 
@@ -11797,13 +12421,15 @@ class _$ChatCompletionStreamResponseChoiceImpl
 abstract class _ChatCompletionStreamResponseChoice
     extends ChatCompletionStreamResponseChoice {
   const factory _ChatCompletionStreamResponseChoice(
-          {required final ChatCompletionStreamResponseDelta delta,
+          {@JsonKey(includeIfNull: false)
+          final ChatCompletionStreamResponseDelta? delta,
           @JsonKey(includeIfNull: false)
           final ChatCompletionStreamResponseChoiceLogprobs? logprobs,
           @JsonKey(
               name: 'finish_reason',
+              includeIfNull: false,
               unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-          required final ChatCompletionFinishReason? finishReason,
+          final ChatCompletionFinishReason? finishReason,
           @JsonKey(includeIfNull: false) final int? index}) =
       _$ChatCompletionStreamResponseChoiceImpl;
   const _ChatCompletionStreamResponseChoice._() : super._();
@@ -11814,7 +12440,8 @@ abstract class _ChatCompletionStreamResponseChoice
 
   /// A chat completion delta generated by streamed model responses.
   @override
-  ChatCompletionStreamResponseDelta get delta;
+  @JsonKey(includeIfNull: false)
+  ChatCompletionStreamResponseDelta? get delta;
 
   /// Log probability information for the choice.
   @override
@@ -11828,6 +12455,7 @@ abstract class _ChatCompletionStreamResponseChoice
   @override
   @JsonKey(
       name: 'finish_reason',
+      includeIfNull: false,
       unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ChatCompletionFinishReason? get finishReason;
 
@@ -12094,7 +12722,8 @@ ChatCompletionStreamResponseDelta _$ChatCompletionStreamResponseDeltaFromJson(
 
 /// @nodoc
 mixin _$ChatCompletionStreamResponseDelta {
-  /// The role of the messages author. One of `system`, `user`, `assistant`, or `tool` (`function` is deprecated).
+  /// The role of the messages author.
+  /// One of `developer`, `user`, `assistant`, or `tool` (`function` and `system` are deprecated).
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ChatCompletionMessageRole? get role => throw _privateConstructorUsedError;
@@ -12343,7 +12972,8 @@ class _$ChatCompletionStreamResponseDeltaImpl
           Map<String, dynamic> json) =>
       _$$ChatCompletionStreamResponseDeltaImplFromJson(json);
 
-  /// The role of the messages author. One of `system`, `user`, `assistant`, or `tool` (`function` is deprecated).
+  /// The role of the messages author.
+  /// One of `developer`, `user`, `assistant`, or `tool` (`function` and `system` are deprecated).
   @override
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
@@ -12449,7 +13079,8 @@ abstract class _ChatCompletionStreamResponseDelta
           Map<String, dynamic> json) =
       _$ChatCompletionStreamResponseDeltaImpl.fromJson;
 
-  /// The role of the messages author. One of `system`, `user`, `assistant`, or `tool` (`function` is deprecated).
+  /// The role of the messages author.
+  /// One of `developer`, `user`, `assistant`, or `tool` (`function` and `system` are deprecated).
   @override
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
@@ -12980,7 +13611,8 @@ ChatCompletionStreamMessageToolCallChunk
 /// @nodoc
 mixin _$ChatCompletionStreamMessageToolCallChunk {
   /// No Description
-  int get index => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
+  int? get index => throw _privateConstructorUsedError;
 
   /// The ID of the tool call.
   @JsonKey(includeIfNull: false)
@@ -13017,7 +13649,7 @@ abstract class $ChatCompletionStreamMessageToolCallChunkCopyWith<$Res> {
           ChatCompletionStreamMessageToolCallChunk>;
   @useResult
   $Res call(
-      {int index,
+      {@JsonKey(includeIfNull: false) int? index,
       @JsonKey(includeIfNull: false) String? id,
       @JsonKey(
           includeIfNull: false,
@@ -13046,16 +13678,16 @@ class _$ChatCompletionStreamMessageToolCallChunkCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? index = freezed,
     Object? id = freezed,
     Object? type = freezed,
     Object? function = freezed,
   }) {
     return _then(_value.copyWith(
-      index: null == index
+      index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -13097,7 +13729,7 @@ abstract class _$$ChatCompletionStreamMessageToolCallChunkImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int index,
+      {@JsonKey(includeIfNull: false) int? index,
       @JsonKey(includeIfNull: false) String? id,
       @JsonKey(
           includeIfNull: false,
@@ -13125,16 +13757,16 @@ class __$$ChatCompletionStreamMessageToolCallChunkImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? index = freezed,
     Object? id = freezed,
     Object? type = freezed,
     Object? function = freezed,
   }) {
     return _then(_$ChatCompletionStreamMessageToolCallChunkImpl(
-      index: null == index
+      index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -13156,7 +13788,7 @@ class __$$ChatCompletionStreamMessageToolCallChunkImplCopyWithImpl<$Res>
 class _$ChatCompletionStreamMessageToolCallChunkImpl
     extends _ChatCompletionStreamMessageToolCallChunk {
   const _$ChatCompletionStreamMessageToolCallChunkImpl(
-      {required this.index,
+      {@JsonKey(includeIfNull: false) this.index,
       @JsonKey(includeIfNull: false) this.id,
       @JsonKey(
           includeIfNull: false,
@@ -13171,7 +13803,8 @@ class _$ChatCompletionStreamMessageToolCallChunkImpl
 
   /// No Description
   @override
-  final int index;
+  @JsonKey(includeIfNull: false)
+  final int? index;
 
   /// The ID of the tool call.
   @override
@@ -13232,7 +13865,7 @@ class _$ChatCompletionStreamMessageToolCallChunkImpl
 abstract class _ChatCompletionStreamMessageToolCallChunk
     extends ChatCompletionStreamMessageToolCallChunk {
   const factory _ChatCompletionStreamMessageToolCallChunk(
-          {required final int index,
+          {@JsonKey(includeIfNull: false) final int? index,
           @JsonKey(includeIfNull: false) final String? id,
           @JsonKey(
               includeIfNull: false,
@@ -13249,7 +13882,8 @@ abstract class _ChatCompletionStreamMessageToolCallChunk
 
   /// No Description
   @override
-  int get index;
+  @JsonKey(includeIfNull: false)
+  int? get index;
 
   /// The ID of the tool call.
   @override
@@ -13276,6 +13910,289 @@ abstract class _ChatCompletionStreamMessageToolCallChunk
       get copyWith => throw _privateConstructorUsedError;
 }
 
+ChatCompletionList _$ChatCompletionListFromJson(Map<String, dynamic> json) {
+  return _ChatCompletionList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ChatCompletionList {
+  /// The object type, which is always `list`.
+  ChatCompletionListObject get object => throw _privateConstructorUsedError;
+
+  /// The list of chat completions.
+  List<CreateChatCompletionResponse> get data =>
+      throw _privateConstructorUsedError;
+
+  /// The identifier of the first chat completion in the list.
+  @JsonKey(name: 'first_id', includeIfNull: false)
+  String? get firstId => throw _privateConstructorUsedError;
+
+  /// The identifier of the last chat completion in the list.
+  @JsonKey(name: 'last_id', includeIfNull: false)
+  String? get lastId => throw _privateConstructorUsedError;
+
+  /// Whether there are more chat completions available.
+  @JsonKey(name: 'has_more')
+  bool get hasMore => throw _privateConstructorUsedError;
+
+  /// Serializes this ChatCompletionList to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ChatCompletionList
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ChatCompletionListCopyWith<ChatCompletionList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChatCompletionListCopyWith<$Res> {
+  factory $ChatCompletionListCopyWith(
+          ChatCompletionList value, $Res Function(ChatCompletionList) then) =
+      _$ChatCompletionListCopyWithImpl<$Res, ChatCompletionList>;
+  @useResult
+  $Res call(
+      {ChatCompletionListObject object,
+      List<CreateChatCompletionResponse> data,
+      @JsonKey(name: 'first_id', includeIfNull: false) String? firstId,
+      @JsonKey(name: 'last_id', includeIfNull: false) String? lastId,
+      @JsonKey(name: 'has_more') bool hasMore});
+}
+
+/// @nodoc
+class _$ChatCompletionListCopyWithImpl<$Res, $Val extends ChatCompletionList>
+    implements $ChatCompletionListCopyWith<$Res> {
+  _$ChatCompletionListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ChatCompletionList
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? object = null,
+    Object? data = null,
+    Object? firstId = freezed,
+    Object? lastId = freezed,
+    Object? hasMore = null,
+  }) {
+    return _then(_value.copyWith(
+      object: null == object
+          ? _value.object
+          : object // ignore: cast_nullable_to_non_nullable
+              as ChatCompletionListObject,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<CreateChatCompletionResponse>,
+      firstId: freezed == firstId
+          ? _value.firstId
+          : firstId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastId: freezed == lastId
+          ? _value.lastId
+          : lastId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hasMore: null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ChatCompletionListImplCopyWith<$Res>
+    implements $ChatCompletionListCopyWith<$Res> {
+  factory _$$ChatCompletionListImplCopyWith(_$ChatCompletionListImpl value,
+          $Res Function(_$ChatCompletionListImpl) then) =
+      __$$ChatCompletionListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {ChatCompletionListObject object,
+      List<CreateChatCompletionResponse> data,
+      @JsonKey(name: 'first_id', includeIfNull: false) String? firstId,
+      @JsonKey(name: 'last_id', includeIfNull: false) String? lastId,
+      @JsonKey(name: 'has_more') bool hasMore});
+}
+
+/// @nodoc
+class __$$ChatCompletionListImplCopyWithImpl<$Res>
+    extends _$ChatCompletionListCopyWithImpl<$Res, _$ChatCompletionListImpl>
+    implements _$$ChatCompletionListImplCopyWith<$Res> {
+  __$$ChatCompletionListImplCopyWithImpl(_$ChatCompletionListImpl _value,
+      $Res Function(_$ChatCompletionListImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatCompletionList
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? object = null,
+    Object? data = null,
+    Object? firstId = freezed,
+    Object? lastId = freezed,
+    Object? hasMore = null,
+  }) {
+    return _then(_$ChatCompletionListImpl(
+      object: null == object
+          ? _value.object
+          : object // ignore: cast_nullable_to_non_nullable
+              as ChatCompletionListObject,
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<CreateChatCompletionResponse>,
+      firstId: freezed == firstId
+          ? _value.firstId
+          : firstId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastId: freezed == lastId
+          ? _value.lastId
+          : lastId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hasMore: null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ChatCompletionListImpl extends _ChatCompletionList {
+  const _$ChatCompletionListImpl(
+      {required this.object,
+      required final List<CreateChatCompletionResponse> data,
+      @JsonKey(name: 'first_id', includeIfNull: false) this.firstId,
+      @JsonKey(name: 'last_id', includeIfNull: false) this.lastId,
+      @JsonKey(name: 'has_more') required this.hasMore})
+      : _data = data,
+        super._();
+
+  factory _$ChatCompletionListImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChatCompletionListImplFromJson(json);
+
+  /// The object type, which is always `list`.
+  @override
+  final ChatCompletionListObject object;
+
+  /// The list of chat completions.
+  final List<CreateChatCompletionResponse> _data;
+
+  /// The list of chat completions.
+  @override
+  List<CreateChatCompletionResponse> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  /// The identifier of the first chat completion in the list.
+  @override
+  @JsonKey(name: 'first_id', includeIfNull: false)
+  final String? firstId;
+
+  /// The identifier of the last chat completion in the list.
+  @override
+  @JsonKey(name: 'last_id', includeIfNull: false)
+  final String? lastId;
+
+  /// Whether there are more chat completions available.
+  @override
+  @JsonKey(name: 'has_more')
+  final bool hasMore;
+
+  @override
+  String toString() {
+    return 'ChatCompletionList(object: $object, data: $data, firstId: $firstId, lastId: $lastId, hasMore: $hasMore)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChatCompletionListImpl &&
+            (identical(other.object, object) || other.object == object) &&
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.firstId, firstId) || other.firstId == firstId) &&
+            (identical(other.lastId, lastId) || other.lastId == lastId) &&
+            (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, object,
+      const DeepCollectionEquality().hash(_data), firstId, lastId, hasMore);
+
+  /// Create a copy of ChatCompletionList
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChatCompletionListImplCopyWith<_$ChatCompletionListImpl> get copyWith =>
+      __$$ChatCompletionListImplCopyWithImpl<_$ChatCompletionListImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ChatCompletionListImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ChatCompletionList extends ChatCompletionList {
+  const factory _ChatCompletionList(
+      {required final ChatCompletionListObject object,
+      required final List<CreateChatCompletionResponse> data,
+      @JsonKey(name: 'first_id', includeIfNull: false) final String? firstId,
+      @JsonKey(name: 'last_id', includeIfNull: false) final String? lastId,
+      @JsonKey(name: 'has_more')
+      required final bool hasMore}) = _$ChatCompletionListImpl;
+  const _ChatCompletionList._() : super._();
+
+  factory _ChatCompletionList.fromJson(Map<String, dynamic> json) =
+      _$ChatCompletionListImpl.fromJson;
+
+  /// The object type, which is always `list`.
+  @override
+  ChatCompletionListObject get object;
+
+  /// The list of chat completions.
+  @override
+  List<CreateChatCompletionResponse> get data;
+
+  /// The identifier of the first chat completion in the list.
+  @override
+  @JsonKey(name: 'first_id', includeIfNull: false)
+  String? get firstId;
+
+  /// The identifier of the last chat completion in the list.
+  @override
+  @JsonKey(name: 'last_id', includeIfNull: false)
+  String? get lastId;
+
+  /// Whether there are more chat completions available.
+  @override
+  @JsonKey(name: 'has_more')
+  bool get hasMore;
+
+  /// Create a copy of ChatCompletionList
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChatCompletionListImplCopyWith<_$ChatCompletionListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 CompletionUsage _$CompletionUsageFromJson(Map<String, dynamic> json) {
   return _CompletionUsage.fromJson(json);
 }
@@ -13283,16 +14200,16 @@ CompletionUsage _$CompletionUsageFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CompletionUsage {
   /// Number of tokens in the generated completion.
-  @JsonKey(name: 'completion_tokens')
+  @JsonKey(name: 'completion_tokens', includeIfNull: false)
   int? get completionTokens => throw _privateConstructorUsedError;
 
   /// Number of tokens in the prompt.
-  @JsonKey(name: 'prompt_tokens')
-  int get promptTokens => throw _privateConstructorUsedError;
+  @JsonKey(name: 'prompt_tokens', includeIfNull: false)
+  int? get promptTokens => throw _privateConstructorUsedError;
 
   /// Total number of tokens used in the request (prompt + completion).
-  @JsonKey(name: 'total_tokens')
-  int get totalTokens => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_tokens', includeIfNull: false)
+  int? get totalTokens => throw _privateConstructorUsedError;
 
   /// Breakdown of tokens used in a completion.
   @JsonKey(name: 'completion_tokens_details', includeIfNull: false)
@@ -13316,9 +14233,10 @@ abstract class $CompletionUsageCopyWith<$Res> {
       _$CompletionUsageCopyWithImpl<$Res, CompletionUsage>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'completion_tokens') int? completionTokens,
-      @JsonKey(name: 'prompt_tokens') int promptTokens,
-      @JsonKey(name: 'total_tokens') int totalTokens,
+      {@JsonKey(name: 'completion_tokens', includeIfNull: false)
+      int? completionTokens,
+      @JsonKey(name: 'prompt_tokens', includeIfNull: false) int? promptTokens,
+      @JsonKey(name: 'total_tokens', includeIfNull: false) int? totalTokens,
       @JsonKey(name: 'completion_tokens_details', includeIfNull: false)
       CompletionTokensDetails? completionTokensDetails});
 
@@ -13341,8 +14259,8 @@ class _$CompletionUsageCopyWithImpl<$Res, $Val extends CompletionUsage>
   @override
   $Res call({
     Object? completionTokens = freezed,
-    Object? promptTokens = null,
-    Object? totalTokens = null,
+    Object? promptTokens = freezed,
+    Object? totalTokens = freezed,
     Object? completionTokensDetails = freezed,
   }) {
     return _then(_value.copyWith(
@@ -13350,14 +14268,14 @@ class _$CompletionUsageCopyWithImpl<$Res, $Val extends CompletionUsage>
           ? _value.completionTokens
           : completionTokens // ignore: cast_nullable_to_non_nullable
               as int?,
-      promptTokens: null == promptTokens
+      promptTokens: freezed == promptTokens
           ? _value.promptTokens
           : promptTokens // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalTokens: null == totalTokens
+              as int?,
+      totalTokens: freezed == totalTokens
           ? _value.totalTokens
           : totalTokens // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       completionTokensDetails: freezed == completionTokensDetails
           ? _value.completionTokensDetails
           : completionTokensDetails // ignore: cast_nullable_to_non_nullable
@@ -13390,9 +14308,10 @@ abstract class _$$CompletionUsageImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'completion_tokens') int? completionTokens,
-      @JsonKey(name: 'prompt_tokens') int promptTokens,
-      @JsonKey(name: 'total_tokens') int totalTokens,
+      {@JsonKey(name: 'completion_tokens', includeIfNull: false)
+      int? completionTokens,
+      @JsonKey(name: 'prompt_tokens', includeIfNull: false) int? promptTokens,
+      @JsonKey(name: 'total_tokens', includeIfNull: false) int? totalTokens,
       @JsonKey(name: 'completion_tokens_details', includeIfNull: false)
       CompletionTokensDetails? completionTokensDetails});
 
@@ -13414,8 +14333,8 @@ class __$$CompletionUsageImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? completionTokens = freezed,
-    Object? promptTokens = null,
-    Object? totalTokens = null,
+    Object? promptTokens = freezed,
+    Object? totalTokens = freezed,
     Object? completionTokensDetails = freezed,
   }) {
     return _then(_$CompletionUsageImpl(
@@ -13423,14 +14342,14 @@ class __$$CompletionUsageImplCopyWithImpl<$Res>
           ? _value.completionTokens
           : completionTokens // ignore: cast_nullable_to_non_nullable
               as int?,
-      promptTokens: null == promptTokens
+      promptTokens: freezed == promptTokens
           ? _value.promptTokens
           : promptTokens // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalTokens: null == totalTokens
+              as int?,
+      totalTokens: freezed == totalTokens
           ? _value.totalTokens
           : totalTokens // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       completionTokensDetails: freezed == completionTokensDetails
           ? _value.completionTokensDetails
           : completionTokensDetails // ignore: cast_nullable_to_non_nullable
@@ -13443,9 +14362,10 @@ class __$$CompletionUsageImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CompletionUsageImpl extends _CompletionUsage {
   const _$CompletionUsageImpl(
-      {@JsonKey(name: 'completion_tokens') required this.completionTokens,
-      @JsonKey(name: 'prompt_tokens') required this.promptTokens,
-      @JsonKey(name: 'total_tokens') required this.totalTokens,
+      {@JsonKey(name: 'completion_tokens', includeIfNull: false)
+      this.completionTokens,
+      @JsonKey(name: 'prompt_tokens', includeIfNull: false) this.promptTokens,
+      @JsonKey(name: 'total_tokens', includeIfNull: false) this.totalTokens,
       @JsonKey(name: 'completion_tokens_details', includeIfNull: false)
       this.completionTokensDetails})
       : super._();
@@ -13455,18 +14375,18 @@ class _$CompletionUsageImpl extends _CompletionUsage {
 
   /// Number of tokens in the generated completion.
   @override
-  @JsonKey(name: 'completion_tokens')
+  @JsonKey(name: 'completion_tokens', includeIfNull: false)
   final int? completionTokens;
 
   /// Number of tokens in the prompt.
   @override
-  @JsonKey(name: 'prompt_tokens')
-  final int promptTokens;
+  @JsonKey(name: 'prompt_tokens', includeIfNull: false)
+  final int? promptTokens;
 
   /// Total number of tokens used in the request (prompt + completion).
   @override
-  @JsonKey(name: 'total_tokens')
-  final int totalTokens;
+  @JsonKey(name: 'total_tokens', includeIfNull: false)
+  final int? totalTokens;
 
   /// Breakdown of tokens used in a completion.
   @override
@@ -13518,12 +14438,15 @@ class _$CompletionUsageImpl extends _CompletionUsage {
 
 abstract class _CompletionUsage extends CompletionUsage {
   const factory _CompletionUsage(
-      {@JsonKey(name: 'completion_tokens') required final int? completionTokens,
-      @JsonKey(name: 'prompt_tokens') required final int promptTokens,
-      @JsonKey(name: 'total_tokens') required final int totalTokens,
-      @JsonKey(name: 'completion_tokens_details', includeIfNull: false)
-      final CompletionTokensDetails?
-          completionTokensDetails}) = _$CompletionUsageImpl;
+          {@JsonKey(name: 'completion_tokens', includeIfNull: false)
+          final int? completionTokens,
+          @JsonKey(name: 'prompt_tokens', includeIfNull: false)
+          final int? promptTokens,
+          @JsonKey(name: 'total_tokens', includeIfNull: false)
+          final int? totalTokens,
+          @JsonKey(name: 'completion_tokens_details', includeIfNull: false)
+          final CompletionTokensDetails? completionTokensDetails}) =
+      _$CompletionUsageImpl;
   const _CompletionUsage._() : super._();
 
   factory _CompletionUsage.fromJson(Map<String, dynamic> json) =
@@ -13531,18 +14454,18 @@ abstract class _CompletionUsage extends CompletionUsage {
 
   /// Number of tokens in the generated completion.
   @override
-  @JsonKey(name: 'completion_tokens')
+  @JsonKey(name: 'completion_tokens', includeIfNull: false)
   int? get completionTokens;
 
   /// Number of tokens in the prompt.
   @override
-  @JsonKey(name: 'prompt_tokens')
-  int get promptTokens;
+  @JsonKey(name: 'prompt_tokens', includeIfNull: false)
+  int? get promptTokens;
 
   /// Total number of tokens used in the request (prompt + completion).
   @override
-  @JsonKey(name: 'total_tokens')
-  int get totalTokens;
+  @JsonKey(name: 'total_tokens', includeIfNull: false)
+  int? get totalTokens;
 
   /// Breakdown of tokens used in a completion.
   @override
@@ -15687,7 +16610,8 @@ Embedding _$EmbeddingFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Embedding {
   /// The index of the embedding in the list of embeddings.
-  int get index => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
+  int? get index => throw _privateConstructorUsedError;
 
   /// The embedding vector, which is a list of floats. The length of vector depends on the model as listed in the [embedding guide](https://platform.openai.com/docs/guides/embeddings).
   @_EmbeddingVectorConverter()
@@ -15712,7 +16636,7 @@ abstract class $EmbeddingCopyWith<$Res> {
       _$EmbeddingCopyWithImpl<$Res, Embedding>;
   @useResult
   $Res call(
-      {int index,
+      {@JsonKey(includeIfNull: false) int? index,
       @_EmbeddingVectorConverter() EmbeddingVector embedding,
       EmbeddingObject object});
 
@@ -15734,15 +16658,15 @@ class _$EmbeddingCopyWithImpl<$Res, $Val extends Embedding>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? index = freezed,
     Object? embedding = null,
     Object? object = null,
   }) {
     return _then(_value.copyWith(
-      index: null == index
+      index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       embedding: null == embedding
           ? _value.embedding
           : embedding // ignore: cast_nullable_to_non_nullable
@@ -15774,7 +16698,7 @@ abstract class _$$EmbeddingImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int index,
+      {@JsonKey(includeIfNull: false) int? index,
       @_EmbeddingVectorConverter() EmbeddingVector embedding,
       EmbeddingObject object});
 
@@ -15795,15 +16719,15 @@ class __$$EmbeddingImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? index = freezed,
     Object? embedding = null,
     Object? object = null,
   }) {
     return _then(_$EmbeddingImpl(
-      index: null == index
+      index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       embedding: null == embedding
           ? _value.embedding
           : embedding // ignore: cast_nullable_to_non_nullable
@@ -15820,7 +16744,7 @@ class __$$EmbeddingImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EmbeddingImpl extends _Embedding {
   const _$EmbeddingImpl(
-      {required this.index,
+      {@JsonKey(includeIfNull: false) this.index,
       @_EmbeddingVectorConverter() required this.embedding,
       required this.object})
       : super._();
@@ -15830,7 +16754,8 @@ class _$EmbeddingImpl extends _Embedding {
 
   /// The index of the embedding in the list of embeddings.
   @override
-  final int index;
+  @JsonKey(includeIfNull: false)
+  final int? index;
 
   /// The embedding vector, which is a list of floats. The length of vector depends on the model as listed in the [embedding guide](https://platform.openai.com/docs/guides/embeddings).
   @override
@@ -15879,7 +16804,7 @@ class _$EmbeddingImpl extends _Embedding {
 
 abstract class _Embedding extends Embedding {
   const factory _Embedding(
-      {required final int index,
+      {@JsonKey(includeIfNull: false) final int? index,
       @_EmbeddingVectorConverter() required final EmbeddingVector embedding,
       required final EmbeddingObject object}) = _$EmbeddingImpl;
   const _Embedding._() : super._();
@@ -15889,7 +16814,8 @@ abstract class _Embedding extends Embedding {
 
   /// The index of the embedding in the list of embeddings.
   @override
-  int get index;
+  @JsonKey(includeIfNull: false)
+  int? get index;
 
   /// The embedding vector, which is a list of floats. The length of vector depends on the model as listed in the [embedding guide](https://platform.openai.com/docs/guides/embeddings).
   @override
@@ -16539,14 +17465,20 @@ mixin _$CreateFineTuningJobRequest {
   /// `fine-tune`.
   ///
   /// The contents of the file should differ depending on if the model uses the
-  /// [chat](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input) or
-  /// [completions](https://platform.openai.com/docs/api-reference/fine-tuning/completions-input) format.
+  /// [chat](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input),
+  /// [completions](https://platform.openai.com/docs/api-reference/fine-tuning/completions-input)
+  /// format, or if the fine-tuning method uses the
+  /// [preference](https://platform.openai.com/docs/api-reference/fine-tuning/preference-input) format.
   ///
   /// See the [fine-tuning guide](https://platform.openai.com/docs/guides/fine-tuning) for more details.
   @JsonKey(name: 'training_file')
   String get trainingFile => throw _privateConstructorUsedError;
 
-  /// The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](https://platform.openai.com/docs/guides/fine-tuning) for more details.
+  /// The hyperparameters used for the fine-tuning job. This value will only be returned when running
+  /// `supervised` jobs.
+  ///
+  /// This value is now deprecated in favor of `method`, and should be passed in under the `method`
+  /// parameter.
   @JsonKey(includeIfNull: false)
   FineTuningJobHyperparameters? get hyperparameters =>
       throw _privateConstructorUsedError;
@@ -16810,15 +17742,21 @@ class _$CreateFineTuningJobRequestImpl extends _CreateFineTuningJobRequest {
   /// `fine-tune`.
   ///
   /// The contents of the file should differ depending on if the model uses the
-  /// [chat](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input) or
-  /// [completions](https://platform.openai.com/docs/api-reference/fine-tuning/completions-input) format.
+  /// [chat](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input),
+  /// [completions](https://platform.openai.com/docs/api-reference/fine-tuning/completions-input)
+  /// format, or if the fine-tuning method uses the
+  /// [preference](https://platform.openai.com/docs/api-reference/fine-tuning/preference-input) format.
   ///
   /// See the [fine-tuning guide](https://platform.openai.com/docs/guides/fine-tuning) for more details.
   @override
   @JsonKey(name: 'training_file')
   final String trainingFile;
 
-  /// The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](https://platform.openai.com/docs/guides/fine-tuning) for more details.
+  /// The hyperparameters used for the fine-tuning job. This value will only be returned when running
+  /// `supervised` jobs.
+  ///
+  /// This value is now deprecated in favor of `method`, and should be passed in under the `method`
+  /// parameter.
   @override
   @JsonKey(includeIfNull: false)
   final FineTuningJobHyperparameters? hyperparameters;
@@ -16948,15 +17886,21 @@ abstract class _CreateFineTuningJobRequest extends CreateFineTuningJobRequest {
   /// `fine-tune`.
   ///
   /// The contents of the file should differ depending on if the model uses the
-  /// [chat](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input) or
-  /// [completions](https://platform.openai.com/docs/api-reference/fine-tuning/completions-input) format.
+  /// [chat](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input),
+  /// [completions](https://platform.openai.com/docs/api-reference/fine-tuning/completions-input)
+  /// format, or if the fine-tuning method uses the
+  /// [preference](https://platform.openai.com/docs/api-reference/fine-tuning/preference-input) format.
   ///
   /// See the [fine-tuning guide](https://platform.openai.com/docs/guides/fine-tuning) for more details.
   @override
   @JsonKey(name: 'training_file')
   String get trainingFile;
 
-  /// The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](https://platform.openai.com/docs/guides/fine-tuning) for more details.
+  /// The hyperparameters used for the fine-tuning job. This value will only be returned when running
+  /// `supervised` jobs.
+  ///
+  /// This value is now deprecated in favor of `method`, and should be passed in under the `method`
+  /// parameter.
   @override
   @JsonKey(includeIfNull: false)
   FineTuningJobHyperparameters? get hyperparameters;
@@ -17436,7 +18380,11 @@ mixin _$FineTuningJob {
   @JsonKey(name: 'finished_at')
   int? get finishedAt => throw _privateConstructorUsedError;
 
-  /// The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](https://platform.openai.com/docs/guides/fine-tuning) for more details.
+  /// The hyperparameters used for the fine-tuning job. This value will only be returned when running
+  /// `supervised` jobs.
+  ///
+  /// This value is now deprecated in favor of `method`, and should be passed in under the `method`
+  /// parameter.
   FineTuningJobHyperparameters get hyperparameters =>
       throw _privateConstructorUsedError;
 
@@ -17809,7 +18757,11 @@ class _$FineTuningJobImpl extends _FineTuningJob {
   @JsonKey(name: 'finished_at')
   final int? finishedAt;
 
-  /// The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](https://platform.openai.com/docs/guides/fine-tuning) for more details.
+  /// The hyperparameters used for the fine-tuning job. This value will only be returned when running
+  /// `supervised` jobs.
+  ///
+  /// This value is now deprecated in favor of `method`, and should be passed in under the `method`
+  /// parameter.
   @override
   final FineTuningJobHyperparameters hyperparameters;
 
@@ -17990,7 +18942,11 @@ abstract class _FineTuningJob extends FineTuningJob {
   @JsonKey(name: 'finished_at')
   int? get finishedAt;
 
-  /// The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](https://platform.openai.com/docs/guides/fine-tuning) for more details.
+  /// The hyperparameters used for the fine-tuning job. This value will only be returned when running
+  /// `supervised` jobs.
+  ///
+  /// This value is now deprecated in favor of `method`, and should be passed in under the `method`
+  /// parameter.
   @override
   FineTuningJobHyperparameters get hyperparameters;
 
@@ -21119,7 +22075,7 @@ mixin _$CreateImageRequest {
   /// A text description of the desired image(s). The maximum length is 1000 characters for `dall-e-2` and 4000 characters for `dall-e-3`.
   String get prompt => throw _privateConstructorUsedError;
 
-  /// The model to use for image generation.
+  /// The model to use for image generation. One of `dall-e-2`, `dall-e-3`, or `gpt-image-1`. Defaults to `dall-e-2` unless a parameter specific to `gpt-image-1` is used.
   @_CreateImageRequestModelConverter()
   @JsonKey(includeIfNull: false)
   CreateImageRequestModel? get model => throw _privateConstructorUsedError;
@@ -21128,22 +22084,56 @@ mixin _$CreateImageRequest {
   @JsonKey(includeIfNull: false)
   int? get n => throw _privateConstructorUsedError;
 
-  /// The quality of the image that will be generated. `hd` creates images with finer details and greater consistency across the image. This param is only supported for `dall-e-3`.
-  ImageQuality get quality => throw _privateConstructorUsedError;
+  /// The quality of the image that will be generated.
+  ///
+  /// - `auto` (default value) will automatically select the best quality for the given model.
+  /// - `high`, `medium` and `low` are supported for `gpt-image-1`.
+  /// - `hd` and `standard` are supported for `dall-e-3`.
+  /// - `standard` is the only option for `dall-e-2`.
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ImageQuality? get quality => throw _privateConstructorUsedError;
 
-  /// The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated.
+  /// The format in which generated images with `dall-e-2` and `dall-e-3` are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated. This parameter isn't supported for `gpt-image-1` which will always return base64-encoded images.
   @JsonKey(
       name: 'response_format',
       includeIfNull: false,
       unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ImageResponseFormat? get responseFormat => throw _privateConstructorUsedError;
 
-  /// The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`. Must be one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3` models.
+  /// The format in which the generated images are returned. This parameter is only supported for `gpt-image-1`. Must be one of `png`, `jpeg`, or `webp`.
+  @JsonKey(
+      name: 'output_format',
+      includeIfNull: false,
+      unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ImageOutputFormat? get outputFormat => throw _privateConstructorUsedError;
+
+  /// The compression level (0-100%) for the generated images. This parameter is only supported for `gpt-image-1` with the `webp` or `jpeg` output formats, and defaults to 100.
+  @JsonKey(name: 'output_compression', includeIfNull: false)
+  int? get outputCompression => throw _privateConstructorUsedError;
+
+  /// The size of the generated images. Must be one of `1024x1024`, `1536x1024` (landscape), `1024x1536` (portrait), or `auto` (default value) for `gpt-image-1`, one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`, and one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3`.
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ImageSize? get size => throw _privateConstructorUsedError;
 
-  /// The style of the generated images. Must be one of `vivid` or `natural`. Vivid causes the model to lean towards generating hyper-real and dramatic images. Natural causes the model to produce more natural, less hyper-real looking images. This param is only supported for `dall-e-3`.
+  /// Control the content-moderation level for images generated by `gpt-image-1`. Must be either `low` for less restrictive filtering or `auto` (default value).
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ImageModeration? get moderation => throw _privateConstructorUsedError;
+
+  /// Allows to set transparency for the background of the generated image(s).
+  /// This parameter is only supported for `gpt-image-1`. Must be one of
+  /// `transparent`, `opaque` or `auto` (default value). When `auto` is used, the
+  /// model will automatically determine the best background for the image.
+  ///
+  /// If `transparent`, the output format needs to support transparency, so it
+  /// should be set to either `png` (default value) or `webp`.
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ImageBackground? get background => throw _privateConstructorUsedError;
+
+  /// The style of the generated images. This parameter is only supported for `dall-e-3`. Must be one of `vivid` or `natural`. Vivid causes the model to lean towards generating hyper-real and dramatic images. Natural causes the model to produce more natural, less hyper-real looking images.
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ImageStyle? get style => throw _privateConstructorUsedError;
@@ -21174,16 +22164,34 @@ abstract class $CreateImageRequestCopyWith<$Res> {
       @JsonKey(includeIfNull: false)
       CreateImageRequestModel? model,
       @JsonKey(includeIfNull: false) int? n,
-      ImageQuality quality,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ImageQuality? quality,
       @JsonKey(
           name: 'response_format',
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       ImageResponseFormat? responseFormat,
       @JsonKey(
+          name: 'output_format',
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ImageOutputFormat? outputFormat,
+      @JsonKey(name: 'output_compression', includeIfNull: false)
+      int? outputCompression,
+      @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       ImageSize? size,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ImageModeration? moderation,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ImageBackground? background,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
@@ -21211,9 +22219,13 @@ class _$CreateImageRequestCopyWithImpl<$Res, $Val extends CreateImageRequest>
     Object? prompt = null,
     Object? model = freezed,
     Object? n = freezed,
-    Object? quality = null,
+    Object? quality = freezed,
     Object? responseFormat = freezed,
+    Object? outputFormat = freezed,
+    Object? outputCompression = freezed,
     Object? size = freezed,
+    Object? moderation = freezed,
+    Object? background = freezed,
     Object? style = freezed,
     Object? user = freezed,
   }) {
@@ -21230,18 +22242,34 @@ class _$CreateImageRequestCopyWithImpl<$Res, $Val extends CreateImageRequest>
           ? _value.n
           : n // ignore: cast_nullable_to_non_nullable
               as int?,
-      quality: null == quality
+      quality: freezed == quality
           ? _value.quality
           : quality // ignore: cast_nullable_to_non_nullable
-              as ImageQuality,
+              as ImageQuality?,
       responseFormat: freezed == responseFormat
           ? _value.responseFormat
           : responseFormat // ignore: cast_nullable_to_non_nullable
               as ImageResponseFormat?,
+      outputFormat: freezed == outputFormat
+          ? _value.outputFormat
+          : outputFormat // ignore: cast_nullable_to_non_nullable
+              as ImageOutputFormat?,
+      outputCompression: freezed == outputCompression
+          ? _value.outputCompression
+          : outputCompression // ignore: cast_nullable_to_non_nullable
+              as int?,
       size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as ImageSize?,
+      moderation: freezed == moderation
+          ? _value.moderation
+          : moderation // ignore: cast_nullable_to_non_nullable
+              as ImageModeration?,
+      background: freezed == background
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as ImageBackground?,
       style: freezed == style
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
@@ -21282,16 +22310,34 @@ abstract class _$$CreateImageRequestImplCopyWith<$Res>
       @JsonKey(includeIfNull: false)
       CreateImageRequestModel? model,
       @JsonKey(includeIfNull: false) int? n,
-      ImageQuality quality,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ImageQuality? quality,
       @JsonKey(
           name: 'response_format',
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       ImageResponseFormat? responseFormat,
       @JsonKey(
+          name: 'output_format',
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ImageOutputFormat? outputFormat,
+      @JsonKey(name: 'output_compression', includeIfNull: false)
+      int? outputCompression,
+      @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       ImageSize? size,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ImageModeration? moderation,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ImageBackground? background,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
@@ -21318,9 +22364,13 @@ class __$$CreateImageRequestImplCopyWithImpl<$Res>
     Object? prompt = null,
     Object? model = freezed,
     Object? n = freezed,
-    Object? quality = null,
+    Object? quality = freezed,
     Object? responseFormat = freezed,
+    Object? outputFormat = freezed,
+    Object? outputCompression = freezed,
     Object? size = freezed,
+    Object? moderation = freezed,
+    Object? background = freezed,
     Object? style = freezed,
     Object? user = freezed,
   }) {
@@ -21337,18 +22387,34 @@ class __$$CreateImageRequestImplCopyWithImpl<$Res>
           ? _value.n
           : n // ignore: cast_nullable_to_non_nullable
               as int?,
-      quality: null == quality
+      quality: freezed == quality
           ? _value.quality
           : quality // ignore: cast_nullable_to_non_nullable
-              as ImageQuality,
+              as ImageQuality?,
       responseFormat: freezed == responseFormat
           ? _value.responseFormat
           : responseFormat // ignore: cast_nullable_to_non_nullable
               as ImageResponseFormat?,
+      outputFormat: freezed == outputFormat
+          ? _value.outputFormat
+          : outputFormat // ignore: cast_nullable_to_non_nullable
+              as ImageOutputFormat?,
+      outputCompression: freezed == outputCompression
+          ? _value.outputCompression
+          : outputCompression // ignore: cast_nullable_to_non_nullable
+              as int?,
       size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as ImageSize?,
+      moderation: freezed == moderation
+          ? _value.moderation
+          : moderation // ignore: cast_nullable_to_non_nullable
+              as ImageModeration?,
+      background: freezed == background
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as ImageBackground?,
       style: freezed == style
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
@@ -21368,22 +22434,40 @@ class _$CreateImageRequestImpl extends _CreateImageRequest {
       {required this.prompt,
       @_CreateImageRequestModelConverter()
       @JsonKey(includeIfNull: false)
-      this.model = const CreateImageRequestModelString('dall-e-2'),
-      @JsonKey(includeIfNull: false) this.n = 1,
-      this.quality = ImageQuality.standard,
+      this.model,
+      @JsonKey(includeIfNull: false) this.n,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      this.quality,
       @JsonKey(
           name: 'response_format',
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-      this.responseFormat = ImageResponseFormat.url,
+      this.responseFormat,
+      @JsonKey(
+          name: 'output_format',
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      this.outputFormat,
+      @JsonKey(name: 'output_compression', includeIfNull: false)
+      this.outputCompression,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-      this.size = ImageSize.v1024x1024,
+      this.size,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-      this.style = ImageStyle.vivid,
+      this.moderation,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      this.background,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      this.style,
       @JsonKey(includeIfNull: false) this.user})
       : super._();
 
@@ -21394,7 +22478,7 @@ class _$CreateImageRequestImpl extends _CreateImageRequest {
   @override
   final String prompt;
 
-  /// The model to use for image generation.
+  /// The model to use for image generation. One of `dall-e-2`, `dall-e-3`, or `gpt-image-1`. Defaults to `dall-e-2` unless a parameter specific to `gpt-image-1` is used.
   @override
   @_CreateImageRequestModelConverter()
   @JsonKey(includeIfNull: false)
@@ -21405,12 +22489,18 @@ class _$CreateImageRequestImpl extends _CreateImageRequest {
   @JsonKey(includeIfNull: false)
   final int? n;
 
-  /// The quality of the image that will be generated. `hd` creates images with finer details and greater consistency across the image. This param is only supported for `dall-e-3`.
+  /// The quality of the image that will be generated.
+  ///
+  /// - `auto` (default value) will automatically select the best quality for the given model.
+  /// - `high`, `medium` and `low` are supported for `gpt-image-1`.
+  /// - `hd` and `standard` are supported for `dall-e-3`.
+  /// - `standard` is the only option for `dall-e-2`.
   @override
-  @JsonKey()
-  final ImageQuality quality;
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  final ImageQuality? quality;
 
-  /// The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated.
+  /// The format in which generated images with `dall-e-2` and `dall-e-3` are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated. This parameter isn't supported for `gpt-image-1` which will always return base64-encoded images.
   @override
   @JsonKey(
       name: 'response_format',
@@ -21418,13 +22508,44 @@ class _$CreateImageRequestImpl extends _CreateImageRequest {
       unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   final ImageResponseFormat? responseFormat;
 
-  /// The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`. Must be one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3` models.
+  /// The format in which the generated images are returned. This parameter is only supported for `gpt-image-1`. Must be one of `png`, `jpeg`, or `webp`.
+  @override
+  @JsonKey(
+      name: 'output_format',
+      includeIfNull: false,
+      unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  final ImageOutputFormat? outputFormat;
+
+  /// The compression level (0-100%) for the generated images. This parameter is only supported for `gpt-image-1` with the `webp` or `jpeg` output formats, and defaults to 100.
+  @override
+  @JsonKey(name: 'output_compression', includeIfNull: false)
+  final int? outputCompression;
+
+  /// The size of the generated images. Must be one of `1024x1024`, `1536x1024` (landscape), `1024x1536` (portrait), or `auto` (default value) for `gpt-image-1`, one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`, and one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3`.
   @override
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   final ImageSize? size;
 
-  /// The style of the generated images. Must be one of `vivid` or `natural`. Vivid causes the model to lean towards generating hyper-real and dramatic images. Natural causes the model to produce more natural, less hyper-real looking images. This param is only supported for `dall-e-3`.
+  /// Control the content-moderation level for images generated by `gpt-image-1`. Must be either `low` for less restrictive filtering or `auto` (default value).
+  @override
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  final ImageModeration? moderation;
+
+  /// Allows to set transparency for the background of the generated image(s).
+  /// This parameter is only supported for `gpt-image-1`. Must be one of
+  /// `transparent`, `opaque` or `auto` (default value). When `auto` is used, the
+  /// model will automatically determine the best background for the image.
+  ///
+  /// If `transparent`, the output format needs to support transparency, so it
+  /// should be set to either `png` (default value) or `webp`.
+  @override
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  final ImageBackground? background;
+
+  /// The style of the generated images. This parameter is only supported for `dall-e-3`. Must be one of `vivid` or `natural`. Vivid causes the model to lean towards generating hyper-real and dramatic images. Natural causes the model to produce more natural, less hyper-real looking images.
   @override
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
@@ -21437,7 +22558,7 @@ class _$CreateImageRequestImpl extends _CreateImageRequest {
 
   @override
   String toString() {
-    return 'CreateImageRequest(prompt: $prompt, model: $model, n: $n, quality: $quality, responseFormat: $responseFormat, size: $size, style: $style, user: $user)';
+    return 'CreateImageRequest(prompt: $prompt, model: $model, n: $n, quality: $quality, responseFormat: $responseFormat, outputFormat: $outputFormat, outputCompression: $outputCompression, size: $size, moderation: $moderation, background: $background, style: $style, user: $user)';
   }
 
   @override
@@ -21451,15 +22572,35 @@ class _$CreateImageRequestImpl extends _CreateImageRequest {
             (identical(other.quality, quality) || other.quality == quality) &&
             (identical(other.responseFormat, responseFormat) ||
                 other.responseFormat == responseFormat) &&
+            (identical(other.outputFormat, outputFormat) ||
+                other.outputFormat == outputFormat) &&
+            (identical(other.outputCompression, outputCompression) ||
+                other.outputCompression == outputCompression) &&
             (identical(other.size, size) || other.size == size) &&
+            (identical(other.moderation, moderation) ||
+                other.moderation == moderation) &&
+            (identical(other.background, background) ||
+                other.background == background) &&
             (identical(other.style, style) || other.style == style) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, prompt, model, n, quality,
-      responseFormat, size, style, user);
+  int get hashCode => Object.hash(
+      runtimeType,
+      prompt,
+      model,
+      n,
+      quality,
+      responseFormat,
+      outputFormat,
+      outputCompression,
+      size,
+      moderation,
+      background,
+      style,
+      user);
 
   /// Create a copy of CreateImageRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -21485,16 +22626,34 @@ abstract class _CreateImageRequest extends CreateImageRequest {
           @JsonKey(includeIfNull: false)
           final CreateImageRequestModel? model,
           @JsonKey(includeIfNull: false) final int? n,
-          final ImageQuality quality,
+          @JsonKey(
+              includeIfNull: false,
+              unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+          final ImageQuality? quality,
           @JsonKey(
               name: 'response_format',
               includeIfNull: false,
               unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
           final ImageResponseFormat? responseFormat,
           @JsonKey(
+              name: 'output_format',
+              includeIfNull: false,
+              unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+          final ImageOutputFormat? outputFormat,
+          @JsonKey(name: 'output_compression', includeIfNull: false)
+          final int? outputCompression,
+          @JsonKey(
               includeIfNull: false,
               unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
           final ImageSize? size,
+          @JsonKey(
+              includeIfNull: false,
+              unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+          final ImageModeration? moderation,
+          @JsonKey(
+              includeIfNull: false,
+              unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+          final ImageBackground? background,
           @JsonKey(
               includeIfNull: false,
               unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
@@ -21510,7 +22669,7 @@ abstract class _CreateImageRequest extends CreateImageRequest {
   @override
   String get prompt;
 
-  /// The model to use for image generation.
+  /// The model to use for image generation. One of `dall-e-2`, `dall-e-3`, or `gpt-image-1`. Defaults to `dall-e-2` unless a parameter specific to `gpt-image-1` is used.
   @override
   @_CreateImageRequestModelConverter()
   @JsonKey(includeIfNull: false)
@@ -21521,11 +22680,18 @@ abstract class _CreateImageRequest extends CreateImageRequest {
   @JsonKey(includeIfNull: false)
   int? get n;
 
-  /// The quality of the image that will be generated. `hd` creates images with finer details and greater consistency across the image. This param is only supported for `dall-e-3`.
+  /// The quality of the image that will be generated.
+  ///
+  /// - `auto` (default value) will automatically select the best quality for the given model.
+  /// - `high`, `medium` and `low` are supported for `gpt-image-1`.
+  /// - `hd` and `standard` are supported for `dall-e-3`.
+  /// - `standard` is the only option for `dall-e-2`.
   @override
-  ImageQuality get quality;
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ImageQuality? get quality;
 
-  /// The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated.
+  /// The format in which generated images with `dall-e-2` and `dall-e-3` are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated. This parameter isn't supported for `gpt-image-1` which will always return base64-encoded images.
   @override
   @JsonKey(
       name: 'response_format',
@@ -21533,13 +22699,44 @@ abstract class _CreateImageRequest extends CreateImageRequest {
       unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ImageResponseFormat? get responseFormat;
 
-  /// The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`. Must be one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3` models.
+  /// The format in which the generated images are returned. This parameter is only supported for `gpt-image-1`. Must be one of `png`, `jpeg`, or `webp`.
+  @override
+  @JsonKey(
+      name: 'output_format',
+      includeIfNull: false,
+      unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ImageOutputFormat? get outputFormat;
+
+  /// The compression level (0-100%) for the generated images. This parameter is only supported for `gpt-image-1` with the `webp` or `jpeg` output formats, and defaults to 100.
+  @override
+  @JsonKey(name: 'output_compression', includeIfNull: false)
+  int? get outputCompression;
+
+  /// The size of the generated images. Must be one of `1024x1024`, `1536x1024` (landscape), `1024x1536` (portrait), or `auto` (default value) for `gpt-image-1`, one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`, and one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3`.
   @override
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ImageSize? get size;
 
-  /// The style of the generated images. Must be one of `vivid` or `natural`. Vivid causes the model to lean towards generating hyper-real and dramatic images. Natural causes the model to produce more natural, less hyper-real looking images. This param is only supported for `dall-e-3`.
+  /// Control the content-moderation level for images generated by `gpt-image-1`. Must be either `low` for less restrictive filtering or `auto` (default value).
+  @override
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ImageModeration? get moderation;
+
+  /// Allows to set transparency for the background of the generated image(s).
+  /// This parameter is only supported for `gpt-image-1`. Must be one of
+  /// `transparent`, `opaque` or `auto` (default value). When `auto` is used, the
+  /// model will automatically determine the best background for the image.
+  ///
+  /// If `transparent`, the output format needs to support transparency, so it
+  /// should be set to either `png` (default value) or `webp`.
+  @override
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ImageBackground? get background;
+
+  /// The style of the generated images. This parameter is only supported for `dall-e-3`. Must be one of `vivid` or `natural`. Vivid causes the model to lean towards generating hyper-real and dramatic images. Natural causes the model to produce more natural, less hyper-real looking images.
   @override
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
@@ -22405,14 +23602,17 @@ mixin _$Model {
   String get id => throw _privateConstructorUsedError;
 
   /// The Unix timestamp (in seconds) when the model was created.
-  int get created => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
+  int? get created => throw _privateConstructorUsedError;
 
   /// The object type, which is always "model".
-  ModelObject get object => throw _privateConstructorUsedError;
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ModelObject? get object => throw _privateConstructorUsedError;
 
   /// The organization that owns the model.
-  @JsonKey(name: 'owned_by')
-  String get ownedBy => throw _privateConstructorUsedError;
+  @JsonKey(name: 'owned_by', includeIfNull: false)
+  String? get ownedBy => throw _privateConstructorUsedError;
 
   /// Serializes this Model to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -22430,9 +23630,12 @@ abstract class $ModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      int created,
-      ModelObject object,
-      @JsonKey(name: 'owned_by') String ownedBy});
+      @JsonKey(includeIfNull: false) int? created,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ModelObject? object,
+      @JsonKey(name: 'owned_by', includeIfNull: false) String? ownedBy});
 }
 
 /// @nodoc
@@ -22451,27 +23654,27 @@ class _$ModelCopyWithImpl<$Res, $Val extends Model>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? object = null,
-    Object? ownedBy = null,
+    Object? created = freezed,
+    Object? object = freezed,
+    Object? ownedBy = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as int,
-      object: null == object
+              as int?,
+      object: freezed == object
           ? _value.object
           : object // ignore: cast_nullable_to_non_nullable
-              as ModelObject,
-      ownedBy: null == ownedBy
+              as ModelObject?,
+      ownedBy: freezed == ownedBy
           ? _value.ownedBy
           : ownedBy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -22485,9 +23688,12 @@ abstract class _$$ModelImplCopyWith<$Res> implements $ModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      int created,
-      ModelObject object,
-      @JsonKey(name: 'owned_by') String ownedBy});
+      @JsonKey(includeIfNull: false) int? created,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ModelObject? object,
+      @JsonKey(name: 'owned_by', includeIfNull: false) String? ownedBy});
 }
 
 /// @nodoc
@@ -22504,27 +23710,27 @@ class __$$ModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? object = null,
-    Object? ownedBy = null,
+    Object? created = freezed,
+    Object? object = freezed,
+    Object? ownedBy = freezed,
   }) {
     return _then(_$ModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as int,
-      object: null == object
+              as int?,
+      object: freezed == object
           ? _value.object
           : object // ignore: cast_nullable_to_non_nullable
-              as ModelObject,
-      ownedBy: null == ownedBy
+              as ModelObject?,
+      ownedBy: freezed == ownedBy
           ? _value.ownedBy
           : ownedBy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -22534,9 +23740,12 @@ class __$$ModelImplCopyWithImpl<$Res>
 class _$ModelImpl extends _Model {
   const _$ModelImpl(
       {required this.id,
-      required this.created,
-      required this.object,
-      @JsonKey(name: 'owned_by') required this.ownedBy})
+      @JsonKey(includeIfNull: false) this.created,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      this.object,
+      @JsonKey(name: 'owned_by', includeIfNull: false) this.ownedBy})
       : super._();
 
   factory _$ModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -22548,16 +23757,19 @@ class _$ModelImpl extends _Model {
 
   /// The Unix timestamp (in seconds) when the model was created.
   @override
-  final int created;
+  @JsonKey(includeIfNull: false)
+  final int? created;
 
   /// The object type, which is always "model".
   @override
-  final ModelObject object;
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  final ModelObject? object;
 
   /// The organization that owns the model.
   @override
-  @JsonKey(name: 'owned_by')
-  final String ownedBy;
+  @JsonKey(name: 'owned_by', includeIfNull: false)
+  final String? ownedBy;
 
   @override
   String toString() {
@@ -22598,9 +23810,13 @@ class _$ModelImpl extends _Model {
 abstract class _Model extends Model {
   const factory _Model(
       {required final String id,
-      required final int created,
-      required final ModelObject object,
-      @JsonKey(name: 'owned_by') required final String ownedBy}) = _$ModelImpl;
+      @JsonKey(includeIfNull: false) final int? created,
+      @JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      final ModelObject? object,
+      @JsonKey(name: 'owned_by', includeIfNull: false)
+      final String? ownedBy}) = _$ModelImpl;
   const _Model._() : super._();
 
   factory _Model.fromJson(Map<String, dynamic> json) = _$ModelImpl.fromJson;
@@ -22611,16 +23827,19 @@ abstract class _Model extends Model {
 
   /// The Unix timestamp (in seconds) when the model was created.
   @override
-  int get created;
+  @JsonKey(includeIfNull: false)
+  int? get created;
 
   /// The object type, which is always "model".
   @override
-  ModelObject get object;
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ModelObject? get object;
 
   /// The organization that owns the model.
   @override
-  @JsonKey(name: 'owned_by')
-  String get ownedBy;
+  @JsonKey(name: 'owned_by', includeIfNull: false)
+  String? get ownedBy;
 
   /// Create a copy of Model
   /// with the given fields replaced by the non-null parameter values.
@@ -22637,7 +23856,9 @@ ListModelsResponse _$ListModelsResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ListModelsResponse {
   /// The object type, which is always "list".
-  ListModelsResponseObject get object => throw _privateConstructorUsedError;
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ListModelsResponseObject? get object => throw _privateConstructorUsedError;
 
   /// The list of models.
   List<Model> get data => throw _privateConstructorUsedError;
@@ -22658,7 +23879,12 @@ abstract class $ListModelsResponseCopyWith<$Res> {
           ListModelsResponse value, $Res Function(ListModelsResponse) then) =
       _$ListModelsResponseCopyWithImpl<$Res, ListModelsResponse>;
   @useResult
-  $Res call({ListModelsResponseObject object, List<Model> data});
+  $Res call(
+      {@JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ListModelsResponseObject? object,
+      List<Model> data});
 }
 
 /// @nodoc
@@ -22676,14 +23902,14 @@ class _$ListModelsResponseCopyWithImpl<$Res, $Val extends ListModelsResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? object = null,
+    Object? object = freezed,
     Object? data = null,
   }) {
     return _then(_value.copyWith(
-      object: null == object
+      object: freezed == object
           ? _value.object
           : object // ignore: cast_nullable_to_non_nullable
-              as ListModelsResponseObject,
+              as ListModelsResponseObject?,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -22700,7 +23926,12 @@ abstract class _$$ListModelsResponseImplCopyWith<$Res>
       __$$ListModelsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ListModelsResponseObject object, List<Model> data});
+  $Res call(
+      {@JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      ListModelsResponseObject? object,
+      List<Model> data});
 }
 
 /// @nodoc
@@ -22716,14 +23947,14 @@ class __$$ListModelsResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? object = null,
+    Object? object = freezed,
     Object? data = null,
   }) {
     return _then(_$ListModelsResponseImpl(
-      object: null == object
+      object: freezed == object
           ? _value.object
           : object // ignore: cast_nullable_to_non_nullable
-              as ListModelsResponseObject,
+              as ListModelsResponseObject?,
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -22736,7 +23967,11 @@ class __$$ListModelsResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ListModelsResponseImpl extends _ListModelsResponse {
   const _$ListModelsResponseImpl(
-      {required this.object, required final List<Model> data})
+      {@JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      this.object,
+      required final List<Model> data})
       : _data = data,
         super._();
 
@@ -22745,7 +23980,9 @@ class _$ListModelsResponseImpl extends _ListModelsResponse {
 
   /// The object type, which is always "list".
   @override
-  final ListModelsResponseObject object;
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  final ListModelsResponseObject? object;
 
   /// The list of models.
   final List<Model> _data;
@@ -22796,7 +24033,10 @@ class _$ListModelsResponseImpl extends _ListModelsResponse {
 
 abstract class _ListModelsResponse extends ListModelsResponse {
   const factory _ListModelsResponse(
-      {required final ListModelsResponseObject object,
+      {@JsonKey(
+          includeIfNull: false,
+          unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+      final ListModelsResponseObject? object,
       required final List<Model> data}) = _$ListModelsResponseImpl;
   const _ListModelsResponse._() : super._();
 
@@ -22805,7 +24045,9 @@ abstract class _ListModelsResponse extends ListModelsResponse {
 
   /// The object type, which is always "list".
   @override
-  ListModelsResponseObject get object;
+  @JsonKey(
+      includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  ListModelsResponseObject? get object;
 
   /// The list of models.
   @override
@@ -57719,9 +58961,698 @@ abstract class _ListBatchesResponse extends ListBatchesResponse {
       throw _privateConstructorUsedError;
 }
 
+WebSearchOptions _$WebSearchOptionsFromJson(Map<String, dynamic> json) {
+  return _WebSearchOptions.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WebSearchOptions {
+  /// Approximate location parameters for the search.
+  @JsonKey(name: 'user_location', includeIfNull: false)
+  WebSearchOptionsUserLocation? get userLocation =>
+      throw _privateConstructorUsedError;
+
+  /// High level guidance for the amount of context window space to use for the
+  /// search. One of `low`, `medium`, or `high`. `medium` is the default.
+  @JsonKey(name: 'search_context_size')
+  WebSearchContextSize get searchContextSize =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this WebSearchOptions to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of WebSearchOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $WebSearchOptionsCopyWith<WebSearchOptions> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WebSearchOptionsCopyWith<$Res> {
+  factory $WebSearchOptionsCopyWith(
+          WebSearchOptions value, $Res Function(WebSearchOptions) then) =
+      _$WebSearchOptionsCopyWithImpl<$Res, WebSearchOptions>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'user_location', includeIfNull: false)
+      WebSearchOptionsUserLocation? userLocation,
+      @JsonKey(name: 'search_context_size')
+      WebSearchContextSize searchContextSize});
+
+  $WebSearchOptionsUserLocationCopyWith<$Res>? get userLocation;
+}
+
+/// @nodoc
+class _$WebSearchOptionsCopyWithImpl<$Res, $Val extends WebSearchOptions>
+    implements $WebSearchOptionsCopyWith<$Res> {
+  _$WebSearchOptionsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of WebSearchOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userLocation = freezed,
+    Object? searchContextSize = null,
+  }) {
+    return _then(_value.copyWith(
+      userLocation: freezed == userLocation
+          ? _value.userLocation
+          : userLocation // ignore: cast_nullable_to_non_nullable
+              as WebSearchOptionsUserLocation?,
+      searchContextSize: null == searchContextSize
+          ? _value.searchContextSize
+          : searchContextSize // ignore: cast_nullable_to_non_nullable
+              as WebSearchContextSize,
+    ) as $Val);
+  }
+
+  /// Create a copy of WebSearchOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $WebSearchOptionsUserLocationCopyWith<$Res>? get userLocation {
+    if (_value.userLocation == null) {
+      return null;
+    }
+
+    return $WebSearchOptionsUserLocationCopyWith<$Res>(_value.userLocation!,
+        (value) {
+      return _then(_value.copyWith(userLocation: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$WebSearchOptionsImplCopyWith<$Res>
+    implements $WebSearchOptionsCopyWith<$Res> {
+  factory _$$WebSearchOptionsImplCopyWith(_$WebSearchOptionsImpl value,
+          $Res Function(_$WebSearchOptionsImpl) then) =
+      __$$WebSearchOptionsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'user_location', includeIfNull: false)
+      WebSearchOptionsUserLocation? userLocation,
+      @JsonKey(name: 'search_context_size')
+      WebSearchContextSize searchContextSize});
+
+  @override
+  $WebSearchOptionsUserLocationCopyWith<$Res>? get userLocation;
+}
+
+/// @nodoc
+class __$$WebSearchOptionsImplCopyWithImpl<$Res>
+    extends _$WebSearchOptionsCopyWithImpl<$Res, _$WebSearchOptionsImpl>
+    implements _$$WebSearchOptionsImplCopyWith<$Res> {
+  __$$WebSearchOptionsImplCopyWithImpl(_$WebSearchOptionsImpl _value,
+      $Res Function(_$WebSearchOptionsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WebSearchOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userLocation = freezed,
+    Object? searchContextSize = null,
+  }) {
+    return _then(_$WebSearchOptionsImpl(
+      userLocation: freezed == userLocation
+          ? _value.userLocation
+          : userLocation // ignore: cast_nullable_to_non_nullable
+              as WebSearchOptionsUserLocation?,
+      searchContextSize: null == searchContextSize
+          ? _value.searchContextSize
+          : searchContextSize // ignore: cast_nullable_to_non_nullable
+              as WebSearchContextSize,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$WebSearchOptionsImpl extends _WebSearchOptions {
+  const _$WebSearchOptionsImpl(
+      {@JsonKey(name: 'user_location', includeIfNull: false) this.userLocation,
+      @JsonKey(name: 'search_context_size')
+      this.searchContextSize = WebSearchContextSize.medium})
+      : super._();
+
+  factory _$WebSearchOptionsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WebSearchOptionsImplFromJson(json);
+
+  /// Approximate location parameters for the search.
+  @override
+  @JsonKey(name: 'user_location', includeIfNull: false)
+  final WebSearchOptionsUserLocation? userLocation;
+
+  /// High level guidance for the amount of context window space to use for the
+  /// search. One of `low`, `medium`, or `high`. `medium` is the default.
+  @override
+  @JsonKey(name: 'search_context_size')
+  final WebSearchContextSize searchContextSize;
+
+  @override
+  String toString() {
+    return 'WebSearchOptions(userLocation: $userLocation, searchContextSize: $searchContextSize)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WebSearchOptionsImpl &&
+            (identical(other.userLocation, userLocation) ||
+                other.userLocation == userLocation) &&
+            (identical(other.searchContextSize, searchContextSize) ||
+                other.searchContextSize == searchContextSize));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, userLocation, searchContextSize);
+
+  /// Create a copy of WebSearchOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WebSearchOptionsImplCopyWith<_$WebSearchOptionsImpl> get copyWith =>
+      __$$WebSearchOptionsImplCopyWithImpl<_$WebSearchOptionsImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WebSearchOptionsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WebSearchOptions extends WebSearchOptions {
+  const factory _WebSearchOptions(
+      {@JsonKey(name: 'user_location', includeIfNull: false)
+      final WebSearchOptionsUserLocation? userLocation,
+      @JsonKey(name: 'search_context_size')
+      final WebSearchContextSize searchContextSize}) = _$WebSearchOptionsImpl;
+  const _WebSearchOptions._() : super._();
+
+  factory _WebSearchOptions.fromJson(Map<String, dynamic> json) =
+      _$WebSearchOptionsImpl.fromJson;
+
+  /// Approximate location parameters for the search.
+  @override
+  @JsonKey(name: 'user_location', includeIfNull: false)
+  WebSearchOptionsUserLocation? get userLocation;
+
+  /// High level guidance for the amount of context window space to use for the
+  /// search. One of `low`, `medium`, or `high`. `medium` is the default.
+  @override
+  @JsonKey(name: 'search_context_size')
+  WebSearchContextSize get searchContextSize;
+
+  /// Create a copy of WebSearchOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WebSearchOptionsImplCopyWith<_$WebSearchOptionsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+WebSearchOptionsUserLocation _$WebSearchOptionsUserLocationFromJson(
+    Map<String, dynamic> json) {
+  return _WebSearchOptionsUserLocation.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WebSearchOptionsUserLocation {
+  /// The type of location approximation. Always `approximate`.
+  WebSearchOptionsUserLocationType get type =>
+      throw _privateConstructorUsedError;
+
+  /// Approximate location parameters for the search.
+  WebSearchLocation get approximate => throw _privateConstructorUsedError;
+
+  /// Serializes this WebSearchOptionsUserLocation to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of WebSearchOptionsUserLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $WebSearchOptionsUserLocationCopyWith<WebSearchOptionsUserLocation>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WebSearchOptionsUserLocationCopyWith<$Res> {
+  factory $WebSearchOptionsUserLocationCopyWith(
+          WebSearchOptionsUserLocation value,
+          $Res Function(WebSearchOptionsUserLocation) then) =
+      _$WebSearchOptionsUserLocationCopyWithImpl<$Res,
+          WebSearchOptionsUserLocation>;
+  @useResult
+  $Res call(
+      {WebSearchOptionsUserLocationType type, WebSearchLocation approximate});
+
+  $WebSearchLocationCopyWith<$Res> get approximate;
+}
+
+/// @nodoc
+class _$WebSearchOptionsUserLocationCopyWithImpl<$Res,
+        $Val extends WebSearchOptionsUserLocation>
+    implements $WebSearchOptionsUserLocationCopyWith<$Res> {
+  _$WebSearchOptionsUserLocationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of WebSearchOptionsUserLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? approximate = null,
+  }) {
+    return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as WebSearchOptionsUserLocationType,
+      approximate: null == approximate
+          ? _value.approximate
+          : approximate // ignore: cast_nullable_to_non_nullable
+              as WebSearchLocation,
+    ) as $Val);
+  }
+
+  /// Create a copy of WebSearchOptionsUserLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $WebSearchLocationCopyWith<$Res> get approximate {
+    return $WebSearchLocationCopyWith<$Res>(_value.approximate, (value) {
+      return _then(_value.copyWith(approximate: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$WebSearchOptionsUserLocationImplCopyWith<$Res>
+    implements $WebSearchOptionsUserLocationCopyWith<$Res> {
+  factory _$$WebSearchOptionsUserLocationImplCopyWith(
+          _$WebSearchOptionsUserLocationImpl value,
+          $Res Function(_$WebSearchOptionsUserLocationImpl) then) =
+      __$$WebSearchOptionsUserLocationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {WebSearchOptionsUserLocationType type, WebSearchLocation approximate});
+
+  @override
+  $WebSearchLocationCopyWith<$Res> get approximate;
+}
+
+/// @nodoc
+class __$$WebSearchOptionsUserLocationImplCopyWithImpl<$Res>
+    extends _$WebSearchOptionsUserLocationCopyWithImpl<$Res,
+        _$WebSearchOptionsUserLocationImpl>
+    implements _$$WebSearchOptionsUserLocationImplCopyWith<$Res> {
+  __$$WebSearchOptionsUserLocationImplCopyWithImpl(
+      _$WebSearchOptionsUserLocationImpl _value,
+      $Res Function(_$WebSearchOptionsUserLocationImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WebSearchOptionsUserLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? approximate = null,
+  }) {
+    return _then(_$WebSearchOptionsUserLocationImpl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as WebSearchOptionsUserLocationType,
+      approximate: null == approximate
+          ? _value.approximate
+          : approximate // ignore: cast_nullable_to_non_nullable
+              as WebSearchLocation,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$WebSearchOptionsUserLocationImpl extends _WebSearchOptionsUserLocation {
+  const _$WebSearchOptionsUserLocationImpl(
+      {required this.type, required this.approximate})
+      : super._();
+
+  factory _$WebSearchOptionsUserLocationImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$WebSearchOptionsUserLocationImplFromJson(json);
+
+  /// The type of location approximation. Always `approximate`.
+  @override
+  final WebSearchOptionsUserLocationType type;
+
+  /// Approximate location parameters for the search.
+  @override
+  final WebSearchLocation approximate;
+
+  @override
+  String toString() {
+    return 'WebSearchOptionsUserLocation(type: $type, approximate: $approximate)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WebSearchOptionsUserLocationImpl &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.approximate, approximate) ||
+                other.approximate == approximate));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, type, approximate);
+
+  /// Create a copy of WebSearchOptionsUserLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WebSearchOptionsUserLocationImplCopyWith<
+          _$WebSearchOptionsUserLocationImpl>
+      get copyWith => __$$WebSearchOptionsUserLocationImplCopyWithImpl<
+          _$WebSearchOptionsUserLocationImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WebSearchOptionsUserLocationImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WebSearchOptionsUserLocation
+    extends WebSearchOptionsUserLocation {
+  const factory _WebSearchOptionsUserLocation(
+          {required final WebSearchOptionsUserLocationType type,
+          required final WebSearchLocation approximate}) =
+      _$WebSearchOptionsUserLocationImpl;
+  const _WebSearchOptionsUserLocation._() : super._();
+
+  factory _WebSearchOptionsUserLocation.fromJson(Map<String, dynamic> json) =
+      _$WebSearchOptionsUserLocationImpl.fromJson;
+
+  /// The type of location approximation. Always `approximate`.
+  @override
+  WebSearchOptionsUserLocationType get type;
+
+  /// Approximate location parameters for the search.
+  @override
+  WebSearchLocation get approximate;
+
+  /// Create a copy of WebSearchOptionsUserLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WebSearchOptionsUserLocationImplCopyWith<
+          _$WebSearchOptionsUserLocationImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+WebSearchLocation _$WebSearchLocationFromJson(Map<String, dynamic> json) {
+  return _WebSearchLocation.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WebSearchLocation {
+  /// The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+  @JsonKey(includeIfNull: false)
+  String? get country => throw _privateConstructorUsedError;
+
+  /// Free text input for the region of the user, e.g. `California`.
+  @JsonKey(includeIfNull: false)
+  String? get region => throw _privateConstructorUsedError;
+
+  /// Free text input for the city of the user, e.g. `San Francisco`.
+  @JsonKey(includeIfNull: false)
+  String? get city => throw _privateConstructorUsedError;
+
+  /// The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+  @JsonKey(includeIfNull: false)
+  String? get timezone => throw _privateConstructorUsedError;
+
+  /// Serializes this WebSearchLocation to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of WebSearchLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $WebSearchLocationCopyWith<WebSearchLocation> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WebSearchLocationCopyWith<$Res> {
+  factory $WebSearchLocationCopyWith(
+          WebSearchLocation value, $Res Function(WebSearchLocation) then) =
+      _$WebSearchLocationCopyWithImpl<$Res, WebSearchLocation>;
+  @useResult
+  $Res call(
+      {@JsonKey(includeIfNull: false) String? country,
+      @JsonKey(includeIfNull: false) String? region,
+      @JsonKey(includeIfNull: false) String? city,
+      @JsonKey(includeIfNull: false) String? timezone});
+}
+
+/// @nodoc
+class _$WebSearchLocationCopyWithImpl<$Res, $Val extends WebSearchLocation>
+    implements $WebSearchLocationCopyWith<$Res> {
+  _$WebSearchLocationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of WebSearchLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? country = freezed,
+    Object? region = freezed,
+    Object? city = freezed,
+    Object? timezone = freezed,
+  }) {
+    return _then(_value.copyWith(
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
+      region: freezed == region
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      timezone: freezed == timezone
+          ? _value.timezone
+          : timezone // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$WebSearchLocationImplCopyWith<$Res>
+    implements $WebSearchLocationCopyWith<$Res> {
+  factory _$$WebSearchLocationImplCopyWith(_$WebSearchLocationImpl value,
+          $Res Function(_$WebSearchLocationImpl) then) =
+      __$$WebSearchLocationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(includeIfNull: false) String? country,
+      @JsonKey(includeIfNull: false) String? region,
+      @JsonKey(includeIfNull: false) String? city,
+      @JsonKey(includeIfNull: false) String? timezone});
+}
+
+/// @nodoc
+class __$$WebSearchLocationImplCopyWithImpl<$Res>
+    extends _$WebSearchLocationCopyWithImpl<$Res, _$WebSearchLocationImpl>
+    implements _$$WebSearchLocationImplCopyWith<$Res> {
+  __$$WebSearchLocationImplCopyWithImpl(_$WebSearchLocationImpl _value,
+      $Res Function(_$WebSearchLocationImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WebSearchLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? country = freezed,
+    Object? region = freezed,
+    Object? city = freezed,
+    Object? timezone = freezed,
+  }) {
+    return _then(_$WebSearchLocationImpl(
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
+      region: freezed == region
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      timezone: freezed == timezone
+          ? _value.timezone
+          : timezone // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$WebSearchLocationImpl extends _WebSearchLocation {
+  const _$WebSearchLocationImpl(
+      {@JsonKey(includeIfNull: false) this.country,
+      @JsonKey(includeIfNull: false) this.region,
+      @JsonKey(includeIfNull: false) this.city,
+      @JsonKey(includeIfNull: false) this.timezone})
+      : super._();
+
+  factory _$WebSearchLocationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WebSearchLocationImplFromJson(json);
+
+  /// The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? country;
+
+  /// Free text input for the region of the user, e.g. `California`.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? region;
+
+  /// Free text input for the city of the user, e.g. `San Francisco`.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? city;
+
+  /// The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? timezone;
+
+  @override
+  String toString() {
+    return 'WebSearchLocation(country: $country, region: $region, city: $city, timezone: $timezone)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WebSearchLocationImpl &&
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.region, region) || other.region == region) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.timezone, timezone) ||
+                other.timezone == timezone));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, country, region, city, timezone);
+
+  /// Create a copy of WebSearchLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WebSearchLocationImplCopyWith<_$WebSearchLocationImpl> get copyWith =>
+      __$$WebSearchLocationImplCopyWithImpl<_$WebSearchLocationImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WebSearchLocationImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WebSearchLocation extends WebSearchLocation {
+  const factory _WebSearchLocation(
+          {@JsonKey(includeIfNull: false) final String? country,
+          @JsonKey(includeIfNull: false) final String? region,
+          @JsonKey(includeIfNull: false) final String? city,
+          @JsonKey(includeIfNull: false) final String? timezone}) =
+      _$WebSearchLocationImpl;
+  const _WebSearchLocation._() : super._();
+
+  factory _WebSearchLocation.fromJson(Map<String, dynamic> json) =
+      _$WebSearchLocationImpl.fromJson;
+
+  /// The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get country;
+
+  /// Free text input for the region of the user, e.g. `California`.
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get region;
+
+  /// Free text input for the city of the user, e.g. `San Francisco`.
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get city;
+
+  /// The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get timezone;
+
+  /// Create a copy of WebSearchLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WebSearchLocationImplCopyWith<_$WebSearchLocationImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 ChatCompletionMessage _$ChatCompletionMessageFromJson(
     Map<String, dynamic> json) {
   switch (json['role']) {
+    case 'developer':
+      return ChatCompletionDeveloperMessage.fromJson(json);
     case 'system':
       return ChatCompletionSystemMessage.fromJson(json);
     case 'user':
@@ -57741,13 +59672,20 @@ ChatCompletionMessage _$ChatCompletionMessageFromJson(
 
 /// @nodoc
 mixin _$ChatCompletionMessage {
-  /// The role of the messages author, in this case `system`.
+  /// The role of the messages author, in this case `developer`.
   ChatCompletionMessageRole get role => throw _privateConstructorUsedError;
 
-  /// The contents of the system message.
+  /// The contents of the developer message.
+  @_ChatCompletionDeveloperMessageContentConverter()
   Object? get content => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)
+        developer,
     required TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)
         system,
@@ -57764,6 +59702,7 @@ mixin _$ChatCompletionMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -57779,6 +59718,12 @@ mixin _$ChatCompletionMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult? Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -57795,6 +59740,7 @@ mixin _$ChatCompletionMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -57810,6 +59756,12 @@ mixin _$ChatCompletionMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -57826,6 +59778,7 @@ mixin _$ChatCompletionMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -57842,6 +59795,7 @@ mixin _$ChatCompletionMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ChatCompletionDeveloperMessage value) developer,
     required TResult Function(ChatCompletionSystemMessage value) system,
     required TResult Function(ChatCompletionUserMessage value) user,
     required TResult Function(ChatCompletionAssistantMessage value) assistant,
@@ -57851,6 +59805,7 @@ mixin _$ChatCompletionMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatCompletionDeveloperMessage value)? developer,
     TResult? Function(ChatCompletionSystemMessage value)? system,
     TResult? Function(ChatCompletionUserMessage value)? user,
     TResult? Function(ChatCompletionAssistantMessage value)? assistant,
@@ -57860,6 +59815,7 @@ mixin _$ChatCompletionMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatCompletionDeveloperMessage value)? developer,
     TResult Function(ChatCompletionSystemMessage value)? system,
     TResult Function(ChatCompletionUserMessage value)? user,
     TResult Function(ChatCompletionAssistantMessage value)? assistant,
@@ -57913,6 +59869,341 @@ class _$ChatCompletionMessageCopyWithImpl<$Res,
               as ChatCompletionMessageRole,
     ) as $Val);
   }
+}
+
+/// @nodoc
+abstract class _$$ChatCompletionDeveloperMessageImplCopyWith<$Res>
+    implements $ChatCompletionMessageCopyWith<$Res> {
+  factory _$$ChatCompletionDeveloperMessageImplCopyWith(
+          _$ChatCompletionDeveloperMessageImpl value,
+          $Res Function(_$ChatCompletionDeveloperMessageImpl) then) =
+      __$$ChatCompletionDeveloperMessageImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {ChatCompletionMessageRole role,
+      @_ChatCompletionDeveloperMessageContentConverter()
+      ChatCompletionDeveloperMessageContent content,
+      @JsonKey(includeIfNull: false) String? name});
+
+  $ChatCompletionDeveloperMessageContentCopyWith<$Res> get content;
+}
+
+/// @nodoc
+class __$$ChatCompletionDeveloperMessageImplCopyWithImpl<$Res>
+    extends _$ChatCompletionMessageCopyWithImpl<$Res,
+        _$ChatCompletionDeveloperMessageImpl>
+    implements _$$ChatCompletionDeveloperMessageImplCopyWith<$Res> {
+  __$$ChatCompletionDeveloperMessageImplCopyWithImpl(
+      _$ChatCompletionDeveloperMessageImpl _value,
+      $Res Function(_$ChatCompletionDeveloperMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatCompletionMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? role = null,
+    Object? content = null,
+    Object? name = freezed,
+  }) {
+    return _then(_$ChatCompletionDeveloperMessageImpl(
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as ChatCompletionMessageRole,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as ChatCompletionDeveloperMessageContent,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of ChatCompletionMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ChatCompletionDeveloperMessageContentCopyWith<$Res> get content {
+    return $ChatCompletionDeveloperMessageContentCopyWith<$Res>(_value.content,
+        (value) {
+      return _then(_value.copyWith(content: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ChatCompletionDeveloperMessageImpl
+    extends ChatCompletionDeveloperMessage {
+  const _$ChatCompletionDeveloperMessageImpl(
+      {this.role = ChatCompletionMessageRole.developer,
+      @_ChatCompletionDeveloperMessageContentConverter() required this.content,
+      @JsonKey(includeIfNull: false) this.name})
+      : super._();
+
+  factory _$ChatCompletionDeveloperMessageImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ChatCompletionDeveloperMessageImplFromJson(json);
+
+  /// The role of the messages author, in this case `developer`.
+  @override
+  @JsonKey()
+  final ChatCompletionMessageRole role;
+
+  /// The contents of the developer message.
+  @override
+  @_ChatCompletionDeveloperMessageContentConverter()
+  final ChatCompletionDeveloperMessageContent content;
+
+  /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? name;
+
+  @override
+  String toString() {
+    return 'ChatCompletionMessage.developer(role: $role, content: $content, name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChatCompletionDeveloperMessageImpl &&
+            (identical(other.role, role) || other.role == role) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, role, content, name);
+
+  /// Create a copy of ChatCompletionMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChatCompletionDeveloperMessageImplCopyWith<
+          _$ChatCompletionDeveloperMessageImpl>
+      get copyWith => __$$ChatCompletionDeveloperMessageImplCopyWithImpl<
+          _$ChatCompletionDeveloperMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)
+        developer,
+    required TResult Function(ChatCompletionMessageRole role, String content,
+            @JsonKey(includeIfNull: false) String? name)
+        system,
+    required TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionUserMessageContentConverter()
+            ChatCompletionUserMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)
+        user,
+    required TResult Function(
+            ChatCompletionMessageRole role,
+            @JsonKey(includeIfNull: false) String? content,
+            @JsonKey(includeIfNull: false) String? refusal,
+            @JsonKey(includeIfNull: false) String? name,
+            @JsonKey(name: 'tool_calls', includeIfNull: false)
+            List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
+            @JsonKey(name: 'function_call', includeIfNull: false)
+            ChatCompletionMessageFunctionCall? functionCall,
+            @JsonKey(includeIfNull: false)
+            ChatCompletionAssistantMessageAudio? audio)
+        assistant,
+    required TResult Function(ChatCompletionMessageRole role, String content,
+            @JsonKey(name: 'tool_call_id') String toolCallId)
+        tool,
+    required TResult Function(
+            ChatCompletionMessageRole role, String? content, String name)
+        function,
+  }) {
+    return developer(role, content, name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
+    TResult? Function(ChatCompletionMessageRole role, String content,
+            @JsonKey(includeIfNull: false) String? name)?
+        system,
+    TResult? Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionUserMessageContentConverter()
+            ChatCompletionUserMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        user,
+    TResult? Function(
+            ChatCompletionMessageRole role,
+            @JsonKey(includeIfNull: false) String? content,
+            @JsonKey(includeIfNull: false) String? refusal,
+            @JsonKey(includeIfNull: false) String? name,
+            @JsonKey(name: 'tool_calls', includeIfNull: false)
+            List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
+            @JsonKey(name: 'function_call', includeIfNull: false)
+            ChatCompletionMessageFunctionCall? functionCall,
+            @JsonKey(includeIfNull: false)
+            ChatCompletionAssistantMessageAudio? audio)?
+        assistant,
+    TResult? Function(ChatCompletionMessageRole role, String content,
+            @JsonKey(name: 'tool_call_id') String toolCallId)?
+        tool,
+    TResult? Function(
+            ChatCompletionMessageRole role, String? content, String name)?
+        function,
+  }) {
+    return developer?.call(role, content, name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
+    TResult Function(ChatCompletionMessageRole role, String content,
+            @JsonKey(includeIfNull: false) String? name)?
+        system,
+    TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionUserMessageContentConverter()
+            ChatCompletionUserMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        user,
+    TResult Function(
+            ChatCompletionMessageRole role,
+            @JsonKey(includeIfNull: false) String? content,
+            @JsonKey(includeIfNull: false) String? refusal,
+            @JsonKey(includeIfNull: false) String? name,
+            @JsonKey(name: 'tool_calls', includeIfNull: false)
+            List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
+            @JsonKey(name: 'function_call', includeIfNull: false)
+            ChatCompletionMessageFunctionCall? functionCall,
+            @JsonKey(includeIfNull: false)
+            ChatCompletionAssistantMessageAudio? audio)?
+        assistant,
+    TResult Function(ChatCompletionMessageRole role, String content,
+            @JsonKey(name: 'tool_call_id') String toolCallId)?
+        tool,
+    TResult Function(
+            ChatCompletionMessageRole role, String? content, String name)?
+        function,
+    required TResult orElse(),
+  }) {
+    if (developer != null) {
+      return developer(role, content, name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChatCompletionDeveloperMessage value) developer,
+    required TResult Function(ChatCompletionSystemMessage value) system,
+    required TResult Function(ChatCompletionUserMessage value) user,
+    required TResult Function(ChatCompletionAssistantMessage value) assistant,
+    required TResult Function(ChatCompletionToolMessage value) tool,
+    required TResult Function(ChatCompletionFunctionMessage value) function,
+  }) {
+    return developer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatCompletionDeveloperMessage value)? developer,
+    TResult? Function(ChatCompletionSystemMessage value)? system,
+    TResult? Function(ChatCompletionUserMessage value)? user,
+    TResult? Function(ChatCompletionAssistantMessage value)? assistant,
+    TResult? Function(ChatCompletionToolMessage value)? tool,
+    TResult? Function(ChatCompletionFunctionMessage value)? function,
+  }) {
+    return developer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatCompletionDeveloperMessage value)? developer,
+    TResult Function(ChatCompletionSystemMessage value)? system,
+    TResult Function(ChatCompletionUserMessage value)? user,
+    TResult Function(ChatCompletionAssistantMessage value)? assistant,
+    TResult Function(ChatCompletionToolMessage value)? tool,
+    TResult Function(ChatCompletionFunctionMessage value)? function,
+    required TResult orElse(),
+  }) {
+    if (developer != null) {
+      return developer(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ChatCompletionDeveloperMessageImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class ChatCompletionDeveloperMessage extends ChatCompletionMessage {
+  const factory ChatCompletionDeveloperMessage(
+          {final ChatCompletionMessageRole role,
+          @_ChatCompletionDeveloperMessageContentConverter()
+          required final ChatCompletionDeveloperMessageContent content,
+          @JsonKey(includeIfNull: false) final String? name}) =
+      _$ChatCompletionDeveloperMessageImpl;
+  const ChatCompletionDeveloperMessage._() : super._();
+
+  factory ChatCompletionDeveloperMessage.fromJson(Map<String, dynamic> json) =
+      _$ChatCompletionDeveloperMessageImpl.fromJson;
+
+  /// The role of the messages author, in this case `developer`.
+  @override
+  ChatCompletionMessageRole get role;
+
+  /// The contents of the developer message.
+  @override
+  @_ChatCompletionDeveloperMessageContentConverter()
+  ChatCompletionDeveloperMessageContent get content;
+
+  /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+  @JsonKey(includeIfNull: false)
+  String? get name;
+
+  /// Create a copy of ChatCompletionMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChatCompletionDeveloperMessageImplCopyWith<
+          _$ChatCompletionDeveloperMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -58024,6 +60315,12 @@ class _$ChatCompletionSystemMessageImpl extends ChatCompletionSystemMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)
+        developer,
     required TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)
         system,
@@ -58040,6 +60337,7 @@ class _$ChatCompletionSystemMessageImpl extends ChatCompletionSystemMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -58058,6 +60356,12 @@ class _$ChatCompletionSystemMessageImpl extends ChatCompletionSystemMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult? Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -58074,6 +60378,7 @@ class _$ChatCompletionSystemMessageImpl extends ChatCompletionSystemMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -58092,6 +60397,12 @@ class _$ChatCompletionSystemMessageImpl extends ChatCompletionSystemMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -58108,6 +60419,7 @@ class _$ChatCompletionSystemMessageImpl extends ChatCompletionSystemMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -58130,6 +60442,7 @@ class _$ChatCompletionSystemMessageImpl extends ChatCompletionSystemMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ChatCompletionDeveloperMessage value) developer,
     required TResult Function(ChatCompletionSystemMessage value) system,
     required TResult Function(ChatCompletionUserMessage value) user,
     required TResult Function(ChatCompletionAssistantMessage value) assistant,
@@ -58142,6 +60455,7 @@ class _$ChatCompletionSystemMessageImpl extends ChatCompletionSystemMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatCompletionDeveloperMessage value)? developer,
     TResult? Function(ChatCompletionSystemMessage value)? system,
     TResult? Function(ChatCompletionUserMessage value)? user,
     TResult? Function(ChatCompletionAssistantMessage value)? assistant,
@@ -58154,6 +60468,7 @@ class _$ChatCompletionSystemMessageImpl extends ChatCompletionSystemMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatCompletionDeveloperMessage value)? developer,
     TResult Function(ChatCompletionSystemMessage value)? system,
     TResult Function(ChatCompletionUserMessage value)? user,
     TResult Function(ChatCompletionAssistantMessage value)? assistant,
@@ -58329,6 +60644,12 @@ class _$ChatCompletionUserMessageImpl extends ChatCompletionUserMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)
+        developer,
     required TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)
         system,
@@ -58345,6 +60666,7 @@ class _$ChatCompletionUserMessageImpl extends ChatCompletionUserMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -58363,6 +60685,12 @@ class _$ChatCompletionUserMessageImpl extends ChatCompletionUserMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult? Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -58379,6 +60707,7 @@ class _$ChatCompletionUserMessageImpl extends ChatCompletionUserMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -58397,6 +60726,12 @@ class _$ChatCompletionUserMessageImpl extends ChatCompletionUserMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -58413,6 +60748,7 @@ class _$ChatCompletionUserMessageImpl extends ChatCompletionUserMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -58435,6 +60771,7 @@ class _$ChatCompletionUserMessageImpl extends ChatCompletionUserMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ChatCompletionDeveloperMessage value) developer,
     required TResult Function(ChatCompletionSystemMessage value) system,
     required TResult Function(ChatCompletionUserMessage value) user,
     required TResult Function(ChatCompletionAssistantMessage value) assistant,
@@ -58447,6 +60784,7 @@ class _$ChatCompletionUserMessageImpl extends ChatCompletionUserMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatCompletionDeveloperMessage value)? developer,
     TResult? Function(ChatCompletionSystemMessage value)? system,
     TResult? Function(ChatCompletionUserMessage value)? user,
     TResult? Function(ChatCompletionAssistantMessage value)? assistant,
@@ -58459,6 +60797,7 @@ class _$ChatCompletionUserMessageImpl extends ChatCompletionUserMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatCompletionDeveloperMessage value)? developer,
     TResult Function(ChatCompletionSystemMessage value)? system,
     TResult Function(ChatCompletionUserMessage value)? user,
     TResult Function(ChatCompletionAssistantMessage value)? assistant,
@@ -58529,6 +60868,7 @@ abstract class _$$ChatCompletionAssistantMessageImplCopyWith<$Res>
       @JsonKey(includeIfNull: false) String? name,
       @JsonKey(name: 'tool_calls', includeIfNull: false)
       List<ChatCompletionMessageToolCall>? toolCalls,
+      @JsonKey(includeIfNull: false) List<Annotation>? annotations,
       @JsonKey(name: 'function_call', includeIfNull: false)
       ChatCompletionMessageFunctionCall? functionCall,
       @JsonKey(includeIfNull: false)
@@ -58558,6 +60898,7 @@ class __$$ChatCompletionAssistantMessageImplCopyWithImpl<$Res>
     Object? refusal = freezed,
     Object? name = freezed,
     Object? toolCalls = freezed,
+    Object? annotations = freezed,
     Object? functionCall = freezed,
     Object? audio = freezed,
   }) {
@@ -58582,6 +60923,10 @@ class __$$ChatCompletionAssistantMessageImplCopyWithImpl<$Res>
           ? _value._toolCalls
           : toolCalls // ignore: cast_nullable_to_non_nullable
               as List<ChatCompletionMessageToolCall>?,
+      annotations: freezed == annotations
+          ? _value._annotations
+          : annotations // ignore: cast_nullable_to_non_nullable
+              as List<Annotation>?,
       functionCall: freezed == functionCall
           ? _value.functionCall
           : functionCall // ignore: cast_nullable_to_non_nullable
@@ -58635,9 +60980,11 @@ class _$ChatCompletionAssistantMessageImpl
       @JsonKey(includeIfNull: false) this.name,
       @JsonKey(name: 'tool_calls', includeIfNull: false)
       final List<ChatCompletionMessageToolCall>? toolCalls,
+      @JsonKey(includeIfNull: false) final List<Annotation>? annotations,
       @JsonKey(name: 'function_call', includeIfNull: false) this.functionCall,
       @JsonKey(includeIfNull: false) this.audio})
       : _toolCalls = toolCalls,
+        _annotations = annotations,
         super._();
 
   factory _$ChatCompletionAssistantMessageImpl.fromJson(
@@ -58678,6 +61025,22 @@ class _$ChatCompletionAssistantMessageImpl
     return EqualUnmodifiableListView(value);
   }
 
+  /// Annotations for the message, when applicable, as when using the
+  /// [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
+  final List<Annotation>? _annotations;
+
+  /// Annotations for the message, when applicable, as when using the
+  /// [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
+  @override
+  @JsonKey(includeIfNull: false)
+  List<Annotation>? get annotations {
+    final value = _annotations;
+    if (value == null) return null;
+    if (_annotations is EqualUnmodifiableListView) return _annotations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   /// Deprecated and replaced by `tool_calls`. The name and arguments of a function that should be called, as generated by the model.
   @override
   @JsonKey(name: 'function_call', includeIfNull: false)
@@ -58691,7 +61054,7 @@ class _$ChatCompletionAssistantMessageImpl
 
   @override
   String toString() {
-    return 'ChatCompletionMessage.assistant(role: $role, content: $content, refusal: $refusal, name: $name, toolCalls: $toolCalls, functionCall: $functionCall, audio: $audio)';
+    return 'ChatCompletionMessage.assistant(role: $role, content: $content, refusal: $refusal, name: $name, toolCalls: $toolCalls, annotations: $annotations, functionCall: $functionCall, audio: $audio)';
   }
 
   @override
@@ -58705,6 +61068,8 @@ class _$ChatCompletionAssistantMessageImpl
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality()
                 .equals(other._toolCalls, _toolCalls) &&
+            const DeepCollectionEquality()
+                .equals(other._annotations, _annotations) &&
             (identical(other.functionCall, functionCall) ||
                 other.functionCall == functionCall) &&
             (identical(other.audio, audio) || other.audio == audio));
@@ -58712,8 +61077,16 @@ class _$ChatCompletionAssistantMessageImpl
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, role, content, refusal, name,
-      const DeepCollectionEquality().hash(_toolCalls), functionCall, audio);
+  int get hashCode => Object.hash(
+      runtimeType,
+      role,
+      content,
+      refusal,
+      name,
+      const DeepCollectionEquality().hash(_toolCalls),
+      const DeepCollectionEquality().hash(_annotations),
+      functionCall,
+      audio);
 
   /// Create a copy of ChatCompletionMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -58728,6 +61101,12 @@ class _$ChatCompletionAssistantMessageImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)
+        developer,
     required TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)
         system,
@@ -58744,6 +61123,7 @@ class _$ChatCompletionAssistantMessageImpl
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -58756,13 +61136,19 @@ class _$ChatCompletionAssistantMessageImpl
             ChatCompletionMessageRole role, String? content, String name)
         function,
   }) {
-    return assistant(
-        role, content, refusal, name, toolCalls, functionCall, audio);
+    return assistant(role, content, refusal, name, toolCalls, annotations,
+        functionCall, audio);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult? Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -58779,6 +61165,7 @@ class _$ChatCompletionAssistantMessageImpl
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -58791,13 +61178,19 @@ class _$ChatCompletionAssistantMessageImpl
             ChatCompletionMessageRole role, String? content, String name)?
         function,
   }) {
-    return assistant?.call(
-        role, content, refusal, name, toolCalls, functionCall, audio);
+    return assistant?.call(role, content, refusal, name, toolCalls, annotations,
+        functionCall, audio);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -58814,6 +61207,7 @@ class _$ChatCompletionAssistantMessageImpl
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -58828,8 +61222,8 @@ class _$ChatCompletionAssistantMessageImpl
     required TResult orElse(),
   }) {
     if (assistant != null) {
-      return assistant(
-          role, content, refusal, name, toolCalls, functionCall, audio);
+      return assistant(role, content, refusal, name, toolCalls, annotations,
+          functionCall, audio);
     }
     return orElse();
   }
@@ -58837,6 +61231,7 @@ class _$ChatCompletionAssistantMessageImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ChatCompletionDeveloperMessage value) developer,
     required TResult Function(ChatCompletionSystemMessage value) system,
     required TResult Function(ChatCompletionUserMessage value) user,
     required TResult Function(ChatCompletionAssistantMessage value) assistant,
@@ -58849,6 +61244,7 @@ class _$ChatCompletionAssistantMessageImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatCompletionDeveloperMessage value)? developer,
     TResult? Function(ChatCompletionSystemMessage value)? system,
     TResult? Function(ChatCompletionUserMessage value)? user,
     TResult? Function(ChatCompletionAssistantMessage value)? assistant,
@@ -58861,6 +61257,7 @@ class _$ChatCompletionAssistantMessageImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatCompletionDeveloperMessage value)? developer,
     TResult Function(ChatCompletionSystemMessage value)? system,
     TResult Function(ChatCompletionUserMessage value)? user,
     TResult Function(ChatCompletionAssistantMessage value)? assistant,
@@ -58890,6 +61287,7 @@ abstract class ChatCompletionAssistantMessage extends ChatCompletionMessage {
           @JsonKey(includeIfNull: false) final String? name,
           @JsonKey(name: 'tool_calls', includeIfNull: false)
           final List<ChatCompletionMessageToolCall>? toolCalls,
+          @JsonKey(includeIfNull: false) final List<Annotation>? annotations,
           @JsonKey(name: 'function_call', includeIfNull: false)
           final ChatCompletionMessageFunctionCall? functionCall,
           @JsonKey(includeIfNull: false)
@@ -58920,6 +61318,11 @@ abstract class ChatCompletionAssistantMessage extends ChatCompletionMessage {
   /// No Description
   @JsonKey(name: 'tool_calls', includeIfNull: false)
   List<ChatCompletionMessageToolCall>? get toolCalls;
+
+  /// Annotations for the message, when applicable, as when using the
+  /// [web search tool](https://platform.openai.com/docs/guides/tools-web-search?api-mode=chat).
+  @JsonKey(includeIfNull: false)
+  List<Annotation>? get annotations;
 
   /// Deprecated and replaced by `tool_calls`. The name and arguments of a function that should be called, as generated by the model.
   @JsonKey(name: 'function_call', includeIfNull: false)
@@ -59048,6 +61451,12 @@ class _$ChatCompletionToolMessageImpl extends ChatCompletionToolMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)
+        developer,
     required TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)
         system,
@@ -59064,6 +61473,7 @@ class _$ChatCompletionToolMessageImpl extends ChatCompletionToolMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -59082,6 +61492,12 @@ class _$ChatCompletionToolMessageImpl extends ChatCompletionToolMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult? Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -59098,6 +61514,7 @@ class _$ChatCompletionToolMessageImpl extends ChatCompletionToolMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -59116,6 +61533,12 @@ class _$ChatCompletionToolMessageImpl extends ChatCompletionToolMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -59132,6 +61555,7 @@ class _$ChatCompletionToolMessageImpl extends ChatCompletionToolMessage {
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -59154,6 +61578,7 @@ class _$ChatCompletionToolMessageImpl extends ChatCompletionToolMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ChatCompletionDeveloperMessage value) developer,
     required TResult Function(ChatCompletionSystemMessage value) system,
     required TResult Function(ChatCompletionUserMessage value) user,
     required TResult Function(ChatCompletionAssistantMessage value) assistant,
@@ -59166,6 +61591,7 @@ class _$ChatCompletionToolMessageImpl extends ChatCompletionToolMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatCompletionDeveloperMessage value)? developer,
     TResult? Function(ChatCompletionSystemMessage value)? system,
     TResult? Function(ChatCompletionUserMessage value)? user,
     TResult? Function(ChatCompletionAssistantMessage value)? assistant,
@@ -59178,6 +61604,7 @@ class _$ChatCompletionToolMessageImpl extends ChatCompletionToolMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatCompletionDeveloperMessage value)? developer,
     TResult Function(ChatCompletionSystemMessage value)? system,
     TResult Function(ChatCompletionUserMessage value)? user,
     TResult Function(ChatCompletionAssistantMessage value)? assistant,
@@ -59337,6 +61764,12 @@ class _$ChatCompletionFunctionMessageImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)
+        developer,
     required TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)
         system,
@@ -59353,6 +61786,7 @@ class _$ChatCompletionFunctionMessageImpl
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -59371,6 +61805,12 @@ class _$ChatCompletionFunctionMessageImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult? Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -59387,6 +61827,7 @@ class _$ChatCompletionFunctionMessageImpl
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -59405,6 +61846,12 @@ class _$ChatCompletionFunctionMessageImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            ChatCompletionMessageRole role,
+            @_ChatCompletionDeveloperMessageContentConverter()
+            ChatCompletionDeveloperMessageContent content,
+            @JsonKey(includeIfNull: false) String? name)?
+        developer,
     TResult Function(ChatCompletionMessageRole role, String content,
             @JsonKey(includeIfNull: false) String? name)?
         system,
@@ -59421,6 +61868,7 @@ class _$ChatCompletionFunctionMessageImpl
             @JsonKey(includeIfNull: false) String? name,
             @JsonKey(name: 'tool_calls', includeIfNull: false)
             List<ChatCompletionMessageToolCall>? toolCalls,
+            @JsonKey(includeIfNull: false) List<Annotation>? annotations,
             @JsonKey(name: 'function_call', includeIfNull: false)
             ChatCompletionMessageFunctionCall? functionCall,
             @JsonKey(includeIfNull: false)
@@ -59443,6 +61891,7 @@ class _$ChatCompletionFunctionMessageImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ChatCompletionDeveloperMessage value) developer,
     required TResult Function(ChatCompletionSystemMessage value) system,
     required TResult Function(ChatCompletionUserMessage value) user,
     required TResult Function(ChatCompletionAssistantMessage value) assistant,
@@ -59455,6 +61904,7 @@ class _$ChatCompletionFunctionMessageImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatCompletionDeveloperMessage value)? developer,
     TResult? Function(ChatCompletionSystemMessage value)? system,
     TResult? Function(ChatCompletionUserMessage value)? user,
     TResult? Function(ChatCompletionAssistantMessage value)? assistant,
@@ -59467,6 +61917,7 @@ class _$ChatCompletionFunctionMessageImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatCompletionDeveloperMessage value)? developer,
     TResult Function(ChatCompletionSystemMessage value)? system,
     TResult Function(ChatCompletionUserMessage value)? user,
     TResult Function(ChatCompletionAssistantMessage value)? assistant,
@@ -59515,6 +61966,465 @@ abstract class ChatCompletionFunctionMessage extends ChatCompletionMessage {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChatCompletionFunctionMessageImplCopyWith<
           _$ChatCompletionFunctionMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+ChatCompletionDeveloperMessageContent
+    _$ChatCompletionDeveloperMessageContentFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'parts':
+      return ChatCompletionDeveloperMessageContentParts.fromJson(json);
+    case 'text':
+      return ChatCompletionDeveloperMessageContentString.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'ChatCompletionDeveloperMessageContent',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ChatCompletionDeveloperMessageContent {
+  Object get value => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<ChatCompletionMessageContentPart> value)
+        parts,
+    required TResult Function(String value) text,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<ChatCompletionMessageContentPart> value)? parts,
+    TResult? Function(String value)? text,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<ChatCompletionMessageContentPart> value)? parts,
+    TResult Function(String value)? text,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChatCompletionDeveloperMessageContentParts value)
+        parts,
+    required TResult Function(ChatCompletionDeveloperMessageContentString value)
+        text,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatCompletionDeveloperMessageContentParts value)? parts,
+    TResult? Function(ChatCompletionDeveloperMessageContentString value)? text,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatCompletionDeveloperMessageContentParts value)? parts,
+    TResult Function(ChatCompletionDeveloperMessageContentString value)? text,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this ChatCompletionDeveloperMessageContent to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChatCompletionDeveloperMessageContentCopyWith<$Res> {
+  factory $ChatCompletionDeveloperMessageContentCopyWith(
+          ChatCompletionDeveloperMessageContent value,
+          $Res Function(ChatCompletionDeveloperMessageContent) then) =
+      _$ChatCompletionDeveloperMessageContentCopyWithImpl<$Res,
+          ChatCompletionDeveloperMessageContent>;
+}
+
+/// @nodoc
+class _$ChatCompletionDeveloperMessageContentCopyWithImpl<$Res,
+        $Val extends ChatCompletionDeveloperMessageContent>
+    implements $ChatCompletionDeveloperMessageContentCopyWith<$Res> {
+  _$ChatCompletionDeveloperMessageContentCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ChatCompletionDeveloperMessageContent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ChatCompletionDeveloperMessageContentPartsImplCopyWith<$Res> {
+  factory _$$ChatCompletionDeveloperMessageContentPartsImplCopyWith(
+          _$ChatCompletionDeveloperMessageContentPartsImpl value,
+          $Res Function(_$ChatCompletionDeveloperMessageContentPartsImpl)
+              then) =
+      __$$ChatCompletionDeveloperMessageContentPartsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ChatCompletionMessageContentPart> value});
+}
+
+/// @nodoc
+class __$$ChatCompletionDeveloperMessageContentPartsImplCopyWithImpl<$Res>
+    extends _$ChatCompletionDeveloperMessageContentCopyWithImpl<$Res,
+        _$ChatCompletionDeveloperMessageContentPartsImpl>
+    implements _$$ChatCompletionDeveloperMessageContentPartsImplCopyWith<$Res> {
+  __$$ChatCompletionDeveloperMessageContentPartsImplCopyWithImpl(
+      _$ChatCompletionDeveloperMessageContentPartsImpl _value,
+      $Res Function(_$ChatCompletionDeveloperMessageContentPartsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatCompletionDeveloperMessageContent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$ChatCompletionDeveloperMessageContentPartsImpl(
+      null == value
+          ? _value._value
+          : value // ignore: cast_nullable_to_non_nullable
+              as List<ChatCompletionMessageContentPart>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ChatCompletionDeveloperMessageContentPartsImpl
+    extends ChatCompletionDeveloperMessageContentParts {
+  const _$ChatCompletionDeveloperMessageContentPartsImpl(
+      final List<ChatCompletionMessageContentPart> value,
+      {final String? $type})
+      : _value = value,
+        $type = $type ?? 'parts',
+        super._();
+
+  factory _$ChatCompletionDeveloperMessageContentPartsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ChatCompletionDeveloperMessageContentPartsImplFromJson(json);
+
+  final List<ChatCompletionMessageContentPart> _value;
+  @override
+  List<ChatCompletionMessageContentPart> get value {
+    if (_value is EqualUnmodifiableListView) return _value;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_value);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ChatCompletionDeveloperMessageContent.parts(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChatCompletionDeveloperMessageContentPartsImpl &&
+            const DeepCollectionEquality().equals(other._value, _value));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
+
+  /// Create a copy of ChatCompletionDeveloperMessageContent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChatCompletionDeveloperMessageContentPartsImplCopyWith<
+          _$ChatCompletionDeveloperMessageContentPartsImpl>
+      get copyWith =>
+          __$$ChatCompletionDeveloperMessageContentPartsImplCopyWithImpl<
+                  _$ChatCompletionDeveloperMessageContentPartsImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<ChatCompletionMessageContentPart> value)
+        parts,
+    required TResult Function(String value) text,
+  }) {
+    return parts(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<ChatCompletionMessageContentPart> value)? parts,
+    TResult? Function(String value)? text,
+  }) {
+    return parts?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<ChatCompletionMessageContentPart> value)? parts,
+    TResult Function(String value)? text,
+    required TResult orElse(),
+  }) {
+    if (parts != null) {
+      return parts(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChatCompletionDeveloperMessageContentParts value)
+        parts,
+    required TResult Function(ChatCompletionDeveloperMessageContentString value)
+        text,
+  }) {
+    return parts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatCompletionDeveloperMessageContentParts value)? parts,
+    TResult? Function(ChatCompletionDeveloperMessageContentString value)? text,
+  }) {
+    return parts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatCompletionDeveloperMessageContentParts value)? parts,
+    TResult Function(ChatCompletionDeveloperMessageContentString value)? text,
+    required TResult orElse(),
+  }) {
+    if (parts != null) {
+      return parts(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ChatCompletionDeveloperMessageContentPartsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class ChatCompletionDeveloperMessageContentParts
+    extends ChatCompletionDeveloperMessageContent {
+  const factory ChatCompletionDeveloperMessageContentParts(
+          final List<ChatCompletionMessageContentPart> value) =
+      _$ChatCompletionDeveloperMessageContentPartsImpl;
+  const ChatCompletionDeveloperMessageContentParts._() : super._();
+
+  factory ChatCompletionDeveloperMessageContentParts.fromJson(
+          Map<String, dynamic> json) =
+      _$ChatCompletionDeveloperMessageContentPartsImpl.fromJson;
+
+  @override
+  List<ChatCompletionMessageContentPart> get value;
+
+  /// Create a copy of ChatCompletionDeveloperMessageContent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChatCompletionDeveloperMessageContentPartsImplCopyWith<
+          _$ChatCompletionDeveloperMessageContentPartsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChatCompletionDeveloperMessageContentStringImplCopyWith<
+    $Res> {
+  factory _$$ChatCompletionDeveloperMessageContentStringImplCopyWith(
+          _$ChatCompletionDeveloperMessageContentStringImpl value,
+          $Res Function(_$ChatCompletionDeveloperMessageContentStringImpl)
+              then) =
+      __$$ChatCompletionDeveloperMessageContentStringImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$ChatCompletionDeveloperMessageContentStringImplCopyWithImpl<$Res>
+    extends _$ChatCompletionDeveloperMessageContentCopyWithImpl<$Res,
+        _$ChatCompletionDeveloperMessageContentStringImpl>
+    implements
+        _$$ChatCompletionDeveloperMessageContentStringImplCopyWith<$Res> {
+  __$$ChatCompletionDeveloperMessageContentStringImplCopyWithImpl(
+      _$ChatCompletionDeveloperMessageContentStringImpl _value,
+      $Res Function(_$ChatCompletionDeveloperMessageContentStringImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatCompletionDeveloperMessageContent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$ChatCompletionDeveloperMessageContentStringImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ChatCompletionDeveloperMessageContentStringImpl
+    extends ChatCompletionDeveloperMessageContentString {
+  const _$ChatCompletionDeveloperMessageContentStringImpl(this.value,
+      {final String? $type})
+      : $type = $type ?? 'text',
+        super._();
+
+  factory _$ChatCompletionDeveloperMessageContentStringImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ChatCompletionDeveloperMessageContentStringImplFromJson(json);
+
+  @override
+  final String value;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ChatCompletionDeveloperMessageContent.text(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChatCompletionDeveloperMessageContentStringImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of ChatCompletionDeveloperMessageContent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChatCompletionDeveloperMessageContentStringImplCopyWith<
+          _$ChatCompletionDeveloperMessageContentStringImpl>
+      get copyWith =>
+          __$$ChatCompletionDeveloperMessageContentStringImplCopyWithImpl<
+                  _$ChatCompletionDeveloperMessageContentStringImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<ChatCompletionMessageContentPart> value)
+        parts,
+    required TResult Function(String value) text,
+  }) {
+    return text(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<ChatCompletionMessageContentPart> value)? parts,
+    TResult? Function(String value)? text,
+  }) {
+    return text?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<ChatCompletionMessageContentPart> value)? parts,
+    TResult Function(String value)? text,
+    required TResult orElse(),
+  }) {
+    if (text != null) {
+      return text(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChatCompletionDeveloperMessageContentParts value)
+        parts,
+    required TResult Function(ChatCompletionDeveloperMessageContentString value)
+        text,
+  }) {
+    return text(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatCompletionDeveloperMessageContentParts value)? parts,
+    TResult? Function(ChatCompletionDeveloperMessageContentString value)? text,
+  }) {
+    return text?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatCompletionDeveloperMessageContentParts value)? parts,
+    TResult Function(ChatCompletionDeveloperMessageContentString value)? text,
+    required TResult orElse(),
+  }) {
+    if (text != null) {
+      return text(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ChatCompletionDeveloperMessageContentStringImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class ChatCompletionDeveloperMessageContentString
+    extends ChatCompletionDeveloperMessageContent {
+  const factory ChatCompletionDeveloperMessageContentString(
+      final String value) = _$ChatCompletionDeveloperMessageContentStringImpl;
+  const ChatCompletionDeveloperMessageContentString._() : super._();
+
+  factory ChatCompletionDeveloperMessageContentString.fromJson(
+          Map<String, dynamic> json) =
+      _$ChatCompletionDeveloperMessageContentStringImpl.fromJson;
+
+  @override
+  String get value;
+
+  /// Create a copy of ChatCompletionDeveloperMessageContent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChatCompletionDeveloperMessageContentStringImplCopyWith<
+          _$ChatCompletionDeveloperMessageContentStringImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
