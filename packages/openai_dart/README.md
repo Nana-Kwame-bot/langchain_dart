@@ -18,7 +18,7 @@ Unofficial Dart client for [OpenAI](https://platform.openai.com/docs/api-referen
 - Custom base URL, headers and query params support (e.g. HTTP proxies)
 - Custom HTTP client support (e.g. SOCKS5 proxies or advanced use cases)
 - Partial Azure OpenAI API support
-- It can be used to consume OpenAI-compatible APIs like [OpenRouter](https://openrouter.ai), [xAI](https://docs.x.ai/), [Groq](https://groq.com/),[GitHub Models](https://github.com/marketplace/models), [TogetherAI](https://www.together.ai/), [Anyscale](https://www.anyscale.com/), [One API](https://github.com/songquanpeng/one-api), [Llamafile](https://llamafile.ai/), [GPT4All](https://gpt4all.io/), [FastChat](https://github.com/lm-sys/FastChat), etc.
+- It can be used to consume OpenAI-compatible APIs like [Gemini](https://ai.google.dev/gemini-api/docs/openai), [OpenRouter](https://openrouter.ai), [xAI](https://docs.x.ai/), [Groq](https://groq.com/), [GitHub Models](https://github.com/marketplace/models), [TogetherAI](https://www.together.ai/), [Anyscale](https://www.anyscale.com/), [One API](https://github.com/songquanpeng/one-api), [Llamafile](https://llamafile.ai/), [GPT4All](https://gpt4all.io/), [FastChat](https://github.com/lm-sys/FastChat), etc.
 
 **Supported endpoints:**
 
@@ -175,7 +175,7 @@ You can either provide the image URL:
 final res = await client.createChatCompletion(
   request: CreateChatCompletionRequest(
     model: ChatCompletionModel.model(
-      ChatCompletionModels.gpt4VisionPreview,
+      ChatCompletionModels.gpt4o,
     ),
     messages: [
       ChatCompletionMessage.system(
@@ -553,6 +553,12 @@ final stream = client.createChatCompletionStream(
 );
 ```
 
+**List stored completions:**
+
+```dart
+final res = await client.listChatCompletions();
+```
+
 **Function calling:** (deprecated in favor of tools)
 
 ```dart
@@ -823,15 +829,11 @@ Related guide: [Image generation](https://platform.openai.com/docs/guides/images
 ```dart
 final res = await client.createImage(
   request: CreateImageRequest(
-    model: CreateImageRequestModel.model(ImageModels.dallE3),
+    model: CreateImageRequestModel.model(ImageModels.gptImage1),
     prompt: 'A cute baby sea otter',
-    quality: ImageQuality.hd,
-    size: ImageSize.v1024x1792,
-    style: ImageStyle.natural,
   ),
 );
-print(res.data.first.url);
-// https://oaidalleapiprodscus.blob.core.windows.net/private/...
+print(res.data.first.b64Json);
 ```
 
 ### Models

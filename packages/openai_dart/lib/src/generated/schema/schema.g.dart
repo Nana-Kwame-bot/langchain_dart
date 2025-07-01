@@ -15,14 +15,14 @@ _$CreateCompletionRequestImpl _$$CreateCompletionRequestImplFromJson(
       prompt: const _CompletionPromptConverter().fromJson(json['prompt']),
       bestOf: (json['best_of'] as num?)?.toInt(),
       echo: json['echo'] as bool? ?? false,
-      frequencyPenalty: (json['frequency_penalty'] as num?)?.toDouble() ?? 0.0,
+      frequencyPenalty: (json['frequency_penalty'] as num?)?.toDouble(),
       logitBias: (json['logit_bias'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, (e as num).toInt()),
       ),
       logprobs: (json['logprobs'] as num?)?.toInt(),
       maxTokens: (json['max_tokens'] as num?)?.toInt() ?? 16,
-      n: (json['n'] as num?)?.toInt() ?? 1,
-      presencePenalty: (json['presence_penalty'] as num?)?.toDouble() ?? 0.0,
+      n: (json['n'] as num?)?.toInt(),
+      presencePenalty: (json['presence_penalty'] as num?)?.toDouble(),
       seed: (json['seed'] as num?)?.toInt(),
       stop: const _CompletionStopConverter().fromJson(json['stop']),
       stream: json['stream'] as bool? ?? false,
@@ -31,8 +31,8 @@ _$CreateCompletionRequestImpl _$$CreateCompletionRequestImplFromJson(
           : ChatCompletionStreamOptions.fromJson(
               json['stream_options'] as Map<String, dynamic>),
       suffix: json['suffix'] as String?,
-      temperature: (json['temperature'] as num?)?.toDouble() ?? 1.0,
-      topP: (json['top_p'] as num?)?.toDouble() ?? 1.0,
+      temperature: (json['temperature'] as num?)?.toDouble(),
+      topP: (json['top_p'] as num?)?.toDouble(),
       user: json['user'] as String?,
     );
 
@@ -289,10 +289,13 @@ _$CreateChatCompletionRequestImpl _$$CreateChatCompletionRequestImplFromJson(
           .map((e) => ChatCompletionMessage.fromJson(e as Map<String, dynamic>))
           .toList(),
       store: json['store'] as bool?,
+      reasoningEffort: $enumDecodeNullable(
+          _$ReasoningEffortEnumMap, json['reasoning_effort'],
+          unknownValue: JsonKey.nullForUndefinedEnumValue),
       metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
-      frequencyPenalty: (json['frequency_penalty'] as num?)?.toDouble() ?? 0.0,
+      frequencyPenalty: (json['frequency_penalty'] as num?)?.toDouble(),
       logitBias: (json['logit_bias'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, (e as num).toInt()),
       ),
@@ -300,7 +303,7 @@ _$CreateChatCompletionRequestImpl _$$CreateChatCompletionRequestImplFromJson(
       topLogprobs: (json['top_logprobs'] as num?)?.toInt(),
       maxTokens: (json['max_tokens'] as num?)?.toInt(),
       maxCompletionTokens: (json['max_completion_tokens'] as num?)?.toInt(),
-      n: (json['n'] as num?)?.toInt() ?? 1,
+      n: (json['n'] as num?)?.toInt(),
       modalities: (json['modalities'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$ChatCompletionModalityEnumMap, e))
           .toList(),
@@ -312,7 +315,11 @@ _$CreateChatCompletionRequestImpl _$$CreateChatCompletionRequestImplFromJson(
           ? null
           : ChatCompletionAudioOptions.fromJson(
               json['audio'] as Map<String, dynamic>),
-      presencePenalty: (json['presence_penalty'] as num?)?.toDouble() ?? 0.0,
+      presencePenalty: (json['presence_penalty'] as num?)?.toDouble(),
+      webSearchOptions: json['web_search_options'] == null
+          ? null
+          : WebSearchOptions.fromJson(
+              json['web_search_options'] as Map<String, dynamic>),
       responseFormat: json['response_format'] == null
           ? null
           : ResponseFormat.fromJson(
@@ -327,8 +334,8 @@ _$CreateChatCompletionRequestImpl _$$CreateChatCompletionRequestImplFromJson(
           ? null
           : ChatCompletionStreamOptions.fromJson(
               json['stream_options'] as Map<String, dynamic>),
-      temperature: (json['temperature'] as num?)?.toDouble() ?? 1.0,
-      topP: (json['top_p'] as num?)?.toDouble() ?? 1.0,
+      temperature: (json['temperature'] as num?)?.toDouble(),
+      topP: (json['top_p'] as num?)?.toDouble(),
       tools: (json['tools'] as List<dynamic>?)
           ?.map((e) => ChatCompletionTool.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -349,6 +356,8 @@ Map<String, dynamic> _$$CreateChatCompletionRequestImplToJson(
       'model': const _ChatCompletionModelConverter().toJson(instance.model),
       'messages': instance.messages.map((e) => e.toJson()).toList(),
       if (instance.store case final value?) 'store': value,
+      if (_$ReasoningEffortEnumMap[instance.reasoningEffort] case final value?)
+        'reasoning_effort': value,
       if (instance.metadata case final value?) 'metadata': value,
       if (instance.frequencyPenalty case final value?)
         'frequency_penalty': value,
@@ -367,6 +376,8 @@ Map<String, dynamic> _$$CreateChatCompletionRequestImplToJson(
       if (instance.prediction?.toJson() case final value?) 'prediction': value,
       if (instance.audio?.toJson() case final value?) 'audio': value,
       if (instance.presencePenalty case final value?) 'presence_penalty': value,
+      if (instance.webSearchOptions?.toJson() case final value?)
+        'web_search_options': value,
       if (instance.responseFormat?.toJson() case final value?)
         'response_format': value,
       if (instance.seed case final value?) 'seed': value,
@@ -398,6 +409,12 @@ Map<String, dynamic> _$$CreateChatCompletionRequestImplToJson(
         'functions': value,
     };
 
+const _$ReasoningEffortEnumMap = {
+  ReasoningEffort.low: 'low',
+  ReasoningEffort.medium: 'medium',
+  ReasoningEffort.high: 'high',
+};
+
 const _$ChatCompletionModalityEnumMap = {
   ChatCompletionModality.text: 'text',
   ChatCompletionModality.audio: 'audio',
@@ -406,6 +423,7 @@ const _$ChatCompletionModalityEnumMap = {
 const _$CreateChatCompletionRequestServiceTierEnumMap = {
   CreateChatCompletionRequestServiceTier.auto: 'auto',
   CreateChatCompletionRequestServiceTier.vDefault: 'default',
+  CreateChatCompletionRequestServiceTier.flex: 'flex',
 };
 
 _$ChatCompletionModelEnumerationImpl
@@ -423,42 +441,67 @@ Map<String, dynamic> _$$ChatCompletionModelEnumerationImplToJson(
     };
 
 const _$ChatCompletionModelsEnumMap = {
-  ChatCompletionModels.chatgpt4oLatest: 'chatgpt-4o-latest',
-  ChatCompletionModels.gpt4: 'gpt-4',
-  ChatCompletionModels.gpt432k: 'gpt-4-32k',
-  ChatCompletionModels.gpt432k0314: 'gpt-4-32k-0314',
-  ChatCompletionModels.gpt432k0613: 'gpt-4-32k-0613',
-  ChatCompletionModels.gpt40125Preview: 'gpt-4-0125-preview',
-  ChatCompletionModels.gpt40314: 'gpt-4-0314',
-  ChatCompletionModels.gpt40613: 'gpt-4-0613',
-  ChatCompletionModels.gpt41106Preview: 'gpt-4-1106-preview',
-  ChatCompletionModels.gpt4Turbo: 'gpt-4-turbo',
-  ChatCompletionModels.gpt4Turbo20240409: 'gpt-4-turbo-2024-04-09',
-  ChatCompletionModels.gpt4TurboPreview: 'gpt-4-turbo-preview',
-  ChatCompletionModels.gpt4VisionPreview: 'gpt-4-vision-preview',
+  ChatCompletionModels.gpt41: 'gpt-4.1',
+  ChatCompletionModels.gpt41Mini: 'gpt-4.1-mini',
+  ChatCompletionModels.gpt41Nano: 'gpt-4.1-nano',
+  ChatCompletionModels.gpt4120250414: 'gpt-4.1-2025-04-14',
+  ChatCompletionModels.gpt41Mini20250414: 'gpt-4.1-mini-2025-04-14',
+  ChatCompletionModels.gpt41Nano20250414: 'gpt-4.1-nano-2025-04-14',
+  ChatCompletionModels.o4Mini: 'o4-mini',
+  ChatCompletionModels.o4Mini20250416: 'o4-mini-2025-04-16',
+  ChatCompletionModels.o3: 'o3',
+  ChatCompletionModels.o320250416: 'o3-2025-04-16',
+  ChatCompletionModels.o3Mini: 'o3-mini',
+  ChatCompletionModels.o3Mini20250131: 'o3-mini-2025-01-31',
+  ChatCompletionModels.o1: 'o1',
+  ChatCompletionModels.o120241217: 'o1-2024-12-17',
+  ChatCompletionModels.o1Preview: 'o1-preview',
+  ChatCompletionModels.o1Preview20240912: 'o1-preview-2024-09-12',
+  ChatCompletionModels.o1Mini: 'o1-mini',
+  ChatCompletionModels.o1Mini20240912: 'o1-mini-2024-09-12',
   ChatCompletionModels.gpt4o: 'gpt-4o',
-  ChatCompletionModels.gpt4o20240513: 'gpt-4o-2024-05-13',
-  ChatCompletionModels.gpt4o20240806: 'gpt-4o-2024-08-06',
   ChatCompletionModels.gpt4o20241120: 'gpt-4o-2024-11-20',
+  ChatCompletionModels.gpt4o20240806: 'gpt-4o-2024-08-06',
+  ChatCompletionModels.gpt4o20240513: 'gpt-4o-2024-05-13',
   ChatCompletionModels.gpt4oAudioPreview: 'gpt-4o-audio-preview',
   ChatCompletionModels.gpt4oAudioPreview20241001:
       'gpt-4o-audio-preview-2024-10-01',
+  ChatCompletionModels.gpt4oAudioPreview20241217:
+      'gpt-4o-audio-preview-2024-12-17',
+  ChatCompletionModels.gpt4oAudioPreview20250603:
+      'gpt-4o-audio-preview-2025-06-03',
+  ChatCompletionModels.gpt4oMiniAudioPreview: 'gpt-4o-mini-audio-preview',
+  ChatCompletionModels.gpt4oMiniAudioPreview20241217:
+      'gpt-4o-mini-audio-preview-2024-12-17',
+  ChatCompletionModels.gpt4oSearchPreview: 'gpt-4o-search-preview',
+  ChatCompletionModels.gpt4oMiniSearchPreview: 'gpt-4o-mini-search-preview',
+  ChatCompletionModels.gpt4oSearchPreview20250311:
+      'gpt-4o-search-preview-2025-03-11',
+  ChatCompletionModels.gpt4oMiniSearchPreview20250311:
+      'gpt-4o-mini-search-preview-2025-03-11',
+  ChatCompletionModels.chatgpt4oLatest: 'chatgpt-4o-latest',
+  ChatCompletionModels.codexMiniLatest: 'codex-mini-latest',
   ChatCompletionModels.gpt4oMini: 'gpt-4o-mini',
   ChatCompletionModels.gpt4oMini20240718: 'gpt-4o-mini-2024-07-18',
-  ChatCompletionModels.gpt4oRealtimePreview: 'gpt-4o-realtime-preview',
-  ChatCompletionModels.gpt4oRealtimePreview20241001:
-      'gpt-4o-realtime-preview-2024-10-01',
+  ChatCompletionModels.gpt4Turbo: 'gpt-4-turbo',
+  ChatCompletionModels.gpt4Turbo20240409: 'gpt-4-turbo-2024-04-09',
+  ChatCompletionModels.gpt40125Preview: 'gpt-4-0125-preview',
+  ChatCompletionModels.gpt4TurboPreview: 'gpt-4-turbo-preview',
+  ChatCompletionModels.gpt41106Preview: 'gpt-4-1106-preview',
+  ChatCompletionModels.gpt4VisionPreview: 'gpt-4-vision-preview',
+  ChatCompletionModels.gpt4: 'gpt-4',
+  ChatCompletionModels.gpt40314: 'gpt-4-0314',
+  ChatCompletionModels.gpt40613: 'gpt-4-0613',
+  ChatCompletionModels.gpt432k: 'gpt-4-32k',
+  ChatCompletionModels.gpt432k0314: 'gpt-4-32k-0314',
+  ChatCompletionModels.gpt432k0613: 'gpt-4-32k-0613',
   ChatCompletionModels.gpt35Turbo: 'gpt-3.5-turbo',
   ChatCompletionModels.gpt35Turbo16k: 'gpt-3.5-turbo-16k',
-  ChatCompletionModels.gpt35Turbo16k0613: 'gpt-3.5-turbo-16k-0613',
-  ChatCompletionModels.gpt35Turbo0125: 'gpt-3.5-turbo-0125',
   ChatCompletionModels.gpt35Turbo0301: 'gpt-3.5-turbo-0301',
   ChatCompletionModels.gpt35Turbo0613: 'gpt-3.5-turbo-0613',
   ChatCompletionModels.gpt35Turbo1106: 'gpt-3.5-turbo-1106',
-  ChatCompletionModels.o1Mini: 'o1-mini',
-  ChatCompletionModels.o1Mini20240912: 'o1-mini-2024-09-12',
-  ChatCompletionModels.o1Preview: 'o1-preview',
-  ChatCompletionModels.o1Preview20240912: 'o1-preview-2024-09-12',
+  ChatCompletionModels.gpt35Turbo0125: 'gpt-3.5-turbo-0125',
+  ChatCompletionModels.gpt35Turbo16k0613: 'gpt-3.5-turbo-16k-0613',
 };
 
 _$ChatCompletionModelStringImpl _$$ChatCompletionModelStringImplFromJson(
@@ -704,6 +747,41 @@ const _$ChatCompletionMessageToolCallTypeEnumMap = {
   ChatCompletionMessageToolCallType.function: 'function',
 };
 
+_$AnnotationImpl _$$AnnotationImplFromJson(Map<String, dynamic> json) =>
+    _$AnnotationImpl(
+      type: $enumDecode(_$AnnotationTypeEnumMap, json['type']),
+      urlCitation: AnnotationUrlCitation.fromJson(
+          json['url_citation'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$AnnotationImplToJson(_$AnnotationImpl instance) =>
+    <String, dynamic>{
+      'type': _$AnnotationTypeEnumMap[instance.type]!,
+      'url_citation': instance.urlCitation.toJson(),
+    };
+
+const _$AnnotationTypeEnumMap = {
+  AnnotationType.urlCitation: 'url_citation',
+};
+
+_$AnnotationUrlCitationImpl _$$AnnotationUrlCitationImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AnnotationUrlCitationImpl(
+      endIndex: (json['end_index'] as num?)?.toInt(),
+      startIndex: (json['start_index'] as num?)?.toInt(),
+      url: json['url'] as String?,
+      title: json['title'] as String?,
+    );
+
+Map<String, dynamic> _$$AnnotationUrlCitationImplToJson(
+        _$AnnotationUrlCitationImpl instance) =>
+    <String, dynamic>{
+      if (instance.endIndex case final value?) 'end_index': value,
+      if (instance.startIndex case final value?) 'start_index': value,
+      if (instance.url case final value?) 'url': value,
+      if (instance.title case final value?) 'title': value,
+    };
+
 _$PredictionContentImpl _$$PredictionContentImplFromJson(
         Map<String, dynamic> json) =>
     _$PredictionContentImpl(
@@ -835,8 +913,9 @@ Map<String, dynamic> _$$CreateChatCompletionResponseImplToJson(
     };
 
 const _$ServiceTierEnumMap = {
-  ServiceTier.scale: 'scale',
+  ServiceTier.auto: 'auto',
   ServiceTier.vDefault: 'default',
+  ServiceTier.flex: 'flex',
 };
 
 _$ChatCompletionResponseChoiceImpl _$$ChatCompletionResponseChoiceImplFromJson(
@@ -975,8 +1054,10 @@ _$ChatCompletionStreamResponseChoiceImpl
     _$$ChatCompletionStreamResponseChoiceImplFromJson(
             Map<String, dynamic> json) =>
         _$ChatCompletionStreamResponseChoiceImpl(
-          delta: ChatCompletionStreamResponseDelta.fromJson(
-              json['delta'] as Map<String, dynamic>),
+          delta: json['delta'] == null
+              ? null
+              : ChatCompletionStreamResponseDelta.fromJson(
+                  json['delta'] as Map<String, dynamic>),
           logprobs: json['logprobs'] == null
               ? null
               : ChatCompletionStreamResponseChoiceLogprobs.fromJson(
@@ -990,10 +1071,11 @@ _$ChatCompletionStreamResponseChoiceImpl
 Map<String, dynamic> _$$ChatCompletionStreamResponseChoiceImplToJson(
         _$ChatCompletionStreamResponseChoiceImpl instance) =>
     <String, dynamic>{
-      'delta': instance.delta.toJson(),
+      if (instance.delta?.toJson() case final value?) 'delta': value,
       if (instance.logprobs?.toJson() case final value?) 'logprobs': value,
-      'finish_reason':
-          _$ChatCompletionFinishReasonEnumMap[instance.finishReason],
+      if (_$ChatCompletionFinishReasonEnumMap[instance.finishReason]
+          case final value?)
+        'finish_reason': value,
       if (instance.index case final value?) 'index': value,
     };
 
@@ -1058,10 +1140,11 @@ Map<String, dynamic> _$$ChatCompletionStreamResponseDeltaImplToJson(
     };
 
 const _$ChatCompletionMessageRoleEnumMap = {
-  ChatCompletionMessageRole.system: 'system',
+  ChatCompletionMessageRole.developer: 'developer',
   ChatCompletionMessageRole.user: 'user',
   ChatCompletionMessageRole.assistant: 'assistant',
   ChatCompletionMessageRole.tool: 'tool',
+  ChatCompletionMessageRole.system: 'system',
   ChatCompletionMessageRole.function: 'function',
 };
 
@@ -1103,7 +1186,7 @@ _$ChatCompletionStreamMessageToolCallChunkImpl
     _$$ChatCompletionStreamMessageToolCallChunkImplFromJson(
             Map<String, dynamic> json) =>
         _$ChatCompletionStreamMessageToolCallChunkImpl(
-          index: (json['index'] as num).toInt(),
+          index: (json['index'] as num?)?.toInt(),
           id: json['id'] as String?,
           type: $enumDecodeNullable(
               _$ChatCompletionStreamMessageToolCallChunkTypeEnumMap,
@@ -1118,7 +1201,7 @@ _$ChatCompletionStreamMessageToolCallChunkImpl
 Map<String, dynamic> _$$ChatCompletionStreamMessageToolCallChunkImplToJson(
         _$ChatCompletionStreamMessageToolCallChunkImpl instance) =>
     <String, dynamic>{
-      'index': instance.index,
+      if (instance.index case final value?) 'index': value,
       if (instance.id case final value?) 'id': value,
       if (_$ChatCompletionStreamMessageToolCallChunkTypeEnumMap[instance.type]
           case final value?)
@@ -1130,12 +1213,39 @@ const _$ChatCompletionStreamMessageToolCallChunkTypeEnumMap = {
   ChatCompletionStreamMessageToolCallChunkType.function: 'function',
 };
 
+_$ChatCompletionListImpl _$$ChatCompletionListImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ChatCompletionListImpl(
+      object: $enumDecode(_$ChatCompletionListObjectEnumMap, json['object']),
+      data: (json['data'] as List<dynamic>)
+          .map((e) =>
+              CreateChatCompletionResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      firstId: json['first_id'] as String?,
+      lastId: json['last_id'] as String?,
+      hasMore: json['has_more'] as bool,
+    );
+
+Map<String, dynamic> _$$ChatCompletionListImplToJson(
+        _$ChatCompletionListImpl instance) =>
+    <String, dynamic>{
+      'object': _$ChatCompletionListObjectEnumMap[instance.object]!,
+      'data': instance.data.map((e) => e.toJson()).toList(),
+      if (instance.firstId case final value?) 'first_id': value,
+      if (instance.lastId case final value?) 'last_id': value,
+      'has_more': instance.hasMore,
+    };
+
+const _$ChatCompletionListObjectEnumMap = {
+  ChatCompletionListObject.list: 'list',
+};
+
 _$CompletionUsageImpl _$$CompletionUsageImplFromJson(
         Map<String, dynamic> json) =>
     _$CompletionUsageImpl(
       completionTokens: (json['completion_tokens'] as num?)?.toInt(),
-      promptTokens: (json['prompt_tokens'] as num).toInt(),
-      totalTokens: (json['total_tokens'] as num).toInt(),
+      promptTokens: (json['prompt_tokens'] as num?)?.toInt(),
+      totalTokens: (json['total_tokens'] as num?)?.toInt(),
       completionTokensDetails: json['completion_tokens_details'] == null
           ? null
           : CompletionTokensDetails.fromJson(
@@ -1145,9 +1255,10 @@ _$CompletionUsageImpl _$$CompletionUsageImplFromJson(
 Map<String, dynamic> _$$CompletionUsageImplToJson(
         _$CompletionUsageImpl instance) =>
     <String, dynamic>{
-      'completion_tokens': instance.completionTokens,
-      'prompt_tokens': instance.promptTokens,
-      'total_tokens': instance.totalTokens,
+      if (instance.completionTokens case final value?)
+        'completion_tokens': value,
+      if (instance.promptTokens case final value?) 'prompt_tokens': value,
+      if (instance.totalTokens case final value?) 'total_tokens': value,
       if (instance.completionTokensDetails?.toJson() case final value?)
         'completion_tokens_details': value,
     };
@@ -1324,14 +1435,14 @@ const _$CreateEmbeddingResponseObjectEnumMap = {
 
 _$EmbeddingImpl _$$EmbeddingImplFromJson(Map<String, dynamic> json) =>
     _$EmbeddingImpl(
-      index: (json['index'] as num).toInt(),
+      index: (json['index'] as num?)?.toInt(),
       embedding: const _EmbeddingVectorConverter().fromJson(json['embedding']),
       object: $enumDecode(_$EmbeddingObjectEnumMap, json['object']),
     );
 
 Map<String, dynamic> _$$EmbeddingImplToJson(_$EmbeddingImpl instance) =>
     <String, dynamic>{
-      'index': instance.index,
+      if (instance.index case final value?) 'index': value,
       'embedding': const _EmbeddingVectorConverter().toJson(instance.embedding),
       'object': _$EmbeddingObjectEnumMap[instance.object]!,
     };
@@ -1784,22 +1895,27 @@ _$CreateImageRequestImpl _$$CreateImageRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateImageRequestImpl(
       prompt: json['prompt'] as String,
-      model: json['model'] == null
-          ? const CreateImageRequestModelString('dall-e-2')
-          : const _CreateImageRequestModelConverter().fromJson(json['model']),
-      n: (json['n'] as num?)?.toInt() ?? 1,
-      quality: $enumDecodeNullable(_$ImageQualityEnumMap, json['quality']) ??
-          ImageQuality.standard,
+      model: const _CreateImageRequestModelConverter().fromJson(json['model']),
+      n: (json['n'] as num?)?.toInt(),
+      quality: $enumDecodeNullable(_$ImageQualityEnumMap, json['quality'],
+          unknownValue: JsonKey.nullForUndefinedEnumValue),
       responseFormat: $enumDecodeNullable(
-              _$ImageResponseFormatEnumMap, json['response_format'],
-              unknownValue: JsonKey.nullForUndefinedEnumValue) ??
-          ImageResponseFormat.url,
+          _$ImageResponseFormatEnumMap, json['response_format'],
+          unknownValue: JsonKey.nullForUndefinedEnumValue),
+      outputFormat: $enumDecodeNullable(
+          _$ImageOutputFormatEnumMap, json['output_format'],
+          unknownValue: JsonKey.nullForUndefinedEnumValue),
+      outputCompression: (json['output_compression'] as num?)?.toInt(),
       size: $enumDecodeNullable(_$ImageSizeEnumMap, json['size'],
-              unknownValue: JsonKey.nullForUndefinedEnumValue) ??
-          ImageSize.v1024x1024,
+          unknownValue: JsonKey.nullForUndefinedEnumValue),
+      moderation: $enumDecodeNullable(
+          _$ImageModerationEnumMap, json['moderation'],
+          unknownValue: JsonKey.nullForUndefinedEnumValue),
+      background: $enumDecodeNullable(
+          _$ImageBackgroundEnumMap, json['background'],
+          unknownValue: JsonKey.nullForUndefinedEnumValue),
       style: $enumDecodeNullable(_$ImageStyleEnumMap, json['style'],
-              unknownValue: JsonKey.nullForUndefinedEnumValue) ??
-          ImageStyle.vivid,
+          unknownValue: JsonKey.nullForUndefinedEnumValue),
       user: json['user'] as String?,
     );
 
@@ -1811,11 +1927,20 @@ Map<String, dynamic> _$$CreateImageRequestImplToJson(
           case final value?)
         'model': value,
       if (instance.n case final value?) 'n': value,
-      'quality': _$ImageQualityEnumMap[instance.quality]!,
+      if (_$ImageQualityEnumMap[instance.quality] case final value?)
+        'quality': value,
       if (_$ImageResponseFormatEnumMap[instance.responseFormat]
           case final value?)
         'response_format': value,
+      if (_$ImageOutputFormatEnumMap[instance.outputFormat] case final value?)
+        'output_format': value,
+      if (instance.outputCompression case final value?)
+        'output_compression': value,
       if (_$ImageSizeEnumMap[instance.size] case final value?) 'size': value,
+      if (_$ImageModerationEnumMap[instance.moderation] case final value?)
+        'moderation': value,
+      if (_$ImageBackgroundEnumMap[instance.background] case final value?)
+        'background': value,
       if (_$ImageStyleEnumMap[instance.style] case final value?) 'style': value,
       if (instance.user case final value?) 'user': value,
     };
@@ -1823,6 +1948,10 @@ Map<String, dynamic> _$$CreateImageRequestImplToJson(
 const _$ImageQualityEnumMap = {
   ImageQuality.standard: 'standard',
   ImageQuality.hd: 'hd',
+  ImageQuality.low: 'low',
+  ImageQuality.medium: 'medium',
+  ImageQuality.high: 'high',
+  ImageQuality.auto: 'auto',
 };
 
 const _$ImageResponseFormatEnumMap = {
@@ -1830,12 +1959,32 @@ const _$ImageResponseFormatEnumMap = {
   ImageResponseFormat.b64Json: 'b64_json',
 };
 
+const _$ImageOutputFormatEnumMap = {
+  ImageOutputFormat.png: 'png',
+  ImageOutputFormat.jpeg: 'jpeg',
+  ImageOutputFormat.webp: 'webp',
+};
+
 const _$ImageSizeEnumMap = {
+  ImageSize.auto: 'auto',
+  ImageSize.v1024x1024: '1024x1024',
+  ImageSize.v1536x1024: '1536x1024',
+  ImageSize.v1024x1536: '1024x1536',
   ImageSize.v256x256: '256x256',
   ImageSize.v512x512: '512x512',
-  ImageSize.v1024x1024: '1024x1024',
   ImageSize.v1792x1024: '1792x1024',
   ImageSize.v1024x1792: '1024x1792',
+};
+
+const _$ImageModerationEnumMap = {
+  ImageModeration.low: 'low',
+  ImageModeration.auto: 'auto',
+};
+
+const _$ImageBackgroundEnumMap = {
+  ImageBackground.transparent: 'transparent',
+  ImageBackground.opaque: 'opaque',
+  ImageBackground.auto: 'auto',
 };
 
 const _$ImageStyleEnumMap = {
@@ -1861,6 +2010,7 @@ Map<String, dynamic> _$$CreateImageRequestModelEnumerationImplToJson(
 const _$ImageModelsEnumMap = {
   ImageModels.dallE2: 'dall-e-2',
   ImageModels.dallE3: 'dall-e-3',
+  ImageModels.gptImage1: 'gpt-image-1',
 };
 
 _$CreateImageRequestModelStringImpl
@@ -1907,17 +2057,19 @@ Map<String, dynamic> _$$ImageImplToJson(_$ImageImpl instance) =>
 
 _$ModelImpl _$$ModelImplFromJson(Map<String, dynamic> json) => _$ModelImpl(
       id: json['id'] as String,
-      created: (json['created'] as num).toInt(),
-      object: $enumDecode(_$ModelObjectEnumMap, json['object']),
-      ownedBy: json['owned_by'] as String,
+      created: (json['created'] as num?)?.toInt(),
+      object: $enumDecodeNullable(_$ModelObjectEnumMap, json['object'],
+          unknownValue: JsonKey.nullForUndefinedEnumValue),
+      ownedBy: json['owned_by'] as String?,
     );
 
 Map<String, dynamic> _$$ModelImplToJson(_$ModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'created': instance.created,
-      'object': _$ModelObjectEnumMap[instance.object]!,
-      'owned_by': instance.ownedBy,
+      if (instance.created case final value?) 'created': value,
+      if (_$ModelObjectEnumMap[instance.object] case final value?)
+        'object': value,
+      if (instance.ownedBy case final value?) 'owned_by': value,
     };
 
 const _$ModelObjectEnumMap = {
@@ -1927,7 +2079,9 @@ const _$ModelObjectEnumMap = {
 _$ListModelsResponseImpl _$$ListModelsResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$ListModelsResponseImpl(
-      object: $enumDecode(_$ListModelsResponseObjectEnumMap, json['object']),
+      object: $enumDecodeNullable(
+          _$ListModelsResponseObjectEnumMap, json['object'],
+          unknownValue: JsonKey.nullForUndefinedEnumValue),
       data: (json['data'] as List<dynamic>)
           .map((e) => Model.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -1936,7 +2090,8 @@ _$ListModelsResponseImpl _$$ListModelsResponseImplFromJson(
 Map<String, dynamic> _$$ListModelsResponseImplToJson(
         _$ListModelsResponseImpl instance) =>
     <String, dynamic>{
-      'object': _$ListModelsResponseObjectEnumMap[instance.object]!,
+      if (_$ListModelsResponseObjectEnumMap[instance.object] case final value?)
+        'object': value,
       'data': instance.data.map((e) => e.toJson()).toList(),
     };
 
@@ -2373,30 +2528,42 @@ Map<String, dynamic> _$$AssistantModelEnumerationImplToJson(
     };
 
 const _$AssistantModelsEnumMap = {
+  AssistantModels.gpt41: 'gpt-4.1',
+  AssistantModels.gpt41Mini: 'gpt-4.1-mini',
+  AssistantModels.gpt41Nano: 'gpt-4.1-nano',
+  AssistantModels.gpt4120250414: 'gpt-4.1-2025-04-14',
+  AssistantModels.gpt41Mini20250414: 'gpt-4.1-mini-2025-04-14',
+  AssistantModels.gpt41Nano20250414: 'gpt-4.1-nano-2025-04-14',
+  AssistantModels.o3Mini: 'o3-mini',
+  AssistantModels.o3Mini20250131: 'o3-mini-2025-01-31',
+  AssistantModels.o1: 'o1',
+  AssistantModels.o120241217: 'o1-2024-12-17',
+  AssistantModels.gpt4o: 'gpt-4o',
+  AssistantModels.gpt4o20241120: 'gpt-4o-2024-11-20',
+  AssistantModels.gpt4o20240806: 'gpt-4o-2024-08-06',
+  AssistantModels.gpt4o20240513: 'gpt-4o-2024-05-13',
+  AssistantModels.gpt4oMini: 'gpt-4o-mini',
+  AssistantModels.gpt4oMini20240718: 'gpt-4o-mini-2024-07-18',
+  AssistantModels.gpt45Preview: 'gpt-4.5-preview',
+  AssistantModels.gpt45Preview20250227: 'gpt-4.5-preview-2025-02-27',
+  AssistantModels.gpt4Turbo: 'gpt-4-turbo',
+  AssistantModels.gpt4Turbo20240409: 'gpt-4-turbo-2024-04-09',
+  AssistantModels.gpt40125Preview: 'gpt-4-0125-preview',
+  AssistantModels.gpt4TurboPreview: 'gpt-4-turbo-preview',
+  AssistantModels.gpt41106Preview: 'gpt-4-1106-preview',
+  AssistantModels.gpt4VisionPreview: 'gpt-4-vision-preview',
   AssistantModels.gpt4: 'gpt-4',
+  AssistantModels.gpt40314: 'gpt-4-0314',
+  AssistantModels.gpt40613: 'gpt-4-0613',
   AssistantModels.gpt432k: 'gpt-4-32k',
   AssistantModels.gpt432k0314: 'gpt-4-32k-0314',
   AssistantModels.gpt432k0613: 'gpt-4-32k-0613',
-  AssistantModels.gpt40125Preview: 'gpt-4-0125-preview',
-  AssistantModels.gpt40314: 'gpt-4-0314',
-  AssistantModels.gpt40613: 'gpt-4-0613',
-  AssistantModels.gpt41106Preview: 'gpt-4-1106-preview',
-  AssistantModels.gpt4Turbo: 'gpt-4-turbo',
-  AssistantModels.gpt4Turbo20240409: 'gpt-4-turbo-2024-04-09',
-  AssistantModels.gpt4TurboPreview: 'gpt-4-turbo-preview',
-  AssistantModels.gpt4VisionPreview: 'gpt-4-vision-preview',
-  AssistantModels.gpt4o: 'gpt-4o',
-  AssistantModels.gpt4o20240513: 'gpt-4o-2024-05-13',
-  AssistantModels.gpt4o20240806: 'gpt-4o-2024-08-06',
-  AssistantModels.gpt4o20241120: 'gpt-4o-2024-11-20',
-  AssistantModels.gpt4oMini: 'gpt-4o-mini',
-  AssistantModels.gpt4oMini20240718: 'gpt-4o-mini-2024-07-18',
   AssistantModels.gpt35Turbo: 'gpt-3.5-turbo',
   AssistantModels.gpt35Turbo16k: 'gpt-3.5-turbo-16k',
-  AssistantModels.gpt35Turbo16k0613: 'gpt-3.5-turbo-16k-0613',
-  AssistantModels.gpt35Turbo0125: 'gpt-3.5-turbo-0125',
   AssistantModels.gpt35Turbo0613: 'gpt-3.5-turbo-0613',
   AssistantModels.gpt35Turbo1106: 'gpt-3.5-turbo-1106',
+  AssistantModels.gpt35Turbo0125: 'gpt-3.5-turbo-0125',
+  AssistantModels.gpt35Turbo16k0613: 'gpt-3.5-turbo-16k-0613',
 };
 
 _$AssistantModelStringImpl _$$AssistantModelStringImplFromJson(
@@ -2989,30 +3156,42 @@ Map<String, dynamic> _$$CreateRunRequestModelEnumerationImplToJson(
     };
 
 const _$RunModelsEnumMap = {
+  RunModels.gpt41: 'gpt-4.1',
+  RunModels.gpt41Mini: 'gpt-4.1-mini',
+  RunModels.gpt41Nano: 'gpt-4.1-nano',
+  RunModels.gpt4120250414: 'gpt-4.1-2025-04-14',
+  RunModels.gpt41Mini20250414: 'gpt-4.1-mini-2025-04-14',
+  RunModels.gpt41Nano20250414: 'gpt-4.1-nano-2025-04-14',
+  RunModels.o3Mini: 'o3-mini',
+  RunModels.o3Mini20250131: 'o3-mini-2025-01-31',
+  RunModels.o1: 'o1',
+  RunModels.o120241217: 'o1-2024-12-17',
+  RunModels.gpt4o: 'gpt-4o',
+  RunModels.gpt4o20241120: 'gpt-4o-2024-11-20',
+  RunModels.gpt4o20240806: 'gpt-4o-2024-08-06',
+  RunModels.gpt4o20240513: 'gpt-4o-2024-05-13',
+  RunModels.gpt4oMini: 'gpt-4o-mini',
+  RunModels.gpt4oMini20240718: 'gpt-4o-mini-2024-07-18',
+  RunModels.gpt45Preview: 'gpt-4.5-preview',
+  RunModels.gpt45Preview20250227: 'gpt-4.5-preview-2025-02-27',
+  RunModels.gpt4Turbo: 'gpt-4-turbo',
+  RunModels.gpt4Turbo20240409: 'gpt-4-turbo-2024-04-09',
+  RunModels.gpt40125Preview: 'gpt-4-0125-preview',
+  RunModels.gpt4TurboPreview: 'gpt-4-turbo-preview',
+  RunModels.gpt41106Preview: 'gpt-4-1106-preview',
+  RunModels.gpt4VisionPreview: 'gpt-4-vision-preview',
   RunModels.gpt4: 'gpt-4',
+  RunModels.gpt40314: 'gpt-4-0314',
+  RunModels.gpt40613: 'gpt-4-0613',
   RunModels.gpt432k: 'gpt-4-32k',
   RunModels.gpt432k0314: 'gpt-4-32k-0314',
   RunModels.gpt432k0613: 'gpt-4-32k-0613',
-  RunModels.gpt40125Preview: 'gpt-4-0125-preview',
-  RunModels.gpt40314: 'gpt-4-0314',
-  RunModels.gpt40613: 'gpt-4-0613',
-  RunModels.gpt41106Preview: 'gpt-4-1106-preview',
-  RunModels.gpt4Turbo: 'gpt-4-turbo',
-  RunModels.gpt4Turbo20240409: 'gpt-4-turbo-2024-04-09',
-  RunModels.gpt4TurboPreview: 'gpt-4-turbo-preview',
-  RunModels.gpt4VisionPreview: 'gpt-4-vision-preview',
-  RunModels.gpt4o: 'gpt-4o',
-  RunModels.gpt4o20240513: 'gpt-4o-2024-05-13',
-  RunModels.gpt4o20240806: 'gpt-4o-2024-08-06',
-  RunModels.gpt4o20241120: 'gpt-4o-2024-11-20',
-  RunModels.gpt4oMini: 'gpt-4o-mini',
-  RunModels.gpt4oMini20240718: 'gpt-4o-mini-2024-07-18',
   RunModels.gpt35Turbo: 'gpt-3.5-turbo',
   RunModels.gpt35Turbo16k: 'gpt-3.5-turbo-16k',
-  RunModels.gpt35Turbo16k0613: 'gpt-3.5-turbo-16k-0613',
-  RunModels.gpt35Turbo0125: 'gpt-3.5-turbo-0125',
   RunModels.gpt35Turbo0613: 'gpt-3.5-turbo-0613',
   RunModels.gpt35Turbo1106: 'gpt-3.5-turbo-1106',
+  RunModels.gpt35Turbo0125: 'gpt-3.5-turbo-0125',
+  RunModels.gpt35Turbo16k0613: 'gpt-3.5-turbo-16k-0613',
 };
 
 _$CreateRunRequestModelStringImpl _$$CreateRunRequestModelStringImplFromJson(
@@ -3285,30 +3464,42 @@ Map<String, dynamic> _$$ThreadAndRunModelEnumerationImplToJson(
     };
 
 const _$ThreadAndRunModelsEnumMap = {
+  ThreadAndRunModels.gpt41: 'gpt-4.1',
+  ThreadAndRunModels.gpt41Mini: 'gpt-4.1-mini',
+  ThreadAndRunModels.gpt41Nano: 'gpt-4.1-nano',
+  ThreadAndRunModels.gpt4120250414: 'gpt-4.1-2025-04-14',
+  ThreadAndRunModels.gpt41Mini20250414: 'gpt-4.1-mini-2025-04-14',
+  ThreadAndRunModels.gpt41Nano20250414: 'gpt-4.1-nano-2025-04-14',
+  ThreadAndRunModels.o3Mini: 'o3-mini',
+  ThreadAndRunModels.o3Mini20250131: 'o3-mini-2025-01-31',
+  ThreadAndRunModels.o1: 'o1',
+  ThreadAndRunModels.o120241217: 'o1-2024-12-17',
+  ThreadAndRunModels.gpt4o: 'gpt-4o',
+  ThreadAndRunModels.gpt4o20241120: 'gpt-4o-2024-11-20',
+  ThreadAndRunModels.gpt4o20240806: 'gpt-4o-2024-08-06',
+  ThreadAndRunModels.gpt4o20240513: 'gpt-4o-2024-05-13',
+  ThreadAndRunModels.gpt4oMini: 'gpt-4o-mini',
+  ThreadAndRunModels.gpt4oMini20240718: 'gpt-4o-mini-2024-07-18',
+  ThreadAndRunModels.gpt45Preview: 'gpt-4.5-preview',
+  ThreadAndRunModels.gpt45Preview20250227: 'gpt-4.5-preview-2025-02-27',
+  ThreadAndRunModels.gpt4Turbo: 'gpt-4-turbo',
+  ThreadAndRunModels.gpt4Turbo20240409: 'gpt-4-turbo-2024-04-09',
+  ThreadAndRunModels.gpt40125Preview: 'gpt-4-0125-preview',
+  ThreadAndRunModels.gpt4TurboPreview: 'gpt-4-turbo-preview',
+  ThreadAndRunModels.gpt41106Preview: 'gpt-4-1106-preview',
+  ThreadAndRunModels.gpt4VisionPreview: 'gpt-4-vision-preview',
   ThreadAndRunModels.gpt4: 'gpt-4',
+  ThreadAndRunModels.gpt40314: 'gpt-4-0314',
+  ThreadAndRunModels.gpt40613: 'gpt-4-0613',
   ThreadAndRunModels.gpt432k: 'gpt-4-32k',
   ThreadAndRunModels.gpt432k0314: 'gpt-4-32k-0314',
   ThreadAndRunModels.gpt432k0613: 'gpt-4-32k-0613',
-  ThreadAndRunModels.gpt40125Preview: 'gpt-4-0125-preview',
-  ThreadAndRunModels.gpt40314: 'gpt-4-0314',
-  ThreadAndRunModels.gpt40613: 'gpt-4-0613',
-  ThreadAndRunModels.gpt41106Preview: 'gpt-4-1106-preview',
-  ThreadAndRunModels.gpt4Turbo: 'gpt-4-turbo',
-  ThreadAndRunModels.gpt4Turbo20240409: 'gpt-4-turbo-2024-04-09',
-  ThreadAndRunModels.gpt4TurboPreview: 'gpt-4-turbo-preview',
-  ThreadAndRunModels.gpt4VisionPreview: 'gpt-4-vision-preview',
-  ThreadAndRunModels.gpt4o: 'gpt-4o',
-  ThreadAndRunModels.gpt4o20240513: 'gpt-4o-2024-05-13',
-  ThreadAndRunModels.gpt4o20240806: 'gpt-4o-2024-08-06',
-  ThreadAndRunModels.gpt4o20241120: 'gpt-4o-2024-11-20',
-  ThreadAndRunModels.gpt4oMini: 'gpt-4o-mini',
-  ThreadAndRunModels.gpt4oMini20240718: 'gpt-4o-mini-2024-07-18',
   ThreadAndRunModels.gpt35Turbo: 'gpt-3.5-turbo',
   ThreadAndRunModels.gpt35Turbo16k: 'gpt-3.5-turbo-16k',
-  ThreadAndRunModels.gpt35Turbo16k0613: 'gpt-3.5-turbo-16k-0613',
-  ThreadAndRunModels.gpt35Turbo0125: 'gpt-3.5-turbo-0125',
   ThreadAndRunModels.gpt35Turbo0613: 'gpt-3.5-turbo-0613',
   ThreadAndRunModels.gpt35Turbo1106: 'gpt-3.5-turbo-1106',
+  ThreadAndRunModels.gpt35Turbo0125: 'gpt-3.5-turbo-0125',
+  ThreadAndRunModels.gpt35Turbo16k0613: 'gpt-3.5-turbo-16k-0613',
 };
 
 _$ThreadAndRunModelStringImpl _$$ThreadAndRunModelStringImplFromJson(
@@ -4847,6 +5038,91 @@ const _$ListBatchesResponseObjectEnumMap = {
   ListBatchesResponseObject.list: 'list',
 };
 
+_$WebSearchOptionsImpl _$$WebSearchOptionsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$WebSearchOptionsImpl(
+      userLocation: json['user_location'] == null
+          ? null
+          : WebSearchOptionsUserLocation.fromJson(
+              json['user_location'] as Map<String, dynamic>),
+      searchContextSize: $enumDecodeNullable(
+              _$WebSearchContextSizeEnumMap, json['search_context_size']) ??
+          WebSearchContextSize.medium,
+    );
+
+Map<String, dynamic> _$$WebSearchOptionsImplToJson(
+        _$WebSearchOptionsImpl instance) =>
+    <String, dynamic>{
+      if (instance.userLocation?.toJson() case final value?)
+        'user_location': value,
+      'search_context_size':
+          _$WebSearchContextSizeEnumMap[instance.searchContextSize]!,
+    };
+
+const _$WebSearchContextSizeEnumMap = {
+  WebSearchContextSize.low: 'low',
+  WebSearchContextSize.medium: 'medium',
+  WebSearchContextSize.high: 'high',
+};
+
+_$WebSearchOptionsUserLocationImpl _$$WebSearchOptionsUserLocationImplFromJson(
+        Map<String, dynamic> json) =>
+    _$WebSearchOptionsUserLocationImpl(
+      type:
+          $enumDecode(_$WebSearchOptionsUserLocationTypeEnumMap, json['type']),
+      approximate: WebSearchLocation.fromJson(
+          json['approximate'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$WebSearchOptionsUserLocationImplToJson(
+        _$WebSearchOptionsUserLocationImpl instance) =>
+    <String, dynamic>{
+      'type': _$WebSearchOptionsUserLocationTypeEnumMap[instance.type]!,
+      'approximate': instance.approximate.toJson(),
+    };
+
+const _$WebSearchOptionsUserLocationTypeEnumMap = {
+  WebSearchOptionsUserLocationType.approximate: 'approximate',
+};
+
+_$WebSearchLocationImpl _$$WebSearchLocationImplFromJson(
+        Map<String, dynamic> json) =>
+    _$WebSearchLocationImpl(
+      country: json['country'] as String?,
+      region: json['region'] as String?,
+      city: json['city'] as String?,
+      timezone: json['timezone'] as String?,
+    );
+
+Map<String, dynamic> _$$WebSearchLocationImplToJson(
+        _$WebSearchLocationImpl instance) =>
+    <String, dynamic>{
+      if (instance.country case final value?) 'country': value,
+      if (instance.region case final value?) 'region': value,
+      if (instance.city case final value?) 'city': value,
+      if (instance.timezone case final value?) 'timezone': value,
+    };
+
+_$ChatCompletionDeveloperMessageImpl
+    _$$ChatCompletionDeveloperMessageImplFromJson(Map<String, dynamic> json) =>
+        _$ChatCompletionDeveloperMessageImpl(
+          role: $enumDecodeNullable(
+                  _$ChatCompletionMessageRoleEnumMap, json['role']) ??
+              ChatCompletionMessageRole.developer,
+          content: const _ChatCompletionDeveloperMessageContentConverter()
+              .fromJson(json['content']),
+          name: json['name'] as String?,
+        );
+
+Map<String, dynamic> _$$ChatCompletionDeveloperMessageImplToJson(
+        _$ChatCompletionDeveloperMessageImpl instance) =>
+    <String, dynamic>{
+      'role': _$ChatCompletionMessageRoleEnumMap[instance.role]!,
+      'content': const _ChatCompletionDeveloperMessageContentConverter()
+          .toJson(instance.content),
+      if (instance.name case final value?) 'name': value,
+    };
+
 _$ChatCompletionSystemMessageImpl _$$ChatCompletionSystemMessageImplFromJson(
         Map<String, dynamic> json) =>
     _$ChatCompletionSystemMessageImpl(
@@ -4898,6 +5174,9 @@ _$ChatCompletionAssistantMessageImpl
               ?.map((e) => ChatCompletionMessageToolCall.fromJson(
                   e as Map<String, dynamic>))
               .toList(),
+          annotations: (json['annotations'] as List<dynamic>?)
+              ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+              .toList(),
           functionCall: json['function_call'] == null
               ? null
               : ChatCompletionMessageFunctionCall.fromJson(
@@ -4917,6 +5196,9 @@ Map<String, dynamic> _$$ChatCompletionAssistantMessageImplToJson(
       if (instance.name case final value?) 'name': value,
       if (instance.toolCalls?.map((e) => e.toJson()).toList() case final value?)
         'tool_calls': value,
+      if (instance.annotations?.map((e) => e.toJson()).toList()
+          case final value?)
+        'annotations': value,
       if (instance.functionCall?.toJson() case final value?)
         'function_call': value,
       if (instance.audio?.toJson() case final value?) 'audio': value,
@@ -4956,6 +5238,39 @@ Map<String, dynamic> _$$ChatCompletionFunctionMessageImplToJson(
       'role': _$ChatCompletionMessageRoleEnumMap[instance.role]!,
       'content': instance.content,
       'name': instance.name,
+    };
+
+_$ChatCompletionDeveloperMessageContentPartsImpl
+    _$$ChatCompletionDeveloperMessageContentPartsImplFromJson(
+            Map<String, dynamic> json) =>
+        _$ChatCompletionDeveloperMessageContentPartsImpl(
+          (json['value'] as List<dynamic>)
+              .map((e) => ChatCompletionMessageContentPart.fromJson(
+                  e as Map<String, dynamic>))
+              .toList(),
+          $type: json['runtimeType'] as String?,
+        );
+
+Map<String, dynamic> _$$ChatCompletionDeveloperMessageContentPartsImplToJson(
+        _$ChatCompletionDeveloperMessageContentPartsImpl instance) =>
+    <String, dynamic>{
+      'value': instance.value.map((e) => e.toJson()).toList(),
+      'runtimeType': instance.$type,
+    };
+
+_$ChatCompletionDeveloperMessageContentStringImpl
+    _$$ChatCompletionDeveloperMessageContentStringImplFromJson(
+            Map<String, dynamic> json) =>
+        _$ChatCompletionDeveloperMessageContentStringImpl(
+          json['value'] as String,
+          $type: json['runtimeType'] as String?,
+        );
+
+Map<String, dynamic> _$$ChatCompletionDeveloperMessageContentStringImplToJson(
+        _$ChatCompletionDeveloperMessageContentStringImpl instance) =>
+    <String, dynamic>{
+      'value': instance.value,
+      'runtimeType': instance.$type,
     };
 
 _$ChatCompletionMessageContentPartsImpl

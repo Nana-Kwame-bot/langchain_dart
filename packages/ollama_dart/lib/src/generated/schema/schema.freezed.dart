@@ -33,10 +33,6 @@ mixin _$GenerateCompletionRequest {
   @JsonKey(includeIfNull: false)
   String? get suffix => throw _privateConstructorUsedError;
 
-  /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
-  @JsonKey(includeIfNull: false)
-  List<String>? get images => throw _privateConstructorUsedError;
-
   /// The system prompt to (overrides what is defined in the Modelfile).
   @JsonKey(includeIfNull: false)
   String? get system => throw _privateConstructorUsedError;
@@ -49,9 +45,14 @@ mixin _$GenerateCompletionRequest {
   @JsonKey(includeIfNull: false)
   List<int>? get context => throw _privateConstructorUsedError;
 
-  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
+  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
+  bool get stream => throw _privateConstructorUsedError;
+
+  /// If `true` no formatting will be applied to the prompt and no context will be returned.
+  ///
+  /// You may choose to use the `raw` parameter if you are specifying a full templated prompt in your request to the API, and are managing history yourself.
   @JsonKey(includeIfNull: false)
-  RequestOptions? get options => throw _privateConstructorUsedError;
+  bool? get raw => throw _privateConstructorUsedError;
 
   /// The format to return a response in. Currently the only accepted value is json.
   ///
@@ -62,15 +63,6 @@ mixin _$GenerateCompletionRequest {
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ResponseFormat? get format => throw _privateConstructorUsedError;
 
-  /// If `true` no formatting will be applied to the prompt and no context will be returned.
-  ///
-  /// You may choose to use the `raw` parameter if you are specifying a full templated prompt in your request to the API, and are managing history yourself.
-  @JsonKey(includeIfNull: false)
-  bool? get raw => throw _privateConstructorUsedError;
-
-  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
-  bool get stream => throw _privateConstructorUsedError;
-
   /// How long (in minutes) to keep the model loaded in memory.
   ///
   /// - If set to a positive duration (e.g. 20), the model will stay loaded for the provided duration.
@@ -79,6 +71,21 @@ mixin _$GenerateCompletionRequest {
   /// - If not set, the model will stay loaded for 5 minutes by default
   @JsonKey(name: 'keep_alive', includeIfNull: false)
   int? get keepAlive => throw _privateConstructorUsedError;
+
+  /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
+  @JsonKey(includeIfNull: false)
+  List<String>? get images => throw _privateConstructorUsedError;
+
+  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
+  @JsonKey(includeIfNull: false)
+  RequestOptions? get options => throw _privateConstructorUsedError;
+
+  /// Think controls whether thinking/reasoning models will think before
+  /// responding. Needs to be a pointer so we can distinguish between false
+  /// (request that thinking _not_ be used) and unset (use the old behavior
+  /// before this option was introduced).
+  @JsonKey(includeIfNull: false)
+  bool? get think => throw _privateConstructorUsedError;
 
   /// Serializes this GenerateCompletionRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -100,18 +107,19 @@ abstract class $GenerateCompletionRequestCopyWith<$Res> {
       {String model,
       String prompt,
       @JsonKey(includeIfNull: false) String? suffix,
-      @JsonKey(includeIfNull: false) List<String>? images,
       @JsonKey(includeIfNull: false) String? system,
       @JsonKey(includeIfNull: false) String? template,
       @JsonKey(includeIfNull: false) List<int>? context,
-      @JsonKey(includeIfNull: false) RequestOptions? options,
+      bool stream,
+      @JsonKey(includeIfNull: false) bool? raw,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       ResponseFormat? format,
-      @JsonKey(includeIfNull: false) bool? raw,
-      bool stream,
-      @JsonKey(name: 'keep_alive', includeIfNull: false) int? keepAlive});
+      @JsonKey(name: 'keep_alive', includeIfNull: false) int? keepAlive,
+      @JsonKey(includeIfNull: false) List<String>? images,
+      @JsonKey(includeIfNull: false) RequestOptions? options,
+      @JsonKey(includeIfNull: false) bool? think});
 
   $RequestOptionsCopyWith<$Res>? get options;
 }
@@ -135,15 +143,16 @@ class _$GenerateCompletionRequestCopyWithImpl<$Res,
     Object? model = null,
     Object? prompt = null,
     Object? suffix = freezed,
-    Object? images = freezed,
     Object? system = freezed,
     Object? template = freezed,
     Object? context = freezed,
-    Object? options = freezed,
-    Object? format = freezed,
-    Object? raw = freezed,
     Object? stream = null,
+    Object? raw = freezed,
+    Object? format = freezed,
     Object? keepAlive = freezed,
+    Object? images = freezed,
+    Object? options = freezed,
+    Object? think = freezed,
   }) {
     return _then(_value.copyWith(
       model: null == model
@@ -158,10 +167,6 @@ class _$GenerateCompletionRequestCopyWithImpl<$Res,
           ? _value.suffix
           : suffix // ignore: cast_nullable_to_non_nullable
               as String?,
-      images: freezed == images
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
       system: freezed == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -174,26 +179,34 @@ class _$GenerateCompletionRequestCopyWithImpl<$Res,
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      options: freezed == options
-          ? _value.options
-          : options // ignore: cast_nullable_to_non_nullable
-              as RequestOptions?,
-      format: freezed == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as ResponseFormat?,
-      raw: freezed == raw
-          ? _value.raw
-          : raw // ignore: cast_nullable_to_non_nullable
-              as bool?,
       stream: null == stream
           ? _value.stream
           : stream // ignore: cast_nullable_to_non_nullable
               as bool,
+      raw: freezed == raw
+          ? _value.raw
+          : raw // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      format: freezed == format
+          ? _value.format
+          : format // ignore: cast_nullable_to_non_nullable
+              as ResponseFormat?,
       keepAlive: freezed == keepAlive
           ? _value.keepAlive
           : keepAlive // ignore: cast_nullable_to_non_nullable
               as int?,
+      images: freezed == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      options: freezed == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as RequestOptions?,
+      think: freezed == think
+          ? _value.think
+          : think // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -225,18 +238,19 @@ abstract class _$$GenerateCompletionRequestImplCopyWith<$Res>
       {String model,
       String prompt,
       @JsonKey(includeIfNull: false) String? suffix,
-      @JsonKey(includeIfNull: false) List<String>? images,
       @JsonKey(includeIfNull: false) String? system,
       @JsonKey(includeIfNull: false) String? template,
       @JsonKey(includeIfNull: false) List<int>? context,
-      @JsonKey(includeIfNull: false) RequestOptions? options,
+      bool stream,
+      @JsonKey(includeIfNull: false) bool? raw,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       ResponseFormat? format,
-      @JsonKey(includeIfNull: false) bool? raw,
-      bool stream,
-      @JsonKey(name: 'keep_alive', includeIfNull: false) int? keepAlive});
+      @JsonKey(name: 'keep_alive', includeIfNull: false) int? keepAlive,
+      @JsonKey(includeIfNull: false) List<String>? images,
+      @JsonKey(includeIfNull: false) RequestOptions? options,
+      @JsonKey(includeIfNull: false) bool? think});
 
   @override
   $RequestOptionsCopyWith<$Res>? get options;
@@ -260,15 +274,16 @@ class __$$GenerateCompletionRequestImplCopyWithImpl<$Res>
     Object? model = null,
     Object? prompt = null,
     Object? suffix = freezed,
-    Object? images = freezed,
     Object? system = freezed,
     Object? template = freezed,
     Object? context = freezed,
-    Object? options = freezed,
-    Object? format = freezed,
-    Object? raw = freezed,
     Object? stream = null,
+    Object? raw = freezed,
+    Object? format = freezed,
     Object? keepAlive = freezed,
+    Object? images = freezed,
+    Object? options = freezed,
+    Object? think = freezed,
   }) {
     return _then(_$GenerateCompletionRequestImpl(
       model: null == model
@@ -283,10 +298,6 @@ class __$$GenerateCompletionRequestImplCopyWithImpl<$Res>
           ? _value.suffix
           : suffix // ignore: cast_nullable_to_non_nullable
               as String?,
-      images: freezed == images
-          ? _value._images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
       system: freezed == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -299,26 +310,34 @@ class __$$GenerateCompletionRequestImplCopyWithImpl<$Res>
           ? _value._context
           : context // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      options: freezed == options
-          ? _value.options
-          : options // ignore: cast_nullable_to_non_nullable
-              as RequestOptions?,
-      format: freezed == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as ResponseFormat?,
-      raw: freezed == raw
-          ? _value.raw
-          : raw // ignore: cast_nullable_to_non_nullable
-              as bool?,
       stream: null == stream
           ? _value.stream
           : stream // ignore: cast_nullable_to_non_nullable
               as bool,
+      raw: freezed == raw
+          ? _value.raw
+          : raw // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      format: freezed == format
+          ? _value.format
+          : format // ignore: cast_nullable_to_non_nullable
+              as ResponseFormat?,
       keepAlive: freezed == keepAlive
           ? _value.keepAlive
           : keepAlive // ignore: cast_nullable_to_non_nullable
               as int?,
+      images: freezed == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      options: freezed == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as RequestOptions?,
+      think: freezed == think
+          ? _value.think
+          : think // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -330,20 +349,21 @@ class _$GenerateCompletionRequestImpl extends _GenerateCompletionRequest {
       {required this.model,
       required this.prompt,
       @JsonKey(includeIfNull: false) this.suffix,
-      @JsonKey(includeIfNull: false) final List<String>? images,
       @JsonKey(includeIfNull: false) this.system,
       @JsonKey(includeIfNull: false) this.template,
       @JsonKey(includeIfNull: false) final List<int>? context,
-      @JsonKey(includeIfNull: false) this.options,
+      this.stream = false,
+      @JsonKey(includeIfNull: false) this.raw,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       this.format,
-      @JsonKey(includeIfNull: false) this.raw,
-      this.stream = false,
-      @JsonKey(name: 'keep_alive', includeIfNull: false) this.keepAlive})
-      : _images = images,
-        _context = context,
+      @JsonKey(name: 'keep_alive', includeIfNull: false) this.keepAlive,
+      @JsonKey(includeIfNull: false) final List<String>? images,
+      @JsonKey(includeIfNull: false) this.options,
+      @JsonKey(includeIfNull: false) this.think})
+      : _context = context,
+        _images = images,
         super._();
 
   factory _$GenerateCompletionRequestImpl.fromJson(Map<String, dynamic> json) =>
@@ -363,20 +383,6 @@ class _$GenerateCompletionRequestImpl extends _GenerateCompletionRequest {
   @override
   @JsonKey(includeIfNull: false)
   final String? suffix;
-
-  /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
-  final List<String>? _images;
-
-  /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
-  @override
-  @JsonKey(includeIfNull: false)
-  List<String>? get images {
-    final value = _images;
-    if (value == null) return null;
-    if (_images is EqualUnmodifiableListView) return _images;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
 
   /// The system prompt to (overrides what is defined in the Modelfile).
   @override
@@ -402,10 +408,17 @@ class _$GenerateCompletionRequestImpl extends _GenerateCompletionRequest {
     return EqualUnmodifiableListView(value);
   }
 
-  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
+  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
+  @override
+  @JsonKey()
+  final bool stream;
+
+  /// If `true` no formatting will be applied to the prompt and no context will be returned.
+  ///
+  /// You may choose to use the `raw` parameter if you are specifying a full templated prompt in your request to the API, and are managing history yourself.
   @override
   @JsonKey(includeIfNull: false)
-  final RequestOptions? options;
+  final bool? raw;
 
   /// The format to return a response in. Currently the only accepted value is json.
   ///
@@ -417,18 +430,6 @@ class _$GenerateCompletionRequestImpl extends _GenerateCompletionRequest {
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   final ResponseFormat? format;
 
-  /// If `true` no formatting will be applied to the prompt and no context will be returned.
-  ///
-  /// You may choose to use the `raw` parameter if you are specifying a full templated prompt in your request to the API, and are managing history yourself.
-  @override
-  @JsonKey(includeIfNull: false)
-  final bool? raw;
-
-  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
-  @override
-  @JsonKey()
-  final bool stream;
-
   /// How long (in minutes) to keep the model loaded in memory.
   ///
   /// - If set to a positive duration (e.g. 20), the model will stay loaded for the provided duration.
@@ -439,9 +440,36 @@ class _$GenerateCompletionRequestImpl extends _GenerateCompletionRequest {
   @JsonKey(name: 'keep_alive', includeIfNull: false)
   final int? keepAlive;
 
+  /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
+  final List<String>? _images;
+
+  /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
+  @override
+  @JsonKey(includeIfNull: false)
+  List<String>? get images {
+    final value = _images;
+    if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
+  @override
+  @JsonKey(includeIfNull: false)
+  final RequestOptions? options;
+
+  /// Think controls whether thinking/reasoning models will think before
+  /// responding. Needs to be a pointer so we can distinguish between false
+  /// (request that thinking _not_ be used) and unset (use the old behavior
+  /// before this option was introduced).
+  @override
+  @JsonKey(includeIfNull: false)
+  final bool? think;
+
   @override
   String toString() {
-    return 'GenerateCompletionRequest(model: $model, prompt: $prompt, suffix: $suffix, images: $images, system: $system, template: $template, context: $context, options: $options, format: $format, raw: $raw, stream: $stream, keepAlive: $keepAlive)';
+    return 'GenerateCompletionRequest(model: $model, prompt: $prompt, suffix: $suffix, system: $system, template: $template, context: $context, stream: $stream, raw: $raw, format: $format, keepAlive: $keepAlive, images: $images, options: $options, think: $think)';
   }
 
   @override
@@ -452,17 +480,18 @@ class _$GenerateCompletionRequestImpl extends _GenerateCompletionRequest {
             (identical(other.model, model) || other.model == model) &&
             (identical(other.prompt, prompt) || other.prompt == prompt) &&
             (identical(other.suffix, suffix) || other.suffix == suffix) &&
-            const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.system, system) || other.system == system) &&
             (identical(other.template, template) ||
                 other.template == template) &&
             const DeepCollectionEquality().equals(other._context, _context) &&
-            (identical(other.options, options) || other.options == options) &&
-            (identical(other.format, format) || other.format == format) &&
-            (identical(other.raw, raw) || other.raw == raw) &&
             (identical(other.stream, stream) || other.stream == stream) &&
+            (identical(other.raw, raw) || other.raw == raw) &&
+            (identical(other.format, format) || other.format == format) &&
             (identical(other.keepAlive, keepAlive) ||
-                other.keepAlive == keepAlive));
+                other.keepAlive == keepAlive) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
+            (identical(other.options, options) || other.options == options) &&
+            (identical(other.think, think) || other.think == think));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -472,15 +501,16 @@ class _$GenerateCompletionRequestImpl extends _GenerateCompletionRequest {
       model,
       prompt,
       suffix,
-      const DeepCollectionEquality().hash(_images),
       system,
       template,
       const DeepCollectionEquality().hash(_context),
-      options,
-      format,
-      raw,
       stream,
-      keepAlive);
+      raw,
+      format,
+      keepAlive,
+      const DeepCollectionEquality().hash(_images),
+      options,
+      think);
 
   /// Create a copy of GenerateCompletionRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -504,19 +534,20 @@ abstract class _GenerateCompletionRequest extends GenerateCompletionRequest {
       {required final String model,
       required final String prompt,
       @JsonKey(includeIfNull: false) final String? suffix,
-      @JsonKey(includeIfNull: false) final List<String>? images,
       @JsonKey(includeIfNull: false) final String? system,
       @JsonKey(includeIfNull: false) final String? template,
       @JsonKey(includeIfNull: false) final List<int>? context,
-      @JsonKey(includeIfNull: false) final RequestOptions? options,
+      final bool stream,
+      @JsonKey(includeIfNull: false) final bool? raw,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       final ResponseFormat? format,
-      @JsonKey(includeIfNull: false) final bool? raw,
-      final bool stream,
-      @JsonKey(name: 'keep_alive', includeIfNull: false)
-      final int? keepAlive}) = _$GenerateCompletionRequestImpl;
+      @JsonKey(name: 'keep_alive', includeIfNull: false) final int? keepAlive,
+      @JsonKey(includeIfNull: false) final List<String>? images,
+      @JsonKey(includeIfNull: false) final RequestOptions? options,
+      @JsonKey(includeIfNull: false)
+      final bool? think}) = _$GenerateCompletionRequestImpl;
   const _GenerateCompletionRequest._() : super._();
 
   factory _GenerateCompletionRequest.fromJson(Map<String, dynamic> json) =
@@ -537,11 +568,6 @@ abstract class _GenerateCompletionRequest extends GenerateCompletionRequest {
   @JsonKey(includeIfNull: false)
   String? get suffix;
 
-  /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
-  @override
-  @JsonKey(includeIfNull: false)
-  List<String>? get images;
-
   /// The system prompt to (overrides what is defined in the Modelfile).
   @override
   @JsonKey(includeIfNull: false)
@@ -557,10 +583,16 @@ abstract class _GenerateCompletionRequest extends GenerateCompletionRequest {
   @JsonKey(includeIfNull: false)
   List<int>? get context;
 
-  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
+  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
+  @override
+  bool get stream;
+
+  /// If `true` no formatting will be applied to the prompt and no context will be returned.
+  ///
+  /// You may choose to use the `raw` parameter if you are specifying a full templated prompt in your request to the API, and are managing history yourself.
   @override
   @JsonKey(includeIfNull: false)
-  RequestOptions? get options;
+  bool? get raw;
 
   /// The format to return a response in. Currently the only accepted value is json.
   ///
@@ -572,17 +604,6 @@ abstract class _GenerateCompletionRequest extends GenerateCompletionRequest {
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ResponseFormat? get format;
 
-  /// If `true` no formatting will be applied to the prompt and no context will be returned.
-  ///
-  /// You may choose to use the `raw` parameter if you are specifying a full templated prompt in your request to the API, and are managing history yourself.
-  @override
-  @JsonKey(includeIfNull: false)
-  bool? get raw;
-
-  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
-  @override
-  bool get stream;
-
   /// How long (in minutes) to keep the model loaded in memory.
   ///
   /// - If set to a positive duration (e.g. 20), the model will stay loaded for the provided duration.
@@ -592,6 +613,24 @@ abstract class _GenerateCompletionRequest extends GenerateCompletionRequest {
   @override
   @JsonKey(name: 'keep_alive', includeIfNull: false)
   int? get keepAlive;
+
+  /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
+  @override
+  @JsonKey(includeIfNull: false)
+  List<String>? get images;
+
+  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
+  @override
+  @JsonKey(includeIfNull: false)
+  RequestOptions? get options;
+
+  /// Think controls whether thinking/reasoning models will think before
+  /// responding. Needs to be a pointer so we can distinguish between false
+  /// (request that thinking _not_ be used) and unset (use the old behavior
+  /// before this option was introduced).
+  @override
+  @JsonKey(includeIfNull: false)
+  bool? get think;
 
   /// Create a copy of GenerateCompletionRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -1926,6 +1965,10 @@ mixin _$GenerateCompletionResponse {
   @JsonKey(includeIfNull: false)
   String? get response => throw _privateConstructorUsedError;
 
+  /// Contains the text that was inside thinking tags in the original model output when `think` is enabled.
+  @JsonKey(includeIfNull: false)
+  String? get thinking => throw _privateConstructorUsedError;
+
   /// Whether the response has completed.
   @JsonKey(includeIfNull: false)
   bool? get done => throw _privateConstructorUsedError;
@@ -1979,6 +2022,7 @@ abstract class $GenerateCompletionResponseCopyWith<$Res> {
       {@JsonKey(includeIfNull: false) String? model,
       @JsonKey(name: 'created_at', includeIfNull: false) String? createdAt,
       @JsonKey(includeIfNull: false) String? response,
+      @JsonKey(includeIfNull: false) String? thinking,
       @JsonKey(includeIfNull: false) bool? done,
       @JsonKey(includeIfNull: false) List<int>? context,
       @JsonKey(name: 'total_duration', includeIfNull: false) int? totalDuration,
@@ -2010,6 +2054,7 @@ class _$GenerateCompletionResponseCopyWithImpl<$Res,
     Object? model = freezed,
     Object? createdAt = freezed,
     Object? response = freezed,
+    Object? thinking = freezed,
     Object? done = freezed,
     Object? context = freezed,
     Object? totalDuration = freezed,
@@ -2031,6 +2076,10 @@ class _$GenerateCompletionResponseCopyWithImpl<$Res,
       response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thinking: freezed == thinking
+          ? _value.thinking
+          : thinking // ignore: cast_nullable_to_non_nullable
               as String?,
       done: freezed == done
           ? _value.done
@@ -2081,6 +2130,7 @@ abstract class _$$GenerateCompletionResponseImplCopyWith<$Res>
       {@JsonKey(includeIfNull: false) String? model,
       @JsonKey(name: 'created_at', includeIfNull: false) String? createdAt,
       @JsonKey(includeIfNull: false) String? response,
+      @JsonKey(includeIfNull: false) String? thinking,
       @JsonKey(includeIfNull: false) bool? done,
       @JsonKey(includeIfNull: false) List<int>? context,
       @JsonKey(name: 'total_duration', includeIfNull: false) int? totalDuration,
@@ -2111,6 +2161,7 @@ class __$$GenerateCompletionResponseImplCopyWithImpl<$Res>
     Object? model = freezed,
     Object? createdAt = freezed,
     Object? response = freezed,
+    Object? thinking = freezed,
     Object? done = freezed,
     Object? context = freezed,
     Object? totalDuration = freezed,
@@ -2132,6 +2183,10 @@ class __$$GenerateCompletionResponseImplCopyWithImpl<$Res>
       response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thinking: freezed == thinking
+          ? _value.thinking
+          : thinking // ignore: cast_nullable_to_non_nullable
               as String?,
       done: freezed == done
           ? _value.done
@@ -2176,6 +2231,7 @@ class _$GenerateCompletionResponseImpl extends _GenerateCompletionResponse {
       {@JsonKey(includeIfNull: false) this.model,
       @JsonKey(name: 'created_at', includeIfNull: false) this.createdAt,
       @JsonKey(includeIfNull: false) this.response,
+      @JsonKey(includeIfNull: false) this.thinking,
       @JsonKey(includeIfNull: false) this.done,
       @JsonKey(includeIfNull: false) final List<int>? context,
       @JsonKey(name: 'total_duration', includeIfNull: false) this.totalDuration,
@@ -2209,6 +2265,11 @@ class _$GenerateCompletionResponseImpl extends _GenerateCompletionResponse {
   @override
   @JsonKey(includeIfNull: false)
   final String? response;
+
+  /// Contains the text that was inside thinking tags in the original model output when `think` is enabled.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? thinking;
 
   /// Whether the response has completed.
   @override
@@ -2261,7 +2322,7 @@ class _$GenerateCompletionResponseImpl extends _GenerateCompletionResponse {
 
   @override
   String toString() {
-    return 'GenerateCompletionResponse(model: $model, createdAt: $createdAt, response: $response, done: $done, context: $context, totalDuration: $totalDuration, loadDuration: $loadDuration, promptEvalCount: $promptEvalCount, promptEvalDuration: $promptEvalDuration, evalCount: $evalCount, evalDuration: $evalDuration)';
+    return 'GenerateCompletionResponse(model: $model, createdAt: $createdAt, response: $response, thinking: $thinking, done: $done, context: $context, totalDuration: $totalDuration, loadDuration: $loadDuration, promptEvalCount: $promptEvalCount, promptEvalDuration: $promptEvalDuration, evalCount: $evalCount, evalDuration: $evalDuration)';
   }
 
   @override
@@ -2274,6 +2335,8 @@ class _$GenerateCompletionResponseImpl extends _GenerateCompletionResponse {
                 other.createdAt == createdAt) &&
             (identical(other.response, response) ||
                 other.response == response) &&
+            (identical(other.thinking, thinking) ||
+                other.thinking == thinking) &&
             (identical(other.done, done) || other.done == done) &&
             const DeepCollectionEquality().equals(other._context, _context) &&
             (identical(other.totalDuration, totalDuration) ||
@@ -2297,6 +2360,7 @@ class _$GenerateCompletionResponseImpl extends _GenerateCompletionResponse {
       model,
       createdAt,
       response,
+      thinking,
       done,
       const DeepCollectionEquality().hash(_context),
       totalDuration,
@@ -2329,6 +2393,7 @@ abstract class _GenerateCompletionResponse extends GenerateCompletionResponse {
       @JsonKey(name: 'created_at', includeIfNull: false)
       final String? createdAt,
       @JsonKey(includeIfNull: false) final String? response,
+      @JsonKey(includeIfNull: false) final String? thinking,
       @JsonKey(includeIfNull: false) final bool? done,
       @JsonKey(includeIfNull: false) final List<int>? context,
       @JsonKey(name: 'total_duration', includeIfNull: false)
@@ -2363,6 +2428,11 @@ abstract class _GenerateCompletionResponse extends GenerateCompletionResponse {
   @override
   @JsonKey(includeIfNull: false)
   String? get response;
+
+  /// Contains the text that was inside thinking tags in the original model output when `think` is enabled.
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get thinking;
 
   /// Whether the response has completed.
   @override
@@ -2427,6 +2497,9 @@ mixin _$GenerateChatCompletionRequest {
   /// The messages of the chat, this can be used to keep a chat memory
   List<Message> get messages => throw _privateConstructorUsedError;
 
+  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
+  bool get stream => throw _privateConstructorUsedError;
+
   /// The format to return a response in. Currently the only accepted value is json.
   ///
   /// Enable JSON mode by setting the format parameter to json. This will structure the response as valid JSON.
@@ -2435,13 +2508,6 @@ mixin _$GenerateChatCompletionRequest {
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ResponseFormat? get format => throw _privateConstructorUsedError;
-
-  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
-  @JsonKey(includeIfNull: false)
-  RequestOptions? get options => throw _privateConstructorUsedError;
-
-  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
-  bool get stream => throw _privateConstructorUsedError;
 
   /// How long (in minutes) to keep the model loaded in memory.
   ///
@@ -2455,6 +2521,17 @@ mixin _$GenerateChatCompletionRequest {
   /// A list of tools the model may call.
   @JsonKey(includeIfNull: false)
   List<Tool>? get tools => throw _privateConstructorUsedError;
+
+  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
+  @JsonKey(includeIfNull: false)
+  RequestOptions? get options => throw _privateConstructorUsedError;
+
+  /// Think controls whether thinking/reasoning models will think before
+  /// responding. Needs to be a pointer so we can distinguish between false
+  /// (request that thinking _not_ be used) and unset (use the old behavior
+  /// before this option was introduced).
+  @JsonKey(includeIfNull: false)
+  bool? get think => throw _privateConstructorUsedError;
 
   /// Serializes this GenerateChatCompletionRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2477,14 +2554,15 @@ abstract class $GenerateChatCompletionRequestCopyWith<$Res> {
   $Res call(
       {String model,
       List<Message> messages,
+      bool stream,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       ResponseFormat? format,
-      @JsonKey(includeIfNull: false) RequestOptions? options,
-      bool stream,
       @JsonKey(name: 'keep_alive', includeIfNull: false) int? keepAlive,
-      @JsonKey(includeIfNull: false) List<Tool>? tools});
+      @JsonKey(includeIfNull: false) List<Tool>? tools,
+      @JsonKey(includeIfNull: false) RequestOptions? options,
+      @JsonKey(includeIfNull: false) bool? think});
 
   $RequestOptionsCopyWith<$Res>? get options;
 }
@@ -2507,11 +2585,12 @@ class _$GenerateChatCompletionRequestCopyWithImpl<$Res,
   $Res call({
     Object? model = null,
     Object? messages = null,
-    Object? format = freezed,
-    Object? options = freezed,
     Object? stream = null,
+    Object? format = freezed,
     Object? keepAlive = freezed,
     Object? tools = freezed,
+    Object? options = freezed,
+    Object? think = freezed,
   }) {
     return _then(_value.copyWith(
       model: null == model
@@ -2522,18 +2601,14 @@ class _$GenerateChatCompletionRequestCopyWithImpl<$Res,
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<Message>,
-      format: freezed == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as ResponseFormat?,
-      options: freezed == options
-          ? _value.options
-          : options // ignore: cast_nullable_to_non_nullable
-              as RequestOptions?,
       stream: null == stream
           ? _value.stream
           : stream // ignore: cast_nullable_to_non_nullable
               as bool,
+      format: freezed == format
+          ? _value.format
+          : format // ignore: cast_nullable_to_non_nullable
+              as ResponseFormat?,
       keepAlive: freezed == keepAlive
           ? _value.keepAlive
           : keepAlive // ignore: cast_nullable_to_non_nullable
@@ -2542,6 +2617,14 @@ class _$GenerateChatCompletionRequestCopyWithImpl<$Res,
           ? _value.tools
           : tools // ignore: cast_nullable_to_non_nullable
               as List<Tool>?,
+      options: freezed == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as RequestOptions?,
+      think: freezed == think
+          ? _value.think
+          : think // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -2572,14 +2655,15 @@ abstract class _$$GenerateChatCompletionRequestImplCopyWith<$Res>
   $Res call(
       {String model,
       List<Message> messages,
+      bool stream,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       ResponseFormat? format,
-      @JsonKey(includeIfNull: false) RequestOptions? options,
-      bool stream,
       @JsonKey(name: 'keep_alive', includeIfNull: false) int? keepAlive,
-      @JsonKey(includeIfNull: false) List<Tool>? tools});
+      @JsonKey(includeIfNull: false) List<Tool>? tools,
+      @JsonKey(includeIfNull: false) RequestOptions? options,
+      @JsonKey(includeIfNull: false) bool? think});
 
   @override
   $RequestOptionsCopyWith<$Res>? get options;
@@ -2602,11 +2686,12 @@ class __$$GenerateChatCompletionRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? model = null,
     Object? messages = null,
-    Object? format = freezed,
-    Object? options = freezed,
     Object? stream = null,
+    Object? format = freezed,
     Object? keepAlive = freezed,
     Object? tools = freezed,
+    Object? options = freezed,
+    Object? think = freezed,
   }) {
     return _then(_$GenerateChatCompletionRequestImpl(
       model: null == model
@@ -2617,18 +2702,14 @@ class __$$GenerateChatCompletionRequestImplCopyWithImpl<$Res>
           ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<Message>,
-      format: freezed == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as ResponseFormat?,
-      options: freezed == options
-          ? _value.options
-          : options // ignore: cast_nullable_to_non_nullable
-              as RequestOptions?,
       stream: null == stream
           ? _value.stream
           : stream // ignore: cast_nullable_to_non_nullable
               as bool,
+      format: freezed == format
+          ? _value.format
+          : format // ignore: cast_nullable_to_non_nullable
+              as ResponseFormat?,
       keepAlive: freezed == keepAlive
           ? _value.keepAlive
           : keepAlive // ignore: cast_nullable_to_non_nullable
@@ -2637,6 +2718,14 @@ class __$$GenerateChatCompletionRequestImplCopyWithImpl<$Res>
           ? _value._tools
           : tools // ignore: cast_nullable_to_non_nullable
               as List<Tool>?,
+      options: freezed == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as RequestOptions?,
+      think: freezed == think
+          ? _value.think
+          : think // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -2648,14 +2737,15 @@ class _$GenerateChatCompletionRequestImpl
   const _$GenerateChatCompletionRequestImpl(
       {required this.model,
       required final List<Message> messages,
+      this.stream = false,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       this.format,
-      @JsonKey(includeIfNull: false) this.options,
-      this.stream = false,
       @JsonKey(name: 'keep_alive', includeIfNull: false) this.keepAlive,
-      @JsonKey(includeIfNull: false) final List<Tool>? tools})
+      @JsonKey(includeIfNull: false) final List<Tool>? tools,
+      @JsonKey(includeIfNull: false) this.options,
+      @JsonKey(includeIfNull: false) this.think})
       : _messages = messages,
         _tools = tools,
         super._();
@@ -2681,6 +2771,11 @@ class _$GenerateChatCompletionRequestImpl
     return EqualUnmodifiableListView(_messages);
   }
 
+  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
+  @override
+  @JsonKey()
+  final bool stream;
+
   /// The format to return a response in. Currently the only accepted value is json.
   ///
   /// Enable JSON mode by setting the format parameter to json. This will structure the response as valid JSON.
@@ -2690,16 +2785,6 @@ class _$GenerateChatCompletionRequestImpl
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   final ResponseFormat? format;
-
-  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
-  @override
-  @JsonKey(includeIfNull: false)
-  final RequestOptions? options;
-
-  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
-  @override
-  @JsonKey()
-  final bool stream;
 
   /// How long (in minutes) to keep the model loaded in memory.
   ///
@@ -2725,9 +2810,22 @@ class _$GenerateChatCompletionRequestImpl
     return EqualUnmodifiableListView(value);
   }
 
+  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
+  @override
+  @JsonKey(includeIfNull: false)
+  final RequestOptions? options;
+
+  /// Think controls whether thinking/reasoning models will think before
+  /// responding. Needs to be a pointer so we can distinguish between false
+  /// (request that thinking _not_ be used) and unset (use the old behavior
+  /// before this option was introduced).
+  @override
+  @JsonKey(includeIfNull: false)
+  final bool? think;
+
   @override
   String toString() {
-    return 'GenerateChatCompletionRequest(model: $model, messages: $messages, format: $format, options: $options, stream: $stream, keepAlive: $keepAlive, tools: $tools)';
+    return 'GenerateChatCompletionRequest(model: $model, messages: $messages, stream: $stream, format: $format, keepAlive: $keepAlive, tools: $tools, options: $options, think: $think)';
   }
 
   @override
@@ -2737,12 +2835,13 @@ class _$GenerateChatCompletionRequestImpl
             other is _$GenerateChatCompletionRequestImpl &&
             (identical(other.model, model) || other.model == model) &&
             const DeepCollectionEquality().equals(other._messages, _messages) &&
-            (identical(other.format, format) || other.format == format) &&
-            (identical(other.options, options) || other.options == options) &&
             (identical(other.stream, stream) || other.stream == stream) &&
+            (identical(other.format, format) || other.format == format) &&
             (identical(other.keepAlive, keepAlive) ||
                 other.keepAlive == keepAlive) &&
-            const DeepCollectionEquality().equals(other._tools, _tools));
+            const DeepCollectionEquality().equals(other._tools, _tools) &&
+            (identical(other.options, options) || other.options == options) &&
+            (identical(other.think, think) || other.think == think));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2751,11 +2850,12 @@ class _$GenerateChatCompletionRequestImpl
       runtimeType,
       model,
       const DeepCollectionEquality().hash(_messages),
-      format,
-      options,
       stream,
+      format,
       keepAlive,
-      const DeepCollectionEquality().hash(_tools));
+      const DeepCollectionEquality().hash(_tools),
+      options,
+      think);
 
   /// Create a copy of GenerateChatCompletionRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -2780,15 +2880,16 @@ abstract class _GenerateChatCompletionRequest
   const factory _GenerateChatCompletionRequest(
       {required final String model,
       required final List<Message> messages,
+      final bool stream,
       @JsonKey(
           includeIfNull: false,
           unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
       final ResponseFormat? format,
-      @JsonKey(includeIfNull: false) final RequestOptions? options,
-      final bool stream,
       @JsonKey(name: 'keep_alive', includeIfNull: false) final int? keepAlive,
+      @JsonKey(includeIfNull: false) final List<Tool>? tools,
+      @JsonKey(includeIfNull: false) final RequestOptions? options,
       @JsonKey(includeIfNull: false)
-      final List<Tool>? tools}) = _$GenerateChatCompletionRequestImpl;
+      final bool? think}) = _$GenerateChatCompletionRequestImpl;
   const _GenerateChatCompletionRequest._() : super._();
 
   factory _GenerateChatCompletionRequest.fromJson(Map<String, dynamic> json) =
@@ -2804,6 +2905,10 @@ abstract class _GenerateChatCompletionRequest
   @override
   List<Message> get messages;
 
+  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
+  @override
+  bool get stream;
+
   /// The format to return a response in. Currently the only accepted value is json.
   ///
   /// Enable JSON mode by setting the format parameter to json. This will structure the response as valid JSON.
@@ -2813,15 +2918,6 @@ abstract class _GenerateChatCompletionRequest
   @JsonKey(
       includeIfNull: false, unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   ResponseFormat? get format;
-
-  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
-  @override
-  @JsonKey(includeIfNull: false)
-  RequestOptions? get options;
-
-  /// If `false` the response will be returned as a single response object, otherwise the response will be streamed as a series of objects.
-  @override
-  bool get stream;
 
   /// How long (in minutes) to keep the model loaded in memory.
   ///
@@ -2837,6 +2933,19 @@ abstract class _GenerateChatCompletionRequest
   @override
   @JsonKey(includeIfNull: false)
   List<Tool>? get tools;
+
+  /// Additional model parameters listed in the documentation for the Modelfile such as `temperature`.
+  @override
+  @JsonKey(includeIfNull: false)
+  RequestOptions? get options;
+
+  /// Think controls whether thinking/reasoning models will think before
+  /// responding. Needs to be a pointer so we can distinguish between false
+  /// (request that thinking _not_ be used) and unset (use the old behavior
+  /// before this option was introduced).
+  @override
+  @JsonKey(includeIfNull: false)
+  bool? get think;
 
   /// Create a copy of GenerateChatCompletionRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -3391,6 +3500,10 @@ mixin _$Message {
   /// The content of the message
   String get content => throw _privateConstructorUsedError;
 
+  /// Contains the text that was inside thinking tags in the original model output when `think` is enabled.
+  @JsonKey(includeIfNull: false)
+  String? get thinking => throw _privateConstructorUsedError;
+
   /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
   @JsonKey(includeIfNull: false)
   List<String>? get images => throw _privateConstructorUsedError;
@@ -3416,6 +3529,7 @@ abstract class $MessageCopyWith<$Res> {
   $Res call(
       {MessageRole role,
       String content,
+      @JsonKey(includeIfNull: false) String? thinking,
       @JsonKey(includeIfNull: false) List<String>? images,
       @JsonKey(name: 'tool_calls', includeIfNull: false)
       List<ToolCall>? toolCalls});
@@ -3438,6 +3552,7 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
   $Res call({
     Object? role = null,
     Object? content = null,
+    Object? thinking = freezed,
     Object? images = freezed,
     Object? toolCalls = freezed,
   }) {
@@ -3450,6 +3565,10 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      thinking: freezed == thinking
+          ? _value.thinking
+          : thinking // ignore: cast_nullable_to_non_nullable
+              as String?,
       images: freezed == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -3472,6 +3591,7 @@ abstract class _$$MessageImplCopyWith<$Res> implements $MessageCopyWith<$Res> {
   $Res call(
       {MessageRole role,
       String content,
+      @JsonKey(includeIfNull: false) String? thinking,
       @JsonKey(includeIfNull: false) List<String>? images,
       @JsonKey(name: 'tool_calls', includeIfNull: false)
       List<ToolCall>? toolCalls});
@@ -3492,6 +3612,7 @@ class __$$MessageImplCopyWithImpl<$Res>
   $Res call({
     Object? role = null,
     Object? content = null,
+    Object? thinking = freezed,
     Object? images = freezed,
     Object? toolCalls = freezed,
   }) {
@@ -3504,6 +3625,10 @@ class __$$MessageImplCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      thinking: freezed == thinking
+          ? _value.thinking
+          : thinking // ignore: cast_nullable_to_non_nullable
+              as String?,
       images: freezed == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
@@ -3522,6 +3647,7 @@ class _$MessageImpl extends _Message {
   const _$MessageImpl(
       {required this.role,
       required this.content,
+      @JsonKey(includeIfNull: false) this.thinking,
       @JsonKey(includeIfNull: false) final List<String>? images,
       @JsonKey(name: 'tool_calls', includeIfNull: false)
       final List<ToolCall>? toolCalls})
@@ -3539,6 +3665,11 @@ class _$MessageImpl extends _Message {
   /// The content of the message
   @override
   final String content;
+
+  /// Contains the text that was inside thinking tags in the original model output when `think` is enabled.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? thinking;
 
   /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
   final List<String>? _images;
@@ -3570,7 +3701,7 @@ class _$MessageImpl extends _Message {
 
   @override
   String toString() {
-    return 'Message(role: $role, content: $content, images: $images, toolCalls: $toolCalls)';
+    return 'Message(role: $role, content: $content, thinking: $thinking, images: $images, toolCalls: $toolCalls)';
   }
 
   @override
@@ -3580,6 +3711,8 @@ class _$MessageImpl extends _Message {
             other is _$MessageImpl &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.content, content) || other.content == content) &&
+            (identical(other.thinking, thinking) ||
+                other.thinking == thinking) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality()
                 .equals(other._toolCalls, _toolCalls));
@@ -3591,6 +3724,7 @@ class _$MessageImpl extends _Message {
       runtimeType,
       role,
       content,
+      thinking,
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_toolCalls));
 
@@ -3614,6 +3748,7 @@ abstract class _Message extends Message {
   const factory _Message(
       {required final MessageRole role,
       required final String content,
+      @JsonKey(includeIfNull: false) final String? thinking,
       @JsonKey(includeIfNull: false) final List<String>? images,
       @JsonKey(name: 'tool_calls', includeIfNull: false)
       final List<ToolCall>? toolCalls}) = _$MessageImpl;
@@ -3628,6 +3763,11 @@ abstract class _Message extends Message {
   /// The content of the message
   @override
   String get content;
+
+  /// Contains the text that was inside thinking tags in the original model output when `think` is enabled.
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get thinking;
 
   /// (optional) a list of Base64-encoded images to include in the message (for multimodal models such as llava)
   @override
@@ -6437,6 +6577,232 @@ abstract class _ModelInformation extends ModelInformation {
       throw _privateConstructorUsedError;
 }
 
+Tensor _$TensorFromJson(Map<String, dynamic> json) {
+  return _Tensor.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Tensor {
+  /// The name of the tensor.
+  @JsonKey(includeIfNull: false)
+  String? get name => throw _privateConstructorUsedError;
+
+  /// The type of the tensor.
+  @JsonKey(includeIfNull: false)
+  String? get type => throw _privateConstructorUsedError;
+
+  /// The shape of the tensor.
+  @JsonKey(includeIfNull: false)
+  List<int>? get shape => throw _privateConstructorUsedError;
+
+  /// Serializes this Tensor to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Tensor
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $TensorCopyWith<Tensor> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TensorCopyWith<$Res> {
+  factory $TensorCopyWith(Tensor value, $Res Function(Tensor) then) =
+      _$TensorCopyWithImpl<$Res, Tensor>;
+  @useResult
+  $Res call(
+      {@JsonKey(includeIfNull: false) String? name,
+      @JsonKey(includeIfNull: false) String? type,
+      @JsonKey(includeIfNull: false) List<int>? shape});
+}
+
+/// @nodoc
+class _$TensorCopyWithImpl<$Res, $Val extends Tensor>
+    implements $TensorCopyWith<$Res> {
+  _$TensorCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Tensor
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? type = freezed,
+    Object? shape = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shape: freezed == shape
+          ? _value.shape
+          : shape // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$TensorImplCopyWith<$Res> implements $TensorCopyWith<$Res> {
+  factory _$$TensorImplCopyWith(
+          _$TensorImpl value, $Res Function(_$TensorImpl) then) =
+      __$$TensorImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(includeIfNull: false) String? name,
+      @JsonKey(includeIfNull: false) String? type,
+      @JsonKey(includeIfNull: false) List<int>? shape});
+}
+
+/// @nodoc
+class __$$TensorImplCopyWithImpl<$Res>
+    extends _$TensorCopyWithImpl<$Res, _$TensorImpl>
+    implements _$$TensorImplCopyWith<$Res> {
+  __$$TensorImplCopyWithImpl(
+      _$TensorImpl _value, $Res Function(_$TensorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Tensor
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? type = freezed,
+    Object? shape = freezed,
+  }) {
+    return _then(_$TensorImpl(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shape: freezed == shape
+          ? _value._shape
+          : shape // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$TensorImpl extends _Tensor {
+  const _$TensorImpl(
+      {@JsonKey(includeIfNull: false) this.name,
+      @JsonKey(includeIfNull: false) this.type,
+      @JsonKey(includeIfNull: false) final List<int>? shape})
+      : _shape = shape,
+        super._();
+
+  factory _$TensorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TensorImplFromJson(json);
+
+  /// The name of the tensor.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? name;
+
+  /// The type of the tensor.
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? type;
+
+  /// The shape of the tensor.
+  final List<int>? _shape;
+
+  /// The shape of the tensor.
+  @override
+  @JsonKey(includeIfNull: false)
+  List<int>? get shape {
+    final value = _shape;
+    if (value == null) return null;
+    if (_shape is EqualUnmodifiableListView) return _shape;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'Tensor(name: $name, type: $type, shape: $shape)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TensorImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality().equals(other._shape, _shape));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, name, type, const DeepCollectionEquality().hash(_shape));
+
+  /// Create a copy of Tensor
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TensorImplCopyWith<_$TensorImpl> get copyWith =>
+      __$$TensorImplCopyWithImpl<_$TensorImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TensorImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Tensor extends Tensor {
+  const factory _Tensor(
+      {@JsonKey(includeIfNull: false) final String? name,
+      @JsonKey(includeIfNull: false) final String? type,
+      @JsonKey(includeIfNull: false) final List<int>? shape}) = _$TensorImpl;
+  const _Tensor._() : super._();
+
+  factory _Tensor.fromJson(Map<String, dynamic> json) = _$TensorImpl.fromJson;
+
+  /// The name of the tensor.
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get name;
+
+  /// The type of the tensor.
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get type;
+
+  /// The shape of the tensor.
+  @override
+  @JsonKey(includeIfNull: false)
+  List<int>? get shape;
+
+  /// Create a copy of Tensor
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TensorImplCopyWith<_$TensorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 ProcessResponse _$ProcessResponseFromJson(Map<String, dynamic> json) {
   return _ProcessResponse.fromJson(json);
 }
@@ -7136,13 +7502,29 @@ mixin _$ModelInfo {
   @JsonKey(includeIfNull: false)
   ModelDetails? get details => throw _privateConstructorUsedError;
 
+  /// The default messages for the model.
+  @JsonKey(includeIfNull: false)
+  List<Message>? get messages => throw _privateConstructorUsedError;
+
   /// Details about a model.
   @JsonKey(name: 'model_info', includeIfNull: false)
   ModelInformation? get modelInfo => throw _privateConstructorUsedError;
 
-  /// The default messages for the model.
+  /// Projector info.
+  @JsonKey(name: 'projector_info', includeIfNull: false)
+  Map<String, dynamic>? get projectorInfo => throw _privateConstructorUsedError;
+
+  /// The tensors of the model.
   @JsonKey(includeIfNull: false)
-  List<Message>? get messages => throw _privateConstructorUsedError;
+  List<Tensor>? get tensors => throw _privateConstructorUsedError;
+
+  /// The capabilities of the model.
+  @JsonKey(includeIfNull: false)
+  List<Capability>? get capabilities => throw _privateConstructorUsedError;
+
+  /// Date on which a model was created.
+  @JsonKey(name: 'modified_at', includeIfNull: false)
+  String? get modifiedAt => throw _privateConstructorUsedError;
 
   /// Serializes this ModelInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -7166,9 +7548,14 @@ abstract class $ModelInfoCopyWith<$Res> {
       @JsonKey(includeIfNull: false) String? template,
       @JsonKey(includeIfNull: false) String? system,
       @JsonKey(includeIfNull: false) ModelDetails? details,
+      @JsonKey(includeIfNull: false) List<Message>? messages,
       @JsonKey(name: 'model_info', includeIfNull: false)
       ModelInformation? modelInfo,
-      @JsonKey(includeIfNull: false) List<Message>? messages});
+      @JsonKey(name: 'projector_info', includeIfNull: false)
+      Map<String, dynamic>? projectorInfo,
+      @JsonKey(includeIfNull: false) List<Tensor>? tensors,
+      @JsonKey(includeIfNull: false) List<Capability>? capabilities,
+      @JsonKey(name: 'modified_at', includeIfNull: false) String? modifiedAt});
 
   $ModelDetailsCopyWith<$Res>? get details;
   $ModelInformationCopyWith<$Res>? get modelInfo;
@@ -7195,8 +7582,12 @@ class _$ModelInfoCopyWithImpl<$Res, $Val extends ModelInfo>
     Object? template = freezed,
     Object? system = freezed,
     Object? details = freezed,
-    Object? modelInfo = freezed,
     Object? messages = freezed,
+    Object? modelInfo = freezed,
+    Object? projectorInfo = freezed,
+    Object? tensors = freezed,
+    Object? capabilities = freezed,
+    Object? modifiedAt = freezed,
   }) {
     return _then(_value.copyWith(
       license: freezed == license
@@ -7223,14 +7614,30 @@ class _$ModelInfoCopyWithImpl<$Res, $Val extends ModelInfo>
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as ModelDetails?,
-      modelInfo: freezed == modelInfo
-          ? _value.modelInfo
-          : modelInfo // ignore: cast_nullable_to_non_nullable
-              as ModelInformation?,
       messages: freezed == messages
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<Message>?,
+      modelInfo: freezed == modelInfo
+          ? _value.modelInfo
+          : modelInfo // ignore: cast_nullable_to_non_nullable
+              as ModelInformation?,
+      projectorInfo: freezed == projectorInfo
+          ? _value.projectorInfo
+          : projectorInfo // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      tensors: freezed == tensors
+          ? _value.tensors
+          : tensors // ignore: cast_nullable_to_non_nullable
+              as List<Tensor>?,
+      capabilities: freezed == capabilities
+          ? _value.capabilities
+          : capabilities // ignore: cast_nullable_to_non_nullable
+              as List<Capability>?,
+      modifiedAt: freezed == modifiedAt
+          ? _value.modifiedAt
+          : modifiedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -7278,9 +7685,14 @@ abstract class _$$ModelInfoImplCopyWith<$Res>
       @JsonKey(includeIfNull: false) String? template,
       @JsonKey(includeIfNull: false) String? system,
       @JsonKey(includeIfNull: false) ModelDetails? details,
+      @JsonKey(includeIfNull: false) List<Message>? messages,
       @JsonKey(name: 'model_info', includeIfNull: false)
       ModelInformation? modelInfo,
-      @JsonKey(includeIfNull: false) List<Message>? messages});
+      @JsonKey(name: 'projector_info', includeIfNull: false)
+      Map<String, dynamic>? projectorInfo,
+      @JsonKey(includeIfNull: false) List<Tensor>? tensors,
+      @JsonKey(includeIfNull: false) List<Capability>? capabilities,
+      @JsonKey(name: 'modified_at', includeIfNull: false) String? modifiedAt});
 
   @override
   $ModelDetailsCopyWith<$Res>? get details;
@@ -7307,8 +7719,12 @@ class __$$ModelInfoImplCopyWithImpl<$Res>
     Object? template = freezed,
     Object? system = freezed,
     Object? details = freezed,
-    Object? modelInfo = freezed,
     Object? messages = freezed,
+    Object? modelInfo = freezed,
+    Object? projectorInfo = freezed,
+    Object? tensors = freezed,
+    Object? capabilities = freezed,
+    Object? modifiedAt = freezed,
   }) {
     return _then(_$ModelInfoImpl(
       license: freezed == license
@@ -7335,14 +7751,30 @@ class __$$ModelInfoImplCopyWithImpl<$Res>
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as ModelDetails?,
-      modelInfo: freezed == modelInfo
-          ? _value.modelInfo
-          : modelInfo // ignore: cast_nullable_to_non_nullable
-              as ModelInformation?,
       messages: freezed == messages
           ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<Message>?,
+      modelInfo: freezed == modelInfo
+          ? _value.modelInfo
+          : modelInfo // ignore: cast_nullable_to_non_nullable
+              as ModelInformation?,
+      projectorInfo: freezed == projectorInfo
+          ? _value._projectorInfo
+          : projectorInfo // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      tensors: freezed == tensors
+          ? _value._tensors
+          : tensors // ignore: cast_nullable_to_non_nullable
+              as List<Tensor>?,
+      capabilities: freezed == capabilities
+          ? _value._capabilities
+          : capabilities // ignore: cast_nullable_to_non_nullable
+              as List<Capability>?,
+      modifiedAt: freezed == modifiedAt
+          ? _value.modifiedAt
+          : modifiedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -7357,9 +7789,17 @@ class _$ModelInfoImpl extends _ModelInfo {
       @JsonKey(includeIfNull: false) this.template,
       @JsonKey(includeIfNull: false) this.system,
       @JsonKey(includeIfNull: false) this.details,
+      @JsonKey(includeIfNull: false) final List<Message>? messages,
       @JsonKey(name: 'model_info', includeIfNull: false) this.modelInfo,
-      @JsonKey(includeIfNull: false) final List<Message>? messages})
+      @JsonKey(name: 'projector_info', includeIfNull: false)
+      final Map<String, dynamic>? projectorInfo,
+      @JsonKey(includeIfNull: false) final List<Tensor>? tensors,
+      @JsonKey(includeIfNull: false) final List<Capability>? capabilities,
+      @JsonKey(name: 'modified_at', includeIfNull: false) this.modifiedAt})
       : _messages = messages,
+        _projectorInfo = projectorInfo,
+        _tensors = tensors,
+        _capabilities = capabilities,
         super._();
 
   factory _$ModelInfoImpl.fromJson(Map<String, dynamic> json) =>
@@ -7395,11 +7835,6 @@ class _$ModelInfoImpl extends _ModelInfo {
   @JsonKey(includeIfNull: false)
   final ModelDetails? details;
 
-  /// Details about a model.
-  @override
-  @JsonKey(name: 'model_info', includeIfNull: false)
-  final ModelInformation? modelInfo;
-
   /// The default messages for the model.
   final List<Message>? _messages;
 
@@ -7414,9 +7849,61 @@ class _$ModelInfoImpl extends _ModelInfo {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Details about a model.
+  @override
+  @JsonKey(name: 'model_info', includeIfNull: false)
+  final ModelInformation? modelInfo;
+
+  /// Projector info.
+  final Map<String, dynamic>? _projectorInfo;
+
+  /// Projector info.
+  @override
+  @JsonKey(name: 'projector_info', includeIfNull: false)
+  Map<String, dynamic>? get projectorInfo {
+    final value = _projectorInfo;
+    if (value == null) return null;
+    if (_projectorInfo is EqualUnmodifiableMapView) return _projectorInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  /// The tensors of the model.
+  final List<Tensor>? _tensors;
+
+  /// The tensors of the model.
+  @override
+  @JsonKey(includeIfNull: false)
+  List<Tensor>? get tensors {
+    final value = _tensors;
+    if (value == null) return null;
+    if (_tensors is EqualUnmodifiableListView) return _tensors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  /// The capabilities of the model.
+  final List<Capability>? _capabilities;
+
+  /// The capabilities of the model.
+  @override
+  @JsonKey(includeIfNull: false)
+  List<Capability>? get capabilities {
+    final value = _capabilities;
+    if (value == null) return null;
+    if (_capabilities is EqualUnmodifiableListView) return _capabilities;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  /// Date on which a model was created.
+  @override
+  @JsonKey(name: 'modified_at', includeIfNull: false)
+  final String? modifiedAt;
+
   @override
   String toString() {
-    return 'ModelInfo(license: $license, modelfile: $modelfile, parameters: $parameters, template: $template, system: $system, details: $details, modelInfo: $modelInfo, messages: $messages)';
+    return 'ModelInfo(license: $license, modelfile: $modelfile, parameters: $parameters, template: $template, system: $system, details: $details, messages: $messages, modelInfo: $modelInfo, projectorInfo: $projectorInfo, tensors: $tensors, capabilities: $capabilities, modifiedAt: $modifiedAt)';
   }
 
   @override
@@ -7433,9 +7920,16 @@ class _$ModelInfoImpl extends _ModelInfo {
                 other.template == template) &&
             (identical(other.system, system) || other.system == system) &&
             (identical(other.details, details) || other.details == details) &&
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
             (identical(other.modelInfo, modelInfo) ||
                 other.modelInfo == modelInfo) &&
-            const DeepCollectionEquality().equals(other._messages, _messages));
+            const DeepCollectionEquality()
+                .equals(other._projectorInfo, _projectorInfo) &&
+            const DeepCollectionEquality().equals(other._tensors, _tensors) &&
+            const DeepCollectionEquality()
+                .equals(other._capabilities, _capabilities) &&
+            (identical(other.modifiedAt, modifiedAt) ||
+                other.modifiedAt == modifiedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -7448,8 +7942,12 @@ class _$ModelInfoImpl extends _ModelInfo {
       template,
       system,
       details,
+      const DeepCollectionEquality().hash(_messages),
       modelInfo,
-      const DeepCollectionEquality().hash(_messages));
+      const DeepCollectionEquality().hash(_projectorInfo),
+      const DeepCollectionEquality().hash(_tensors),
+      const DeepCollectionEquality().hash(_capabilities),
+      modifiedAt);
 
   /// Create a copy of ModelInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -7469,16 +7967,21 @@ class _$ModelInfoImpl extends _ModelInfo {
 
 abstract class _ModelInfo extends ModelInfo {
   const factory _ModelInfo(
-          {@JsonKey(includeIfNull: false) final String? license,
-          @JsonKey(includeIfNull: false) final String? modelfile,
-          @JsonKey(includeIfNull: false) final String? parameters,
-          @JsonKey(includeIfNull: false) final String? template,
-          @JsonKey(includeIfNull: false) final String? system,
-          @JsonKey(includeIfNull: false) final ModelDetails? details,
-          @JsonKey(name: 'model_info', includeIfNull: false)
-          final ModelInformation? modelInfo,
-          @JsonKey(includeIfNull: false) final List<Message>? messages}) =
-      _$ModelInfoImpl;
+      {@JsonKey(includeIfNull: false) final String? license,
+      @JsonKey(includeIfNull: false) final String? modelfile,
+      @JsonKey(includeIfNull: false) final String? parameters,
+      @JsonKey(includeIfNull: false) final String? template,
+      @JsonKey(includeIfNull: false) final String? system,
+      @JsonKey(includeIfNull: false) final ModelDetails? details,
+      @JsonKey(includeIfNull: false) final List<Message>? messages,
+      @JsonKey(name: 'model_info', includeIfNull: false)
+      final ModelInformation? modelInfo,
+      @JsonKey(name: 'projector_info', includeIfNull: false)
+      final Map<String, dynamic>? projectorInfo,
+      @JsonKey(includeIfNull: false) final List<Tensor>? tensors,
+      @JsonKey(includeIfNull: false) final List<Capability>? capabilities,
+      @JsonKey(name: 'modified_at', includeIfNull: false)
+      final String? modifiedAt}) = _$ModelInfoImpl;
   const _ModelInfo._() : super._();
 
   factory _ModelInfo.fromJson(Map<String, dynamic> json) =
@@ -7514,15 +8017,35 @@ abstract class _ModelInfo extends ModelInfo {
   @JsonKey(includeIfNull: false)
   ModelDetails? get details;
 
+  /// The default messages for the model.
+  @override
+  @JsonKey(includeIfNull: false)
+  List<Message>? get messages;
+
   /// Details about a model.
   @override
   @JsonKey(name: 'model_info', includeIfNull: false)
   ModelInformation? get modelInfo;
 
-  /// The default messages for the model.
+  /// Projector info.
+  @override
+  @JsonKey(name: 'projector_info', includeIfNull: false)
+  Map<String, dynamic>? get projectorInfo;
+
+  /// The tensors of the model.
   @override
   @JsonKey(includeIfNull: false)
-  List<Message>? get messages;
+  List<Tensor>? get tensors;
+
+  /// The capabilities of the model.
+  @override
+  @JsonKey(includeIfNull: false)
+  List<Capability>? get capabilities;
+
+  /// Date on which a model was created.
+  @override
+  @JsonKey(name: 'modified_at', includeIfNull: false)
+  String? get modifiedAt;
 
   /// Create a copy of ModelInfo
   /// with the given fields replaced by the non-null parameter values.

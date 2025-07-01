@@ -23,16 +23,18 @@ void main() {
 
     test('Test call chat completion API', () async {
       final models = [
-        ChatCompletionModels.gpt4oMini,
-        ChatCompletionModels.gpt4,
+        ChatCompletionModels.gpt41Nano,
+        ChatCompletionModels.gpt41Nano,
       ];
 
       for (final model in models) {
         final request = CreateChatCompletionRequest(
           model: ChatCompletionModel.model(model),
           messages: [
-            const ChatCompletionMessage.system(
-              content: 'You are a helpful assistant.',
+            const ChatCompletionMessage.developer(
+              content: ChatCompletionDeveloperMessageContent.text(
+                'You are a helpful assistant.',
+              ),
             ),
             const ChatCompletionMessage.user(
               content: ChatCompletionUserMessageContent.string('Hello!'),
@@ -73,13 +75,14 @@ void main() {
     test('Test call chat completion API with stop sequence', () async {
       const request = CreateChatCompletionRequest(
         model: ChatCompletionModel.model(
-          ChatCompletionModels.gpt4oMini,
+          ChatCompletionModels.gpt41Nano,
         ),
         messages: [
-          ChatCompletionMessage.system(
-            content:
-                'You are a helpful assistant that replies only with numbers '
-                'in order without any spaces or commas',
+          ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant that replies only with numbers '
+              'in order without any spaces or commas',
+            ),
           ),
           ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.string(
@@ -105,11 +108,13 @@ void main() {
     test('Test call chat completions API with max tokens', () async {
       const request = CreateChatCompletionRequest(
         model: ChatCompletionModel.model(
-          ChatCompletionModels.gpt4oMini,
+          ChatCompletionModels.gpt41Nano,
         ),
         messages: [
-          ChatCompletionMessage.system(
-            content: 'You are a helpful assistant.',
+          ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant.',
+            ),
           ),
           ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.string('Tell me a joke'),
@@ -132,11 +137,13 @@ void main() {
     test('Test call chat completions API with other parameters', () async {
       const request = CreateChatCompletionRequest(
         model: ChatCompletionModel.model(
-          ChatCompletionModels.gpt4oMini,
+          ChatCompletionModels.gpt41Nano,
         ),
         messages: [
-          ChatCompletionMessage.system(
-            content: 'You are a helpful assistant.',
+          ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant.',
+            ),
           ),
           ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.string('Tell me a joke'),
@@ -158,13 +165,14 @@ void main() {
     test('Test call chat completions streaming API', () async {
       const request = CreateChatCompletionRequest(
         model: ChatCompletionModel.model(
-          ChatCompletionModels.gpt4oMini,
+          ChatCompletionModels.gpt41Nano,
         ),
         messages: [
-          ChatCompletionMessage.system(
-            content:
-                'You are a helpful assistant that replies only with numbers '
-                'in order without any spaces or commas',
+          ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant that replies only with numbers '
+              'in order without any spaces or commas',
+            ),
           ),
           ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.string(
@@ -183,13 +191,13 @@ void main() {
       await for (final res in stream) {
         expect(res.id, isNotEmpty);
         expect(res.created, greaterThan(0));
-        expect(res.model, startsWith('gpt-4o-mini'));
+        expect(res.model, startsWith('gpt-4.1-nano'));
         expect(res.object, isNotEmpty);
         if (res.choices.isNotEmpty) {
           expect(res.choices, hasLength(1));
           final choice = res.choices.first;
           expect(choice.index, 0);
-          text += res.choices.first.delta.content?.trim() ?? '';
+          text += res.choices.first.delta?.content?.trim() ?? '';
           lastChoice = choice;
         }
         lastResponse = res;
@@ -228,11 +236,13 @@ void main() {
 
       final request1 = CreateChatCompletionRequest(
         model: const ChatCompletionModel.model(
-          ChatCompletionModels.gpt4oMini,
+          ChatCompletionModels.gpt41Nano,
         ),
         messages: [
-          const ChatCompletionMessage.system(
-            content: 'You are a helpful assistant.',
+          const ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant.',
+            ),
           ),
           const ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.string(
@@ -276,11 +286,13 @@ void main() {
 
       final request2 = CreateChatCompletionRequest(
         model: const ChatCompletionModel.model(
-          ChatCompletionModels.gpt4oMini,
+          ChatCompletionModels.gpt41Nano,
         ),
         messages: [
-          const ChatCompletionMessage.system(
-            content: 'You are a helpful assistant.',
+          const ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant.',
+            ),
           ),
           const ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.string(
@@ -334,13 +346,15 @@ void main() {
 
       final request1 = CreateChatCompletionRequest(
         model: const ChatCompletionModel.model(
-          ChatCompletionModels.gpt4oMini,
+          ChatCompletionModels.gpt41Nano,
         ),
-        messages: [
-          const ChatCompletionMessage.system(
-            content: 'You are a helpful assistant.',
+        messages: const [
+          ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant.',
+            ),
           ),
-          const ChatCompletionMessage.user(
+          ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.string(
               'Tell me a long joke about bears',
             ),
@@ -356,7 +370,7 @@ void main() {
       );
       final stream = client.createChatCompletionStream(request: request1);
 
-      int count = 0;
+      var count = 0;
       await for (final res in stream) {
         expect(res.id, isNotEmpty);
         expect(res.created, greaterThan(0));
@@ -364,26 +378,26 @@ void main() {
           res.object,
           isNotEmpty,
         );
-        expect(res.model, startsWith('gpt-4o-mini'));
+        expect(res.model, startsWith('gpt-4.1-nano'));
         expect(res.choices, hasLength(1));
         final choice = res.choices.first;
         expect(choice.index, 0);
         final delta = choice.delta;
         if (choice.finishReason != ChatCompletionFinishReason.stop) {
-          expect(delta.toolCalls, hasLength(1), reason: 'count: $count');
-          final toolCall = delta.toolCalls!.first;
-          expect(toolCall.function, isNotNull);
-          final function = toolCall.function!;
+          expect(delta?.toolCalls, hasLength(1), reason: 'count: $count');
+          final toolCall = delta?.toolCalls!.first;
+          expect(toolCall?.function, isNotNull);
+          final function = toolCall?.function;
           if (count == 0) {
-            expect(toolCall.id, isNotEmpty);
+            expect(toolCall?.id, isNotEmpty);
             expect(
-              toolCall.type,
+              toolCall?.type,
               ChatCompletionStreamMessageToolCallChunkType.function,
             );
-            expect(function.name, 'joke');
+            expect(function?.name, 'joke');
           }
-          expect(toolCall.index, 0);
-          expect(function.arguments, isNotNull);
+          expect(toolCall?.index, 0);
+          expect(function?.arguments, isNotNull);
         }
         count++;
       }
@@ -393,13 +407,14 @@ void main() {
     test('Test jsonObject response format', () async {
       const request = CreateChatCompletionRequest(
         model: ChatCompletionModel.model(
-          ChatCompletionModels.gpt4oMini,
+          ChatCompletionModels.gpt41Nano,
         ),
         messages: [
-          ChatCompletionMessage.system(
-            content:
-                'You are a helpful assistant that extracts names from text '
-                'and returns them in a JSON array.',
+          ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant that extracts names from text '
+              'and returns them in a JSON array.',
+            ),
           ),
           ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.string(
@@ -428,12 +443,13 @@ void main() {
     test('Test jsonSchema response format', () async {
       const request = CreateChatCompletionRequest(
         model: ChatCompletionModel.model(
-          ChatCompletionModels.gpt4oMini,
+          ChatCompletionModels.gpt41Nano,
         ),
         messages: [
-          ChatCompletionMessage.system(
-            content:
-                'You are a helpful assistant. That extracts names from text.',
+          ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant. That extracts names from text.',
+            ),
           ),
           ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.string(
@@ -484,8 +500,10 @@ void main() {
           ChatCompletionModels.gpt4TurboPreview,
         ),
         messages: [
-          ChatCompletionMessage.system(
-            content: 'You are a helpful assistant.',
+          ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant.',
+            ),
           ),
           ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.string('How are you?'),
@@ -506,14 +524,16 @@ void main() {
       expect(choice1.message.content, choice2.message.content);
     });
 
-    test('Test multi-modal GPT-4 Vision', () async {
+    test('Test multi-modal vision', () async {
       const request = CreateChatCompletionRequest(
         model: ChatCompletionModel.model(
-          ChatCompletionModels.gpt4VisionPreview,
+          ChatCompletionModels.gpt4o,
         ),
         messages: [
-          ChatCompletionMessage.system(
-            content: 'You are a helpful assistant.',
+          ChatCompletionMessage.developer(
+            content: ChatCompletionDeveloperMessageContent.text(
+              'You are a helpful assistant.',
+            ),
           ),
           ChatCompletionMessage.user(
             content: ChatCompletionUserMessageContent.parts(
@@ -599,8 +619,8 @@ void main() {
       await for (final res in stream) {
         expect(res.choices, hasLength(1));
         final choice = res.choices.first;
-        transcript += choice.delta.audio?.transcript ?? '';
-        data += choice.delta.audio?.data ?? '';
+        transcript += choice.delta?.audio?.transcript ?? '';
+        data += choice.delta?.audio?.data ?? '';
         chunks++;
       }
       expect(chunks, greaterThan(1));
@@ -689,6 +709,62 @@ export default User;''';
       expect(
         res1.usage?.completionTokensDetails?.rejectedPredictionTokens,
         greaterThan(0),
+      );
+    });
+
+    test('Test web search', () async {
+      const request = CreateChatCompletionRequest(
+        model: ChatCompletionModel.model(
+          ChatCompletionModels.gpt4oMiniSearchPreview,
+        ),
+        webSearchOptions: WebSearchOptions(
+          userLocation: WebSearchOptionsUserLocation(
+            type: WebSearchOptionsUserLocationType.approximate,
+            approximate: WebSearchLocation(
+              country: 'GB',
+              city: 'London',
+              region: 'London',
+            ),
+          ),
+        ),
+        messages: [
+          ChatCompletionMessage.user(
+            content: ChatCompletionUserMessageContent.string(
+              'What was a positive news story from today?',
+            ),
+          ),
+        ],
+      );
+      final res1 = await client.createChatCompletion(request: request);
+      expect(res1.choices, hasLength(1));
+      final choice1 = res1.choices.first;
+      expect(choice1.message.content, isNotEmpty);
+      expect(choice1.message.annotations, isNotEmpty);
+    });
+
+    test('Test store', () async {
+      const request = CreateChatCompletionRequest(
+        model: ChatCompletionModel.model(
+          ChatCompletionModels.gpt41Nano,
+        ),
+        store: true,
+        messages: [
+          ChatCompletionMessage.user(
+            content: ChatCompletionUserMessageContent.string(
+              'Say just "hello"',
+            ),
+          ),
+        ],
+      );
+      final res1 = await client.createChatCompletion(request: request);
+      expect(res1.choices, hasLength(1));
+      final choice1 = res1.choices.first;
+      expect(choice1.message.content, isNotEmpty);
+
+      final res2 = await client.listChatCompletions();
+      expect(
+        res2.data.any((chatCompletion) => res1.id == res1.id),
+        isTrue,
       );
     });
   });

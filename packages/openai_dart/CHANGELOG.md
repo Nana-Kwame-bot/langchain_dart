@@ -2,6 +2,28 @@
 
 ---
 
+## 0.5.2
+
+ - **FEAT**: Make Model.object/owned_by  fields nullable to support OpenRouter's OpenAI-compatible API ([#736](https://github.com/davidmigloz/langchain_dart/issues/736)). ([afa98b8c](https://github.com/davidmigloz/langchain_dart/commit/afa98b8c44c612126f2f6ee32d6aecdad41663b4))
+ - **FEAT**: Make Model.created field nullable to support Google's OpenAI-compatible API ([#735](https://github.com/davidmigloz/langchain_dart/issues/735)). ([d617e49f](https://github.com/davidmigloz/langchain_dart/commit/d617e49f9d5760e2714d27d76cf699364e9cfe51))
+
+## 0.5.1
+
+ - **FEAT**: Make ToolCallChunk.index field nullable to support Gemini OpenAI-compatible API ([#733](https://github.com/davidmigloz/langchain_dart/issues/733)). ([19cb49c0](https://github.com/davidmigloz/langchain_dart/commit/19cb49c09e42204cc523fbbdd3941b3070146063))
+ - **FEAT**: Make Embedding.index field nullable to support Gemini OpenAI-compatible API ([#729](https://github.com/davidmigloz/langchain_dart/issues/729)). ([9d22f197](https://github.com/davidmigloz/langchain_dart/commit/9d22f1972d99b8b1f6dbcfcb3f7bfba2257fca5b))
+
+## 0.5.0
+
+ - **BREAKING** **FEAT**: Align OpenAI API changes ([#706](https://github.com/davidmigloz/langchain_dart/issues/706)). ([b8b04ca6](https://github.com/davidmigloz/langchain_dart/commit/b8b04ca618ffbc6f84b935a89852767479da1611))
+ - **FEAT**: Add support for web search, gpt-image-1 and list chat completions ([#716](https://github.com/davidmigloz/langchain_dart/issues/716)). ([269dea03](https://github.com/davidmigloz/langchain_dart/commit/269dea035be679c8d2fcc03f526703c76c72c5d4))
+ - **FEAT**: Update OpenAI model catalog ([#714](https://github.com/davidmigloz/langchain_dart/issues/714)). ([68df4558](https://github.com/davidmigloz/langchain_dart/commit/68df4558a01e872c73ad465f4b85f1b5c61ddd50))
+ - **FEAT**: Change the default value of 'reasoning_effort' from medium to null ([#713](https://github.com/davidmigloz/langchain_dart/issues/713)). ([f224572e](https://github.com/davidmigloz/langchain_dart/commit/f224572eff249daa1971a7f287c150ee3779a6b2))
+ - **FEAT**: Update dependencies (requires Dart 3.6.0) ([#709](https://github.com/davidmigloz/langchain_dart/issues/709)). ([9e3467f7](https://github.com/davidmigloz/langchain_dart/commit/9e3467f7caabe051a43c0eb3c1110bc4a9b77b81))
+ - **REFACTOR**: Remove fetch_client dependency in favor of http v1.3.0 ([#659](https://github.com/davidmigloz/langchain_dart/issues/659)). ([0e0a685c](https://github.com/davidmigloz/langchain_dart/commit/0e0a685c376895425dbddb0f9b83758c700bb0c7))
+ - **REFACTOR**: Fix linter issues ([#708](https://github.com/davidmigloz/langchain_dart/issues/708)). ([652e7c64](https://github.com/davidmigloz/langchain_dart/commit/652e7c64776d92d309cbd708d9e477fc2ee1391c))
+ - **DOCS**: Fix TruncationObject docs typo in openai_dart. ([ee5ed4fd](https://github.com/davidmigloz/langchain_dart/commit/ee5ed4fdfdf4213ceec05d7a5a2b24cca95ae386))
+ - **DOCS**: Document Azure Assistants API base url ([#626](https://github.com/davidmigloz/langchain_dart/issues/626)). ([c3459eea](https://github.com/davidmigloz/langchain_dart/commit/c3459eea354f36a11f69145a7313b3feda7a15eb))
+
 ## 0.4.5
 
  - **FEAT**: Support Predicted Outputs in openai_dart ([#613](https://github.com/davidmigloz/langchain_dart/issues/613)). ([315fe0fd](https://github.com/davidmigloz/langchain_dart/commit/315fe0fd3227e2c5a1a874be7fd01e25dcd7b33c))
